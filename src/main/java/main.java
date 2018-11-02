@@ -1,5 +1,3 @@
-import view.loginpanel.LoginFrame;
-
 /**
  * Created by kreisso on 02.11.2018.
  */
