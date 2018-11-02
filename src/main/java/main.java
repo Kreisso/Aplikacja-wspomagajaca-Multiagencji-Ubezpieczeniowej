@@ -6,10 +6,8 @@ import view.loginpanel.LoginFrame;
 public class main {
 
     public static void main(String[] args){
-        int test;
-        new LoginFrame("Login");
-    }
 
+    }
 
 
 }
