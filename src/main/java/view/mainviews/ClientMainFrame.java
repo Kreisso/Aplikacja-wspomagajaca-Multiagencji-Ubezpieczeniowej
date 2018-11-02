@@ -1,7 +1,5 @@
 package view.mainviews;
 
-import view.*;
-
 import java.awt.*;
 
 /**
