@@ -1,22 +1,21 @@
 package view.loginpanel;
 
-import view.*;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class LoginFrame extends view.Frame {
+public class LoginFrame extends view.Frame{
     private int frameWidth = 500;
     private int frameHeight = 500;
 
     private JPanel logoPanel;
     private JLabel labelLogin;
     private JLabel labelPassword;
-    private JLabel labelGoToSignUp;
+    private JButton buttonGoToSignUp;
     private JButton buttonLogIn;
     private JTextField inputLogin;
     private JPasswordField inputPassword;
@@ -76,15 +75,45 @@ public class LoginFrame extends view.Frame {
         inputPassword.setLocation(50, 310);
         this.add(inputPassword);
 
-        labelGoToSignUp = new JLabel("Rejestracja");
-        labelGoToSignUp.setSize(labelGoToSignUp.getPreferredSize());
-        labelGoToSignUp.setLocation(50, 400);
-        labelGoToSignUp.setForeground(Color.blue);
-        this.add(labelGoToSignUp);
+
+
+
+    }
+
+    public void setButtonLogIn(ActionListener actionListener){
 
         buttonLogIn = new JButton("Zaloguj");
         buttonLogIn.setSize(100,50);
         buttonLogIn.setLocation(450-100,380);
+        buttonLogIn.addActionListener(actionListener);
+        this.getRootPane().setDefaultButton(buttonLogIn);
         this.add(buttonLogIn);
+
+    }
+
+    public void setButtonGoToSignUp(ActionListener actionListener){
+
+        buttonGoToSignUp = new JButton("Rejestracja");
+        buttonGoToSignUp.setFocusPainted(false);
+        buttonGoToSignUp.setContentAreaFilled(false);
+        buttonGoToSignUp.setMargin(new Insets(0, 0, 0, 0));
+        buttonGoToSignUp.setBorderPainted(false);
+        buttonGoToSignUp.setOpaque(false);
+        buttonGoToSignUp.setSize(buttonGoToSignUp.getPreferredSize());
+        buttonGoToSignUp.setLocation(50, 400);
+        buttonGoToSignUp.setForeground(Color.blue);
+        buttonGoToSignUp.addActionListener(actionListener);
+        this.add(buttonGoToSignUp);
+
+    }
+
+    public char[] getPassword()
+    {
+        return inputPassword.getPassword();
+    }
+
+    public String getLogin()
+    {
+        return inputLogin.getText();
     }
 }
