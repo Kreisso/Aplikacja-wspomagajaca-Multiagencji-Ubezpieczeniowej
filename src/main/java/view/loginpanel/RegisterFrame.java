@@ -65,12 +65,6 @@ public class RegisterFrame extends view.Frame {
         inputLogin.setLocation(50, firstFieldHeight);
         this.add(inputLogin);
 
-        inputLogin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
         JLabel labelPassword = new JLabel("Hasło:");
         labelPassword.setSize(labelPassword.getPreferredSize());
         labelPassword.setLocation(50, firstLabelHeight+spaceBetween);
@@ -171,8 +165,5 @@ public class RegisterFrame extends view.Frame {
         buttonSignUp.setSize(200,50);
         buttonSignUp.setLocation(frameWidth - 250,830);
         this.add(buttonSignUp);
-
-
     }
-
 }
