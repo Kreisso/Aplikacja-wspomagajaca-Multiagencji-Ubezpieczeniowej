@@ -12,9 +12,9 @@ public abstract class Frame extends JFrame {
 
     public Frame(String name) throws HeadlessException {
         super(name);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+        this.setResizable(false);
     }
 }
 
