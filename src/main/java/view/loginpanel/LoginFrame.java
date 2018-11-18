@@ -87,4 +87,15 @@ public class LoginFrame extends view.Frame {
         buttonLogIn.setLocation(450-100,380);
         this.add(buttonLogIn);
     }
+
+
+    public char[] getPassword()
+    {
+        return inputPassword.getPassword();
+    }
+
+    public String getLogin()
+    {
+        return inputLogin.getText();
+    }
 }
