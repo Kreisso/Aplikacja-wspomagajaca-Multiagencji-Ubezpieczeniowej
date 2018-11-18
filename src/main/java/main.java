@@ -9,6 +9,7 @@ public class main {
                 new LoginFrame("Logowanie");
             }
         });
+
     }
 
 }
