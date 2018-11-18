@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 public class Connectivity
 {
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost/demo";
-    private static final String USER = "root" ;
-    private static final String PASS = "root";
+    private static final String USER = "test" ;
+    private static final String PASS = "test";
     private Connection conn;
     public Connectivity() {
         conn = null;
@@ -27,6 +27,14 @@ public class Connectivity
             e.printStackTrace();
         }
 
+    }
+    public boolean login()
+    {
+        return false;
+    }
+
+    public Connection getConn() {
+        return conn;
     }
 
     public boolean close()

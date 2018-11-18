@@ -5,6 +5,7 @@ public class Login {
     private String password;
     private boolean status = false;
 
+    public Login(){}
 
     public Login(String nick, String password) {
         this.nick = nick;
