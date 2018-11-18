@@ -20,7 +20,7 @@ public class RegisterFrame extends view.Frame {
         int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
         int frameWidth = 700;
-        int frameHeight = 950;
+        int frameHeight = (int) (0.7*screenHeight);
         this.setLocation((screenWidth- frameWidth)/2, (screenHeight- frameHeight)/2);
 
         this.setSize(frameWidth, frameHeight);
@@ -155,15 +155,18 @@ public class RegisterFrame extends view.Frame {
         inputPhoneNo.setLocation(halfFieldWidth + 100, firstFieldHeight+(6*spaceBetween));
         this.add(inputPhoneNo);
 
+        // TODO change to JButon ( like in loginFrame ) And will prepare to add ActionListener ( like in login Frame )
         JLabel labelGoToLogin = new JLabel("Logowanie");
         labelGoToLogin.setSize(labelGoToLogin.getPreferredSize());
         labelGoToLogin.setLocation(50, 850);
         labelGoToLogin.setForeground(Color.blue);
         this.add(labelGoToLogin);
 
+
         JButton buttonSignUp = new JButton("Zarejestruj");
         buttonSignUp.setSize(200,50);
         buttonSignUp.setLocation(frameWidth - 250,830);
+        this.getRootPane().setDefaultButton(buttonSignUp);
         this.add(buttonSignUp);
     }
 }
