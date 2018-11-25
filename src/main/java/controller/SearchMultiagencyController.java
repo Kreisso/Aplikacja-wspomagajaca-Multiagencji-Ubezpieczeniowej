@@ -4,8 +4,11 @@ import model.Contact;
 import model.Multiagency;
 import model.Server.Connectivity;
 import model.Server.SearchMultiagency;
+import view.Frame;
 import view.multiagency.SearchMultiagencyFrame;
 
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -18,17 +21,22 @@ public class SearchMultiagencyController {
     private SearchMultiagency model;
     private SearchMultiagencyFrame view;
     private Connectivity con;
+    private Frame previousView;
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Connectivity con) {
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, Connectivity con) {
         this.model = model;
         this.view = view;
         this.con = con;
+        this.previousView = previousView;
+        setMyPoliciesMenuListener();
         setViewCity();
     }
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view) {
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView) {
         this.model = model;
         this.view = view;
+        this.previousView = previousView;
+        setMyPoliciesMenuListener();
         setViewCity();
     }
 
@@ -141,5 +149,23 @@ public class SearchMultiagencyController {
             Multiagency multiagency = (Multiagency) it.next();
             view.addColumnToMultiagencyTable(multiagency.infoForTable(i));
         }
+    }
+
+    private void setMyPoliciesMenuListener()
+    {
+        view.setMyPoliciesMenuListener(new MenuListener() {
+            public void menuSelected(MenuEvent e) {
+                previousView.setVisible(true);
+                view.dispose();
+            }
+
+            public void menuDeselected(MenuEvent e) {
+
+            }
+
+            public void menuCanceled(MenuEvent e) {
+
+            }
+        });
     }
 }

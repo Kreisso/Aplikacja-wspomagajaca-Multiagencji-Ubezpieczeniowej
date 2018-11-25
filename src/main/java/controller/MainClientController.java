@@ -171,7 +171,7 @@ public class MainClientController {
             public void menuSelected(MenuEvent e) {
                 System.out.println("1");
                 new SearchMultiagencyController(new SearchMultiagency(),
-                        new SearchMultiagencyFrame("Wyszukaj multiagencje"), con);
+                        new SearchMultiagencyFrame("Wyszukaj multiagencje"),view, con);
                 view.setVisible(false);
             }
 

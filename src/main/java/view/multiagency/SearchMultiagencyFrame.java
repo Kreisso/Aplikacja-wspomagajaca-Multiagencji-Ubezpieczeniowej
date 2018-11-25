@@ -52,6 +52,7 @@ public class SearchMultiagencyFrame extends view.Frame {
         multiagencyTable = new JTable();
         model = new DefaultTableModel();
         model.addColumn("LP");
+        model.addColumn("Nazwa agencji");
         model.addColumn("Miasto");
         model.addColumn("Ulica i numer");
         multiagencyTable = new JTable(model);

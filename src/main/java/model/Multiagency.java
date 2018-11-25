@@ -33,10 +33,11 @@ public class Multiagency {
     }
 
     public String[] infoForTable(int i){
-        String[] multiagencies = new String[3];
+        String[] multiagencies = new String[4];
         multiagencies[0] = String.valueOf(i);
-        multiagencies[1] = String.valueOf(this.contact.getCity());
-        multiagencies[2] = String.valueOf(this.contact.getStreetAndNo());
+        multiagencies[1] = String.valueOf(this.getName());
+        multiagencies[2] = String.valueOf(this.contact.getCity());
+        multiagencies[3] = String.valueOf(this.contact.getStreetAndNo());
         return multiagencies;
     }
 
