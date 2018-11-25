@@ -78,7 +78,7 @@ public class LoginController {
                 System.out.println("click go sign up button");
                 // TODO
                 RegisterController registerController = new RegisterController(
-                        new Register(), new RegisterFrame("Rejestracja"));
+                        new Register(), new RegisterFrame("Rejestracja"), view);
                 view.setVisible(false);
             }
         });
