@@ -1,6 +1,7 @@
 package view.multiagency;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -8,21 +9,25 @@ import java.awt.event.ActionListener;
  * Created by kreisso on 02.11.2018.
  */
 public class SearchMultiagencyFrame extends view.Frame {
-    private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-    private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-    private int frameWidth = screenWidth;
-    private int frameHeight = screenHeight;
+    private int frameWidth = 1000;
+    private int frameHeight = 600;
 
-    private JButton searchByCityButton;
+    private JScrollPane scrollPane;
+    private JTable multiagencyTable;
     private JLabel searchByCityLabel;
     private JTextField inputSearchByCity;
 
     private JButton searchButton;
 
+    private DefaultTableModel model;
+
     public SearchMultiagencyFrame(String name) throws HeadlessException {
         super(name);
 
-        this.setLocation(0, 0);
+        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.setLocation((screenWidth-frameWidth)/2, (screenHeight-frameHeight)/2);
+
         this.setSize(frameWidth, frameHeight);
         this.setLayout(null);
         
@@ -38,16 +43,29 @@ public class SearchMultiagencyFrame extends view.Frame {
         inputSearchByCity.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.05));
         this.add(inputSearchByCity);
 
-        searchByCityButton = new JButton("Szukaj");
-        searchByCityButton.setSize((int) (frameHeight * 0.25), 40);
-        searchByCityButton.setLocation((int) (frameWidth * 0.8), (int) (frameHeight * 0.05));
-        this.add(searchByCityButton);
+        searchButton = new JButton("Szukaj");
+        searchButton.setSize((int) (frameHeight*0.25), 40);
+        searchButton.setLocation((int) (frameWidth*0.8),  (int) (frameHeight*0.05));
+        this.getRootPane().setDefaultButton(searchButton);
+        this.add(searchButton);
 
-        MultiagenciesPanel multiagenciesPanel = new MultiagenciesPanel();
+        multiagencyTable = new JTable();
+        model = new DefaultTableModel();
+        model.addColumn("LP");
+        model.addColumn("Miasto");
+        model.addColumn("Ulica i numer");
+        multiagencyTable = new JTable(model);
+        scrollPane = new JScrollPane(multiagencyTable);
+        scrollPane.setSize((int) (frameWidth * 0.7), (int) (frameHeight * 0.7));
+        scrollPane.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.15));
+        this.add(scrollPane);
 
-            multiagenciesPanel.setVisible(true);
 
-        this.add(multiagenciesPanel);
+//        MultiagenciesPanel multiagenciesPanel = new MultiagenciesPanel();
+//
+//            multiagenciesPanel.setVisible(true);
+//
+//        this.add(multiagenciesPanel);
     }
 
     public String getInputSearchByCity() {
@@ -56,12 +74,18 @@ public class SearchMultiagencyFrame extends view.Frame {
 
     public void setSearchByCityButton(ActionListener actionListener){
 
-        searchButton = new JButton("Szukaj");
-        searchButton.setSize((int) (frameHeight*0.25), 40);
-        searchButton.setLocation((int) (frameWidth*0.8),  (int) (frameHeight*0.05));
         searchButton.addActionListener(actionListener);
-        this.getRootPane().setDefaultButton(searchButton);
-        this.add(searchButton);
+
+    }
+
+    public void addColumnToMultiagencyTable(Object[] multiagencies) {
+
+        model.addRow(multiagencies);
+    }
+
+    public void restartRowCount()
+    {
+        model.setRowCount(0);
     }
 
 }

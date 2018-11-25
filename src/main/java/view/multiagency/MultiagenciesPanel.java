@@ -19,6 +19,8 @@ public class MultiagenciesPanel extends JPanel {
     private JScrollPane scrollPane;
 
 
+
+
     public MultiagenciesPanel() throws HeadlessException {
         super();
 
