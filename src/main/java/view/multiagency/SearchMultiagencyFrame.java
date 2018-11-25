@@ -17,10 +17,6 @@ public class SearchMultiagencyFrame extends view.Frame {
     private JLabel searchByCityLabel;
     private JTextField inputSearchByCity;
 
-    public String getInputSearchByCity() {
-        return inputSearchByCity.getText();
-    }
-
     private JButton searchButton;
 
     public SearchMultiagencyFrame(String name, Boolean isVisisbleMultiagenciesPanel) throws HeadlessException {
@@ -50,6 +46,10 @@ public class SearchMultiagencyFrame extends view.Frame {
             multiagenciesPanel.setVisible(true);
         }
         this.add(multiagenciesPanel);
+    }
+
+    public String getInputSearchByCity() {
+        return inputSearchByCity.getText();
     }
 
     public void setSearchByCityButton(ActionListener actionListener){
