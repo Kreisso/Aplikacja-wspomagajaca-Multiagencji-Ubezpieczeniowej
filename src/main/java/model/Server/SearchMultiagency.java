@@ -1,4 +1,6 @@
-package model;
+package model.Server;
+
+import model.Multiagency;
 
 import java.util.List;
 

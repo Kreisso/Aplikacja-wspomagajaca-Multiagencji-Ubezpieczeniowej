@@ -1,9 +1,8 @@
 package controller;
 
-import model.Connectivity;
+import model.Server.Connectivity;
 import model.Contact;
-import model.Multiagency;
-import model.SearchMultiagency;
+import model.Server.SearchMultiagency;
 import view.multiagency.SearchMultiagencyFrame;
 
 import java.awt.event.ActionEvent;
