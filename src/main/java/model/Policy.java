@@ -72,11 +72,12 @@ public class Policy {
         this.offer = offer;
     }
 
-    public String[] infoForTable(){
-        String[] policyInfo = new String[3];
-        policyInfo[0] = String.valueOf(this.id);
-        policyInfo[1] = String.valueOf(this.offer.getType());
-        policyInfo[2] = String.valueOf(this.status);
+    public String[] infoForTable(int i){
+        String[] policyInfo = new String[4];
+        policyInfo[0] = String.valueOf(i);
+        policyInfo[1] = String.valueOf(this.id);
+        policyInfo[2] = String.valueOf(this.offer.getType());
+        policyInfo[3] = String.valueOf(this.status);
         return policyInfo;
     }
 }

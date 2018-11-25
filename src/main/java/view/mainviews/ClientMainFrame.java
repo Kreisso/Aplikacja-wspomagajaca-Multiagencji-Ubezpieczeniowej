@@ -85,8 +85,9 @@ public class ClientMainFrame extends view.Frame{
         return biggerTextCheckBox.isSelected();
     }
 
-    public void addColumnToPolicyTable(Object[] columnData) {
-        model.addRow(columnData);
+    public void addColumnToPolicyTable(Object[] policyInfo) {
+
+        model.addRow(policyInfo);
     }
 
     public void setMessageSenderLabel(String sender){

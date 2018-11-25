@@ -92,7 +92,7 @@ public class LoginController {
         ResultSet resultSet = null;
 
 
-        String sql="select ukk from user where login=? and password=?";
+        String sql="select * from user where login=? and password=?";
         try{
             con =  new Connectivity();
             setModelNick(getViewNick());
@@ -106,7 +106,6 @@ public class LoginController {
             if(resultSet.next())
             {
                 setModelStatus(true);
-                ukk = resultSet.getInt("ukk");
                 System.out.println(ukk);
 
             }
@@ -125,6 +124,40 @@ public class LoginController {
         finally {
             if (model.isStatus()) {
                 System.out.println("login");
+
+                 preparedStatement = null;
+                 resultSet = null;
+
+
+                 sql="select ukk from client where login=? ";
+                try{
+                    //con =  new Connectivity();
+
+
+                    preparedStatement = con.getConn().prepareStatement(sql);
+                    preparedStatement.setString(1, getModelNick());
+                    resultSet = preparedStatement.executeQuery();
+
+                    if(resultSet.next())
+                    {
+                        ukk = resultSet.getInt("ukk");
+
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                catch(SQLException ex)
+                {
+                    System.out.println(ex);
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
+
+
                 new MainClientController(new ClientMain(), new ClientMainFrame("Panel klienta"),
                         view, ukk, con );
                 view.setVisible(false);

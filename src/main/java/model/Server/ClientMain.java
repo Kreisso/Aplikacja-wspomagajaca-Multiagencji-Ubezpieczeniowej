@@ -13,7 +13,7 @@ public class ClientMain {
     List<Policy> policies;
 
     public ClientMain(){
-
+        this.policies = new LinkedList<Policy>();
     }
 
     public ClientMain(String messageSender, String message, Boolean biggerText) {
@@ -52,6 +52,6 @@ public class ClientMain {
     }
 
     public void addPolicy(Policy policy) {
-        this.policies.add(policy);
+        policies.add(policy);
     }
 }
