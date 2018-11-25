@@ -1,18 +1,74 @@
 package view.loginpanel;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by kreisso on 02.11.2018.
  */
 public class RegisterFrame extends view.Frame {
+
+    private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+    private int frameWidth = 700;
+    private int frameHeight = 850;
+    private int halfFieldWidth = (frameWidth - 150) / 2;
+    private int firstLabelHeight = 50;
+    private int firstFieldHeight = 70;
+    private int spaceBetween = 90;
+    private JButton buttonSignUp;
+    private JButton buttonGoToLogin;
+    private JTextField inputLogin;
+    private JPasswordField inputPassword;
+    private JPasswordField inputRepeatPassword;
+    private JTextField inputPesel;
+    private JTextField inputName;
+    private JTextField inputSurname;
+    private JTextField inputCity;
+    private JTextField inputStreetAndNo;
+    private JTextField inputPostCode;
+    private JTextField inputPhoneNo;
+
+    public JTextField getInputLogin() {
+        return inputLogin;
+    }
+
+    public char[] getInputPassword() {
+        return inputPassword.getPassword();
+    }
+
+    public char[] getInputRepeatPassword() {
+        return inputRepeatPassword.getPassword();
+    }
+
+    public String getInputPesel() {
+        return inputPesel.getText();
+    }
+
+    public String getInputName() {
+        return inputName.getText();
+    }
+
+    public String getInputSurname() {
+        return inputSurname.getText();
+    }
+
+    public String getInputCity() {
+        return inputCity.getText();
+    }
+
+    public String getInputStreetAndNo() {
+        return inputStreetAndNo.getText();
+    }
+
+    public String getInputPostCode() {
+        return inputPostCode.getText();
+    }
+
+    public String getInputPhoneNo() {
+        return inputPhoneNo.getText();
+    }
 
     public RegisterFrame(String name) throws HeadlessException {
         super(name);
@@ -21,46 +77,19 @@ public class RegisterFrame extends view.Frame {
         int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
         int frameWidth = 700;
         int frameHeight = (int) (0.7*screenHeight);
+
         this.setLocation((screenWidth- frameWidth)/2, (screenHeight- frameHeight)/2);
 
         this.setSize(frameWidth, frameHeight);
 
         this.setLayout(null);
 
-        JPanel logoPanel = new JPanel() {
-            private BufferedImage logoImage;
-
-            @Override
-            public void paintComponent(Graphics g) {
-                String filename = "assets/img/logo.png";
-                String workingDirectory = System.getProperty("user.dir");
-
-                File imageFile = new File(workingDirectory, filename);
-                System.out.println("Final filepath : " + imageFile.getAbsolutePath());
-                try {
-                    logoImage = ImageIO.read(imageFile);
-                } catch (IOException e) {
-                    System.err.println("Błąd wczytywania logo");
-                }
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.drawImage(logoImage, 0, 0, this.getWidth(), this.getHeight(), this);
-            }
-        };
-        logoPanel.setSize(200, 100);
-        logoPanel.setLocation((frameWidth /2)-(logoPanel.getWidth()/2), 50);
-        this.add(logoPanel);
-
-        int halfFieldWidth = (frameWidth - 150) / 2;
-        int firstLabelHeight = 170;
-        int firstFieldHeight = 190;
-        int spaceBetween = 90;
-
         JLabel labelLogin = new JLabel("Login:");
         labelLogin.setSize(labelLogin.getPreferredSize());
         labelLogin.setLocation(50, firstLabelHeight);
         this.add(labelLogin);
 
-        JTextField inputLogin = new JTextField();
+        inputLogin = new JTextField();
         inputLogin.setSize(frameWidth -100, 40);
         inputLogin.setLocation(50, firstFieldHeight);
         this.add(inputLogin);
@@ -70,7 +99,7 @@ public class RegisterFrame extends view.Frame {
         labelPassword.setLocation(50, firstLabelHeight+spaceBetween);
         this.add(labelPassword);
 
-        JTextField inputPassword = new JPasswordField();
+        inputPassword = new JPasswordField();
         inputPassword.setSize(frameWidth -100, 40);
         inputPassword.setLocation(50, firstFieldHeight+spaceBetween);
         this.add(inputPassword);
@@ -80,7 +109,7 @@ public class RegisterFrame extends view.Frame {
         labelRepeatPassword.setLocation(50, firstLabelHeight+(2*spaceBetween));
         this.add(labelRepeatPassword);
 
-        JTextField inputRepeatPassword = new JPasswordField();
+        inputRepeatPassword = new JPasswordField();
         inputRepeatPassword.setSize(frameWidth -100, 40);
         inputRepeatPassword.setLocation(50, firstFieldHeight+(2*spaceBetween));
         this.add(inputRepeatPassword);
@@ -90,7 +119,7 @@ public class RegisterFrame extends view.Frame {
         labelPesel.setLocation(50, firstLabelHeight+(3*spaceBetween));
         this.add(labelPesel);
 
-        JTextField inputPesel = new JTextField();
+        inputPesel = new JTextField();
         inputPesel.setSize(frameWidth -100, 40);
         inputPesel.setLocation(50, firstFieldHeight+(3*spaceBetween));
         this.add(inputPesel);
@@ -100,7 +129,7 @@ public class RegisterFrame extends view.Frame {
         labelName.setLocation(50, firstLabelHeight+(4*spaceBetween));
         this.add(labelName);
 
-        JTextField inputName = new JTextField();
+        inputName = new JTextField();
         inputName.setSize(halfFieldWidth, 40);
         inputName.setLocation(50, firstFieldHeight+(4*spaceBetween));
         this.add(inputName);
@@ -110,7 +139,7 @@ public class RegisterFrame extends view.Frame {
         labelSurname.setLocation(halfFieldWidth + 100, firstLabelHeight+(4*spaceBetween));
         this.add(labelSurname);
 
-        JTextField inputSurname = new JTextField();
+        inputSurname = new JTextField();
         inputSurname.setSize(halfFieldWidth, 40);
         inputSurname.setLocation(halfFieldWidth + 100, firstFieldHeight+(4*spaceBetween));
         this.add(inputSurname);
@@ -120,7 +149,7 @@ public class RegisterFrame extends view.Frame {
         labelCity.setLocation(50, firstLabelHeight+(5*spaceBetween));
         this.add(labelCity);
 
-        JTextField inputCity = new JTextField();
+        inputCity = new JTextField();
         inputCity.setSize(halfFieldWidth, 40);
         inputCity.setLocation(50, firstFieldHeight+(5*spaceBetween));
         this.add(inputCity);
@@ -130,7 +159,7 @@ public class RegisterFrame extends view.Frame {
         labelStreetAndNo.setLocation(halfFieldWidth + 100, firstLabelHeight+(5*spaceBetween));
         this.add(labelStreetAndNo);
 
-        JTextField inputStreetAndNo = new JTextField();
+        inputStreetAndNo = new JTextField();
         inputStreetAndNo.setSize(halfFieldWidth, 40);
         inputStreetAndNo.setLocation(halfFieldWidth + 100, firstFieldHeight+(5*spaceBetween));
         this.add(inputStreetAndNo);
@@ -140,7 +169,7 @@ public class RegisterFrame extends view.Frame {
         labelPostCode.setLocation(50, firstLabelHeight+(6*spaceBetween));
         this.add(labelPostCode);
 
-        JTextField inputPostCode = new JTextField();
+        inputPostCode = new JTextField();
         inputPostCode.setSize(halfFieldWidth, 40);
         inputPostCode.setLocation(50, firstFieldHeight+(6*spaceBetween));
         this.add(inputPostCode);
@@ -150,11 +179,19 @@ public class RegisterFrame extends view.Frame {
         labelPhoneNo.setLocation(halfFieldWidth + 100, firstLabelHeight+(6*spaceBetween));
         this.add(labelPhoneNo);
 
-        JTextField inputPhoneNo = new JTextField();
+        inputPhoneNo = new JTextField();
         inputPhoneNo.setSize(halfFieldWidth, 40);
         inputPhoneNo.setLocation(halfFieldWidth + 100, firstFieldHeight+(6*spaceBetween));
         this.add(inputPhoneNo);
+    }
 
+
+    public void setButtonSignUp(ActionListener actionListener){
+
+        buttonSignUp = new JButton("Zarejestruj");
+        buttonSignUp.setSize(200,50);
+        buttonSignUp.setLocation(frameWidth - 250,firstFieldHeight+(6*spaceBetween)+100);
+        buttonSignUp.addActionListener(actionListener);
         // TODO change to JButon ( like in loginFrame ) And will prepare to add ActionListener ( like in login Frame )
         JLabel labelGoToLogin = new JLabel("Logowanie");
         labelGoToLogin.setSize(labelGoToLogin.getPreferredSize());
@@ -168,5 +205,20 @@ public class RegisterFrame extends view.Frame {
         buttonSignUp.setLocation(frameWidth - 250,830);
         this.getRootPane().setDefaultButton(buttonSignUp);
         this.add(buttonSignUp);
+    }
+
+    public void setButtonGoToLogIn(ActionListener actionListener){
+
+        buttonGoToLogin = new JButton("Logowanie");
+        buttonGoToLogin.setFocusPainted(false);
+        buttonGoToLogin.setContentAreaFilled(false);
+        buttonGoToLogin.setMargin(new Insets(0, 0, 0, 0));
+        buttonGoToLogin.setBorderPainted(false);
+        buttonGoToLogin.setOpaque(false);
+        buttonGoToLogin.setSize(buttonGoToLogin.getPreferredSize());
+        buttonGoToLogin.setLocation(50, firstFieldHeight+(6*spaceBetween)+120);
+        buttonGoToLogin.setForeground(Color.blue);
+        buttonGoToLogin.addActionListener(actionListener);
+        this.add(buttonGoToLogin);
     }
 }
