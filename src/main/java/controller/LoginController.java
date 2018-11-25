@@ -2,7 +2,9 @@ package controller;
 
 import model.Connectivity;
 import model.Login;
+import model.Register;
 import view.loginpanel.LoginFrame;
+import view.loginpanel.RegisterFrame;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -75,6 +77,9 @@ public class LoginController {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("click go sign up button");
                 // TODO
+                RegisterController registerController = new RegisterController(
+                        new Register(), new RegisterFrame("Rejestracja"));
+                view.setVisible(false);
             }
         });
     }
