@@ -2,7 +2,6 @@ package view.multiagency;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -14,9 +13,14 @@ public class SearchMultiagencyFrame extends view.Frame {
     private int frameWidth = screenWidth;
     private int frameHeight = screenHeight;
 
-    private JButton searchCityButton;
-    private JLabel searchCityLabel;
-    private JTextField inputSearchCity;
+    private JButton searchByCityButton;
+    private JLabel searchByCityLabel;
+    private JTextField inputSearchByCity;
+
+    public String getInputSearchByCity() {
+        return inputSearchByCity.getText();
+    }
+
     private JButton searchButton;
 
     public SearchMultiagencyFrame(String name, Boolean isVisisbleMultiagenciesPanel) throws HeadlessException {
@@ -26,20 +30,20 @@ public class SearchMultiagencyFrame extends view.Frame {
         this.setSize(frameWidth, frameHeight);
         this.setLayout(null);
 
-        searchCityLabel = new JLabel("Wpisz swoje miasto");
-        searchCityLabel.setSize(searchCityLabel.getPreferredSize());
-        searchCityLabel.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.05)-20);
-        this.add(searchCityLabel);
+        searchByCityLabel = new JLabel("Wpisz swoje miasto");
+        searchByCityLabel.setSize(searchByCityLabel.getPreferredSize());
+        searchByCityLabel.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.05)-20);
+        this.add(searchByCityLabel);
 
-        inputSearchCity = new JTextField();
-        inputSearchCity.setSize((int) (frameWidth * 0.7), 40);
-        inputSearchCity.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.05));
-        this.add(inputSearchCity);
+        inputSearchByCity = new JTextField();
+        inputSearchByCity.setSize((int) (frameWidth * 0.7), 40);
+        inputSearchByCity.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.05));
+        this.add(inputSearchByCity);
 
-        searchCityButton = new JButton("Szukaj");
-        searchCityButton.setSize((int) (frameHeight * 0.25), 40);
-        searchCityButton.setLocation((int) (frameWidth * 0.8), (int) (frameHeight * 0.05));
-        this.add(searchCityButton);
+        searchByCityButton = new JButton("Szukaj");
+        searchByCityButton.setSize((int) (frameHeight * 0.25), 40);
+        searchByCityButton.setLocation((int) (frameWidth * 0.8), (int) (frameHeight * 0.05));
+        this.add(searchByCityButton);
 
         MultiagenciesPanel multiagenciesPanel = new MultiagenciesPanel();
         if(isVisisbleMultiagenciesPanel){
@@ -48,7 +52,7 @@ public class SearchMultiagencyFrame extends view.Frame {
         this.add(multiagenciesPanel);
     }
 
-    public void setSearchCityButton(ActionListener actionListener){
+    public void setSearchByCityButton(ActionListener actionListener){
 
         searchButton = new JButton("Szukaj");
         searchButton.setSize((int) (frameHeight*0.25), 40);
