@@ -90,7 +90,7 @@ public class LoginController {
         ResultSet resultSet = null;
 
 
-        String sql="select * from login where username=? and password=?";
+        String sql="select * from user where login=? and password=?";
         try{
             con =  new Connectivity();
             setModelNick(getViewNick());
