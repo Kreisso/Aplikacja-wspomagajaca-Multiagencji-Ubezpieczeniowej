@@ -130,8 +130,7 @@ public class RegisterController {
     {
         view.setButtonSignUp(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("click login button");
-                //login();
+                System.out.println("click register button");
                 register();
             }
         });
@@ -181,6 +180,14 @@ public class RegisterController {
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        setErrorMessage(null);
+        String err = "";
+        String pass = String.valueOf(view.getInputPassword());
+        String repass = String.valueOf(view.getInputRepeatPassword());
+        if(!pass.equals(repass))
+        {
+            err += "Hasło jest niepoprawne \n";
+        }
 
 /**
  *  1 Login
@@ -195,44 +202,61 @@ public class RegisterController {
  *
  *
  */
+
         String sql="{call addClient(?,?,?,?,?,?,?,?,?)}";
         try{
             con =  new Connectivity();
 
-            setLogin(view.getInputLogin());
-            setPassword(String.valueOf(view.getInputPassword()));
-            setPesel(view.getInputPesel());
-            setName(view.getInputName());
-            setSurname(view.getInputSurname());
-            setCity(view.getInputCity());
-            setStreetAndNumber(view.getInputStreetAndNo());
-            setPostCode(view.getInputPostCode());
-            setPhoneNumber(view.getInputPhoneNo());
-
-            preparedStatement = con.getConn().prepareStatement(sql);
-
-            preparedStatement.setString(1, getLogin());
-            preparedStatement.setString(2, getPassword());
-            preparedStatement.setString(3, getPesel());
-            preparedStatement.setString(4, getName());
-            preparedStatement.setString(5, getSurname());
-            preparedStatement.setString(6, getCity());
-            preparedStatement.setString(7, getStreatAndNumber());
-            preparedStatement.setString(8, getPostCode());
-            preparedStatement.setString(9, getPhoneNumber());
-
-            resultSet = preparedStatement.executeQuery();
-
-            if(isAdded(getLogin(), con))
+            if(isAdded(view.getInputLogin(), con))
             {
-                view.setVisible(false);
-                previouesView.setVisible(true);
+                err +="Podany login już istnieje \n";
+
+
+
+                //todo
+
+            }else if(err.length() < 1){
+                setLogin(view.getInputLogin());
+                setPassword(String.valueOf(view.getInputPassword()));
+                setPesel(view.getInputPesel());
+                setName(view.getInputName());
+                setSurname(view.getInputSurname());
+                setCity(view.getInputCity());
+                setStreetAndNumber(view.getInputStreetAndNo());
+                setPostCode(view.getInputPostCode());
+                setPhoneNumber(view.getInputPhoneNo());
+
+                preparedStatement = con.getConn().prepareStatement(sql);
+
+                preparedStatement.setString(1, getLogin());
+                preparedStatement.setString(2, getPassword());
+                preparedStatement.setString(3, getPesel());
+                preparedStatement.setString(4, getName());
+                preparedStatement.setString(5, getSurname());
+                preparedStatement.setString(6, getCity());
+                preparedStatement.setString(7, getStreatAndNumber());
+                preparedStatement.setString(8, getPostCode());
+                preparedStatement.setString(9, getPhoneNumber());
+
+                resultSet = preparedStatement.executeQuery();
+                if (isAdded(getLogin(), con)) {
+                    view.setVisible(false);
+                    previouesView.setVisible(true);
+
+                } else {
+
+                   //TODO  view.setErrorMessageLabel(err);
+                }
+            }
+
+            if(err.length() > 1)
+            {
+                setErrorMessage(err);
+                System.out.println(getErrorMessage());
+
 
             }
-            else
-            {
-                //TODO
-            }
+
 
 
         }
