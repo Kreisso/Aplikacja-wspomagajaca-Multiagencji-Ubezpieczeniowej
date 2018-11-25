@@ -4,11 +4,15 @@ import model.Offer;
 import model.Policy;
 import model.Server.ClientMain;
 import model.Server.Connectivity;
+import model.Server.SearchMultiagency;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
 import view.mainviews.ClientMainFrame;
+import view.multiagency.SearchMultiagencyFrame;
 
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,6 +34,7 @@ public class MainClientController {
         this.previousView = previousView;
         this.ukk = ukk;
         getPolices();
+        setSearchMultiagencyMenuListener();
     }
 
     public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
@@ -38,6 +43,7 @@ public class MainClientController {
         this.previousView = previousView;
         this.ukk = ukk;
         getPolices();
+        setSearchMultiagencyMenuListener();
     }
 
     private void setMessageSender(String messageSender) {
@@ -158,5 +164,27 @@ public class MainClientController {
             Policy policy = (Policy) it.next();
             view.addColumnToPolicyTable(policy.infoForTable(i));
         }
+    }
+
+    private void setSearchMultiagencyMenuListener()
+    {
+        view.setSearchMultiagencyMenuListener(new MenuListener() {
+            public void menuSelected(MenuEvent e) {
+                System.out.println("1");
+                new SearchMultiagencyController(new SearchMultiagency(),
+                        new SearchMultiagencyFrame("Wyszukaj multiagencje"), con);
+                view.setVisible(false);
+            }
+
+            public void menuDeselected(MenuEvent e) {
+                System.out.println("2");
+
+            }
+
+            public void menuCanceled(MenuEvent e) {
+                System.out.println("3");
+
+            }
+        });
     }
 }

@@ -19,12 +19,14 @@ public class SearchMultiagencyFrame extends view.Frame {
 
     private JButton searchButton;
 
-    public SearchMultiagencyFrame(String name, Boolean isVisisbleMultiagenciesPanel) throws HeadlessException {
+    public SearchMultiagencyFrame(String name) throws HeadlessException {
         super(name);
 
         this.setLocation(0, 0);
         this.setSize(frameWidth, frameHeight);
         this.setLayout(null);
+        
+        this.createClientMenu();
 
         searchByCityLabel = new JLabel("Wpisz swoje miasto");
         searchByCityLabel.setSize(searchByCityLabel.getPreferredSize());
@@ -42,9 +44,9 @@ public class SearchMultiagencyFrame extends view.Frame {
         this.add(searchByCityButton);
 
         MultiagenciesPanel multiagenciesPanel = new MultiagenciesPanel();
-        if(isVisisbleMultiagenciesPanel){
+
             multiagenciesPanel.setVisible(true);
-        }
+
         this.add(multiagenciesPanel);
     }
 
