@@ -11,6 +11,7 @@ public class SearchMultiagency {
     private List multiagencies;
 
     public SearchMultiagency(){
+        multiagencies = new LinkedList<Multiagency>();
     }
 
     public SearchMultiagency(String city) {

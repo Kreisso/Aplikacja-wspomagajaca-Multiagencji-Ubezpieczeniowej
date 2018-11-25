@@ -126,7 +126,6 @@ public class MainClientController {
 
         String sql="select * from offer where id=?";
         try{
-            //con =  new Connectivity();
             preparedStatement = con.getConn().prepareStatement(sql);
             preparedStatement.setString(1,String.valueOf(id));
             resultSet = preparedStatement.executeQuery();
