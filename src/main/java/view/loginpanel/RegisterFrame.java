@@ -73,6 +73,11 @@ public class RegisterFrame extends view.Frame {
     public RegisterFrame(String name) throws HeadlessException {
         super(name);
 
+        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        int frameWidth = 700;
+        int frameHeight = (int) (0.7*screenHeight);
+
         this.setLocation((screenWidth- frameWidth)/2, (screenHeight- frameHeight)/2);
 
         this.setSize(frameWidth, frameHeight);
@@ -180,12 +185,24 @@ public class RegisterFrame extends view.Frame {
         this.add(inputPhoneNo);
     }
 
+
     public void setButtonSignUp(ActionListener actionListener){
 
         buttonSignUp = new JButton("Zarejestruj");
         buttonSignUp.setSize(200,50);
         buttonSignUp.setLocation(frameWidth - 250,firstFieldHeight+(6*spaceBetween)+100);
         buttonSignUp.addActionListener(actionListener);
+        // TODO change to JButon ( like in loginFrame ) And will prepare to add ActionListener ( like in login Frame )
+        JLabel labelGoToLogin = new JLabel("Logowanie");
+        labelGoToLogin.setSize(labelGoToLogin.getPreferredSize());
+        labelGoToLogin.setLocation(50, 850);
+        labelGoToLogin.setForeground(Color.blue);
+        this.add(labelGoToLogin);
+
+
+        JButton buttonSignUp = new JButton("Zarejestruj");
+        buttonSignUp.setSize(200,50);
+        buttonSignUp.setLocation(frameWidth - 250,830);
         this.getRootPane().setDefaultButton(buttonSignUp);
         this.add(buttonSignUp);
     }
