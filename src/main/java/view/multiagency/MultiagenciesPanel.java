@@ -1,12 +1,14 @@
 package view.multiagency;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by kreisso on 02.11.2018.
  */
-public class MultiagencyFrame extends view.Frame {
+public class MultiagenciesPanel extends JPanel {
 
     private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -17,12 +19,13 @@ public class MultiagencyFrame extends view.Frame {
     private JScrollPane scrollPane;
 
 
-    public MultiagencyFrame(String name) throws HeadlessException {
-        super(name);
+    public MultiagenciesPanel() throws HeadlessException {
+        super();
 
         this.setLocation(0, 0);
         this.setSize(frameWidth, frameHeight);
         this.setLayout(null);
+        this.setVisible(false);
 
         multiagencyTable = new JTable();
         String[] columnNames = {"Lp", "Multiagencja"};
@@ -34,6 +37,5 @@ public class MultiagencyFrame extends view.Frame {
         scrollPane.setSize((int) (frameWidth * 0.7), (int) (frameHeight * 0.7));
         scrollPane.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.15));
         this.add(scrollPane);
-        this.add(new SearchMultiagencyFrame(""));
     }
 }
