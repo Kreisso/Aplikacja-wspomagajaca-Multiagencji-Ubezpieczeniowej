@@ -2,23 +2,20 @@ package model.Server;
 
 import model.Multiagency;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class SearchMultiagency {
     private String city;
-    private List<Multiagency> multiagencies;
+    private String [][] multiagencies2;
+    private List multiagencies;
 
-    public List<Multiagency> getMultiagencies() {
-        return multiagencies;
+    public SearchMultiagency(){
     }
 
-    public void setMultiagencies(List<Multiagency> multiagencies) {
-        this.multiagencies = multiagencies;
-    }
-
-    public SearchMultiagency(String city, List<Multiagency> multiagencies) {
+    public SearchMultiagency(String city) {
         this.city = city;
-        this.multiagencies=multiagencies;
+        multiagencies = new LinkedList<Multiagency>();
     }
 
     public String getCity() {
@@ -27,5 +24,13 @@ public class SearchMultiagency {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List getMultiagencies() {
+        return multiagencies;
+    }
+
+    public void addMultiagencies(Multiagency s) {
+        multiagencies.add(s);
     }
 }
