@@ -1,4 +1,4 @@
-package model;
+package model.Server;
 
 public class Register {
     private String login;
