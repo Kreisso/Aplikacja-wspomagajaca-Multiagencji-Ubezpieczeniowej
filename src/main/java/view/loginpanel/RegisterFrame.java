@@ -179,7 +179,6 @@ public class RegisterFrame extends view.Frame {
         this.add(inputPhoneNo);
     }
 
-
     public void setButtonSignUp(ActionListener actionListener){
 
         buttonSignUp = new JButton("Zarejestruj");
@@ -203,5 +202,13 @@ public class RegisterFrame extends view.Frame {
         buttonGoToLogin.setForeground(Color.blue);
         buttonGoToLogin.addActionListener(actionListener);
         this.add(buttonGoToLogin);
+    }
+
+    public void setErrorLabel(String errorMessage){
+        JLabel errorLabel = new JLabel(errorMessage);
+        errorLabel.setSize(errorLabel.getPreferredSize());
+        errorLabel.setLocation(50, firstLabelHeight+(6*spaceBetween)+70);
+        errorLabel.setForeground(Color.red);
+        this.add(errorLabel);
     }
 }
