@@ -2,6 +2,7 @@ package view.multiagency;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -18,7 +19,7 @@ public class SearchMultiagencyFrame extends view.Frame {
     private JTextField inputSearchCity;
     private JButton searchButton;
 
-    public SearchMultiagencyFrame(String name) throws HeadlessException {
+    public SearchMultiagencyFrame(String name, Boolean isVisisbleMultiagenciesPanel) throws HeadlessException {
         super(name);
 
         this.setLocation(0, 0);
@@ -39,6 +40,12 @@ public class SearchMultiagencyFrame extends view.Frame {
         searchCityButton.setSize((int) (frameHeight * 0.25), 40);
         searchCityButton.setLocation((int) (frameWidth * 0.8), (int) (frameHeight * 0.05));
         this.add(searchCityButton);
+
+        MultiagenciesPanel multiagenciesPanel = new MultiagenciesPanel();
+        if(isVisisbleMultiagenciesPanel){
+            multiagenciesPanel.setVisible(true);
+        }
+        this.add(multiagenciesPanel);
     }
 
     public void setSearchCityButton(ActionListener actionListener){
@@ -50,4 +57,5 @@ public class SearchMultiagencyFrame extends view.Frame {
         this.getRootPane().setDefaultButton(searchButton);
         this.add(searchButton);
     }
+
 }
