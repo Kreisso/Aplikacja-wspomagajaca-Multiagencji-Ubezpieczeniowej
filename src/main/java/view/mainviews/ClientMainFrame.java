@@ -1,6 +1,7 @@
 package view.mainviews;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -12,8 +13,11 @@ public class ClientMainFrame extends view.Frame{
     private JScrollPane scrollPane;
     private JPanel messagePanel;
     private JLabel messageSenderLabel;
+    private JTextPane messageTextPane;
     private JButton clearButton;
     private JCheckBox biggerTextCheckBox;
+
+    private DefaultTableModel model;
 
     public ClientMainFrame(String name) throws HeadlessException {
         super(name);
@@ -29,15 +33,21 @@ public class ClientMainFrame extends view.Frame{
         this.createClientMenu();
 
         policyTable = new JTable();
-        String[] columnNames = {"Lp", "Numer polisy", "Rodzaj polisy", "Status"};
-        Object[][] data = {};
-        policyTable = new JTable(data, columnNames);
+        //String[] columnNames = {"Lp", "Numer polisy", "Rodzaj polisy", "Status"};
+        //Object[][] data = {};
+        model = new DefaultTableModel();
+        model.addColumn("LP");
+        model.addColumn("Numer polisy");
+        model.addColumn("Rodzaj polisy");
+        model.addColumn("Status");
+        policyTable = new JTable(model);
         scrollPane = new JScrollPane(policyTable);
         scrollPane.setLocation(10, 10);
         scrollPane.setSize(frameWidth*70/100, frameHeight-100);
         this.add(scrollPane);
 
         messagePanel = new JPanel(null);
+        messagePanel.setBackground(Color.white);
         messagePanel.setLocation(scrollPane.getWidth()+20, 10);
         messagePanel.setSize(frameWidth-(scrollPane.getWidth()+30),frameHeight-100);
         messagePanel.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -45,6 +55,12 @@ public class ClientMainFrame extends view.Frame{
         messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
         messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
         messagePanel.add(messageSenderLabel);
+        messageTextPane = new JTextPane();
+        messageTextPane.setSize(messagePanel.getWidth()-20, 430);
+        messageTextPane.setLocation(10,30);
+        messageTextPane.setEditable(false);
+        messageTextPane.setBackground(Color.white);
+        messagePanel.add(messageTextPane);
         clearButton = new JButton("Usuń wiadomość");
         clearButton.setSize(clearButton.getPreferredSize());
         clearButton.setLocation((messagePanel.getWidth()/2)-(clearButton.getWidth()/2), messagePanel.getHeight()-clearButton.getHeight());
@@ -67,5 +83,19 @@ public class ClientMainFrame extends view.Frame{
 
     public boolean getBiggerTextCheckBoxStatus(){
         return biggerTextCheckBox.isSelected();
+    }
+
+    public void addColumnToPolicyTable(Object[] columnData) {
+        model.addRow(columnData);
+    }
+
+    public void setMessageSenderLabel(String sender){
+        messageSenderLabel.setText(sender);
+        messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
+        messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
+    }
+
+    public void setMessageTextPane(String message){
+        messageTextPane.setText(message);
     }
 }

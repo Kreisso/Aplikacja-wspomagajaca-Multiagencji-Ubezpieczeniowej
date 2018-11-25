@@ -19,6 +19,7 @@ public class LoginFrame extends view.Frame{
     private JButton buttonLogIn;
     private JTextField inputLogin;
     private JPasswordField inputPassword;
+    private JLabel errorMessageLabel;
 
     public LoginFrame(String name) throws HeadlessException {
         super(name);
@@ -75,45 +76,44 @@ public class LoginFrame extends view.Frame{
         inputPassword.setLocation(50, 310);
         this.add(inputPassword);
 
-
-
-
-    }
-
-    public void setButtonLogIn(ActionListener actionListener){
-
         buttonLogIn = new JButton("Zaloguj");
         buttonLogIn.setSize(100,50);
         buttonLogIn.setLocation(450-100,380);
-        buttonLogIn.addActionListener(actionListener);
         this.getRootPane().setDefaultButton(buttonLogIn);
         this.add(buttonLogIn);
 
-    }
-
-    public void setButtonGoToSignUp(ActionListener actionListener){
-
         buttonGoToSignUp = new JButton("Rejestracja");
-        buttonGoToSignUp.setFocusPainted(false);
-        buttonGoToSignUp.setContentAreaFilled(false);
-        buttonGoToSignUp.setMargin(new Insets(0, 0, 0, 0));
-        buttonGoToSignUp.setBorderPainted(false);
-        buttonGoToSignUp.setOpaque(false);
+        buttonGoToSignUp.setBorder(null);
         buttonGoToSignUp.setSize(buttonGoToSignUp.getPreferredSize());
         buttonGoToSignUp.setLocation(50, 400);
         buttonGoToSignUp.setForeground(Color.blue);
-        buttonGoToSignUp.addActionListener(actionListener);
         this.add(buttonGoToSignUp);
 
+        errorMessageLabel = new JLabel("");
+        errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
+        errorMessageLabel.setLocation(50, 360);
+        errorMessageLabel.setForeground(Color.red);
+        this.add(errorMessageLabel);
     }
 
-    public char[] getPassword()
-    {
+    public void setButtonLogIn(ActionListener actionListener){
+        buttonLogIn.addActionListener(actionListener);
+    }
+
+    public void setButtonGoToSignUp(ActionListener actionListener){
+        buttonGoToSignUp.addActionListener(actionListener);
+    }
+
+    public char[] getPassword() {
         return inputPassword.getPassword();
     }
 
-    public String getLogin()
-    {
+    public String getLogin() {
         return inputLogin.getText();
+    }
+
+    public void setErrorMessageLabel(String message){
+        errorMessageLabel.setText(message);
+        errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
     }
 }
