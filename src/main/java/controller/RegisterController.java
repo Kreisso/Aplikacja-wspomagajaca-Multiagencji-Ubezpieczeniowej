@@ -1,7 +1,7 @@
 package controller;
 
-import model.Connectivity;
-import model.Register;
+import model.Server.Connectivity;
+import model.Server.Register;
 import view.Frame;
 import view.loginpanel.RegisterFrame;
 

@@ -1,12 +1,11 @@
 package controller;
 
-import model.Connectivity;
-import model.Login;
-import model.Register;
+import model.Server.Connectivity;
+import model.Server.Login;
+import model.Server.Register;
 import view.loginpanel.LoginFrame;
 import view.loginpanel.RegisterFrame;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
