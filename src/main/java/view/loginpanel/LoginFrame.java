@@ -52,7 +52,7 @@ public class LoginFrame extends view.Frame{
                 g2d.drawImage(logoImage, 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
-        logoPanel.setSize(200, 100);
+        logoPanel.setSize(177, 106);
         logoPanel.setLocation((frameWidth/2)-(logoPanel.getWidth()/2), 50);
         this.add(logoPanel);
 
