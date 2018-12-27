@@ -14,6 +14,8 @@ public abstract class Frame extends JFrame{
     private JMenu myPoliciesMenu;
     private JMenu searchOfferMenu;
     private JMenu searchMultiagencyMenu;
+    private JMenu searchClientMenu;
+    private JMenu searchPoliceMenu;
     private JMenu myAccountMenu;
     private JMenuItem editPersonalDataMyAccountMenuItem;
     private JMenuItem changePasswordMyAccountMenuItem;
@@ -58,6 +60,43 @@ public abstract class Frame extends JFrame{
         menuBar.add(Box.createHorizontalGlue());
         menuBar.add(myAccountMenu);
     }
+    public void createAgentMenu(){
+        menuBar = new JMenuBar();
+        this.setJMenuBar(menuBar);
+
+        myPoliciesMenu = new JMenu("Polisy klientów");
+        myPoliciesMenu.setMnemonic(KeyEvent.VK_N);
+        myPoliciesMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku polis");
+        menuBar.add(myPoliciesMenu);
+
+        searchOfferMenu = new JMenu("Wyszukaj ofertę");
+        searchOfferMenu.setMnemonic(KeyEvent.VK_N);
+        searchOfferMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania ofert");
+        menuBar.add(searchOfferMenu);
+
+        searchClientMenu = new JMenu("Wyszukaj klienta");
+        searchClientMenu.setMnemonic(KeyEvent.VK_N);
+        searchClientMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania klienta");
+        menuBar.add(searchClientMenu);
+
+        searchPoliceMenu = new JMenu("Wyszukaj Polise");
+        searchPoliceMenu.setMnemonic(KeyEvent.VK_N);
+        searchPoliceMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania polis");
+        menuBar.add(searchPoliceMenu);
+
+        myAccountMenu = new JMenu("Moje konto");
+        editPersonalDataMyAccountMenuItem = new JMenuItem("Edytuj dane", KeyEvent.VK_T);
+        editPersonalDataMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku edycji danych");
+        myAccountMenu.add(editPersonalDataMyAccountMenuItem);
+        changePasswordMyAccountMenuItem = new JMenuItem("Zmień hasło", KeyEvent.VK_T);
+        changePasswordMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku zmiany hasłą");
+        myAccountMenu.add(changePasswordMyAccountMenuItem);
+        logutMyAccountMenuItem = new JMenuItem("Wyloguj", KeyEvent.VK_T);
+        logutMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Wyloguj się ze swojego konta");
+        myAccountMenu.add(logutMyAccountMenuItem);
+        menuBar.add(Box.createHorizontalGlue());
+        menuBar.add(myAccountMenu);
+    }
 
     public void setMyPoliciesMenuListener(MenuListener menuListener){
         myPoliciesMenu.addMenuListener(menuListener);
@@ -69,6 +108,12 @@ public abstract class Frame extends JFrame{
 
     public void setSearchMultiagencyMenuListener(MenuListener menuListener){
         searchMultiagencyMenu.addMenuListener(menuListener);
+    }
+    public void setSearchClientMenuListener(MenuListener menuListener){
+        searchClientMenu.addMenuListener(menuListener);
+    }
+    public void setSearchPoliceMenu(MenuListener menuListener){
+        searchPoliceMenu.addMenuListener(menuListener);
     }
 
     public void setEditPersonalDataMyAccountMenuItemListener(ActionListener actionListener){

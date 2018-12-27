@@ -26,25 +26,23 @@ public class MainAgentController {
     private AgentMain model;
     private Connectivity con;
     private Frame previousView;
-    private int ukk;
+    private int agent_id;
 
     public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int ukk, Connectivity con) {
         this.view = view;
         this.model = model;
         this.con = con;
         this.previousView = previousView;
-        this.ukk = ukk;
+        this.agent_id = ukk;
         getPolices();
-        setSearchMultiagencyMenuListener();
     }
 
     public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int ukk) {
         this.view = view;
         this.model = model;
         this.previousView = previousView;
-        this.ukk = ukk;
+        this.agent_id = ukk;
         getPolices();
-        setSearchMultiagencyMenuListener();
     }
 
     private void setMessageSender(String messageSender) {
@@ -84,11 +82,11 @@ public class MainAgentController {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String sql="select * from policy where ukk=?";
+        String sql="select * from policy where agent_id=? order by ending";
         try{
             con =  new Connectivity();
             preparedStatement = con.getConn().prepareStatement(sql);
-            preparedStatement.setString(1,String.valueOf(ukk));
+            preparedStatement.setString(1,String.valueOf(agent_id));
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next())
@@ -133,9 +131,6 @@ public class MainAgentController {
 
             while (resultSet.next())
             {
-                System.out.println("OFFFERRRRR");
-                System.out.println(resultSet.getString("type"));
-                System.out.println(Type.valueOf(resultSet.getString("type")));
                 offer.setType(Type.valueOf(resultSet.getString("type")));
                 offer.setDescription(resultSet.getString("description"));
                 offer.setName(resultSet.getString("name"));
@@ -162,29 +157,12 @@ public class MainAgentController {
         while(it.hasNext()){
             i++;
             Policy policy = (Policy) it.next();
-            view.addColumnToPolicyTable(policy.infoForTable(i));
+            view.addColumnToPolicyTable(policy.infoForTableAgent(i));
         }
     }
 
-    private void setSearchMultiagencyMenuListener()
+    private void setSearchClientMenuListener()
     {
-        view.setSearchMultiagencyMenuListener(new MenuListener() {
-            public void menuSelected(MenuEvent e) {
-                System.out.println("1");
-                new SearchMultiagencyController(new SearchMultiagency(),
-                        new SearchMultiagencyFrame("Wyszukaj multiagencje"),view, con);
-                view.setVisible(false);
-            }
 
-            public void menuDeselected(MenuEvent e) {
-                System.out.println("2");
-
-            }
-
-            public void menuCanceled(MenuEvent e) {
-                System.out.println("3");
-
-            }
-        });
     }
 }
