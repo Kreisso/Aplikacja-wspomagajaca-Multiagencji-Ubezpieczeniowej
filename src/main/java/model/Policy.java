@@ -75,9 +75,20 @@ public class Policy {
     public String[] infoForTable(int i){
         String[] policyInfo = new String[4];
         policyInfo[0] = String.valueOf(i);
-        policyInfo[1] = String.valueOf(this.id);
-        policyInfo[2] = String.valueOf(this.offer.getType());
-        policyInfo[3] = String.valueOf(this.status);
+        policyInfo[1] = String.valueOf(getId());
+        policyInfo[2] = String.valueOf(getOffer().getType());
+        policyInfo[3] = String.valueOf(getStatus());
+        return policyInfo;
+    }
+    public String[] infoForTableAgent(int i){
+        String[] policyInfo = new String[7];
+        policyInfo[0] = String.valueOf(i);
+        policyInfo[1] = String.valueOf(getId());
+        policyInfo[2] = String.valueOf(getUkk());
+        policyInfo[3] = String.valueOf(getOffer().getType());
+        policyInfo[4] = String.valueOf(getBeginning());
+        policyInfo[5] = String.valueOf(getEnding());
+        policyInfo[6] = String.valueOf(getStatus());
         return policyInfo;
     }
 }

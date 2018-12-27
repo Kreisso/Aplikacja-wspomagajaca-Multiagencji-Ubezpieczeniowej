@@ -16,7 +16,6 @@ public class AgentMainFrame extends view.Frame {
 
     private JTable policyTable;
     private JScrollPane scrollPane;
-//    private JPanel messagePanel;
     private JLabel messageSenderLabel;
     private JTextPane messageTextPane;
     private JButton clearButton;
@@ -36,15 +35,17 @@ public class AgentMainFrame extends view.Frame {
 
         this.setLayout(null);
 
-        this.createClientMenu();
+        this.createAgentMenu();
 
         policyTable = new JTable();
-        //String[] columnNames = {"Lp", "Numer polisy", "Rodzaj polisy", "Status"};
-        //Object[][] data = {};
+
         model = new DefaultTableModel();
         model.addColumn("LP");
         model.addColumn("Numer polisy");
+        model.addColumn("UKK");
         model.addColumn("Rodzaj polisy");
+        model.addColumn("Data rozpoczęcia");
+        model.addColumn("Data zakończenia");
         model.addColumn("Status");
         policyTable = new JTable(model);
         scrollPane = new JScrollPane(policyTable);
@@ -52,26 +53,6 @@ public class AgentMainFrame extends view.Frame {
         scrollPane.setSize(frameWidth-20, frameHeight-100);
         this.add(scrollPane);
 
-//        messagePanel = new JPanel(null);
-//        messagePanel.setBackground(Color.white);
-//        messagePanel.setLocation(scrollPane.getWidth()+20, 10);
-//        messagePanel.setSize(frameWidth-(scrollPane.getWidth()+30),frameHeight-100);
-//        messagePanel.setBorder(BorderFactory.createLineBorder(Color.black));
-//        messageSenderLabel = new JLabel("Brak wiadomości");
-//        messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
-//        messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
-//        messagePanel.add(messageSenderLabel);
-//        messageTextPane = new JTextPane();
-//        messageTextPane.setSize(messagePanel.getWidth()-20, 430);
-//        messageTextPane.setLocation(10,30);
-//        messageTextPane.setEditable(false);
-//        messageTextPane.setBackground(Color.white);
-//        messagePanel.add(messageTextPane);
-//        clearButton = new JButton("Usuń wiadomość");
-//        clearButton.setSize(clearButton.getPreferredSize());
-//        clearButton.setLocation((messagePanel.getWidth()/2)-(clearButton.getWidth()/2), messagePanel.getHeight()-clearButton.getHeight());
-//        messagePanel.add(clearButton);
-//        this.add(messagePanel);
 
         biggerTextCheckBox = new JCheckBox("Powiększony tekst");
         biggerTextCheckBox.setSize(biggerTextCheckBox.getPreferredSize());
@@ -97,11 +78,7 @@ public class AgentMainFrame extends view.Frame {
         model.addRow(policyInfo);
     }
 
-    public void setMessageSenderLabel(String sender){
-//        messageSenderLabel.setText(sender);
-//        messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
-//        messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
-    }
+
 
     public void setMessageTextPane(String message){
         messageTextPane.setText(message);

@@ -16,7 +16,7 @@ public class LoginController {
     private Login model;
     private LoginFrame view;
     private Connectivity con;
-    private int ukk;
+    private int ukk, id;
 
     public LoginController(Login model, LoginFrame view) {
         this.model = model;
@@ -85,6 +85,11 @@ public class LoginController {
         });
     }
 
+    private void getIdOrUkk()
+    {
+
+    }
+
     private void login()
     {
         PreparedStatement preparedStatement = null;
@@ -105,7 +110,6 @@ public class LoginController {
             if(resultSet.next())
             {
                 setModelStatus(true);
-                System.out.println("ukk = "+ ukk);
 
             }
             else
@@ -127,44 +131,24 @@ public class LoginController {
                  preparedStatement = null;
                  resultSet = null;
 
-                 ukk = -1;
+
                  sql="select ukk from client where login=? ";
-                try{
-                    //con =  new Connectivity();
-
-
-                    preparedStatement = con.getConn().prepareStatement(sql);
-                    preparedStatement.setString(1, getModelNick());
-                    resultSet = preparedStatement.executeQuery();
-
-                    if(resultSet.next())
-                    {
-                        ukk = resultSet.getInt("ukk");
-
-
-                    }
-                    else
-                    {
-
-                    }
-                }
-                catch(SQLException ex)
-                {
-                    System.out.println(ex);
-                }
-                catch (Exception e){
-                    System.out.println(e);
-                }
-
+                  ukk = getIdFromDatabase(sql, "ukk");
+                  System.out.println("Klient zalogowany o UKK: "+ukk);
                 if(ukk > 0) {
+
                     new MainClientController(new ClientMain(), new ClientMainFrame("Panel klienta"),
                             view, ukk, con);
                 }
                 else {
-                    //TODO add MainAgentController
-                    System.out.println("Agent zalogowany ");
+
+                    sql="select id from agent where login=? ";
+                    id =  getIdFromDatabase(sql, "id");
+
+
+                    System.out.println("Agent zalogowany o id: "+ id);
                     new MainAgentController(new AgentMain(), new AgentMainFrame("Panel Agenta"),
-                            view, ukk, con);
+                            view, id, con);
                 }
                 view.setVisible(false);
 
@@ -175,6 +159,33 @@ public class LoginController {
                 con.close();
 
             }
+        }
+    }
+
+    private int getIdFromDatabase(String sql, String type) {
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        int result = -1;
+        try {
+
+            preparedStatement = con.getConn().prepareStatement(sql);
+            preparedStatement.setString(1, getModelNick());
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                result = resultSet.getInt(type);
+
+
+            } else {
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        finally {
+            return result;
         }
     }
 
