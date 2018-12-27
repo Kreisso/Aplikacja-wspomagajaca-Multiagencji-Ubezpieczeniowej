@@ -1,11 +1,9 @@
 package controller;
 
-import model.Server.ClientMain;
-import model.Server.Connectivity;
-import model.Server.Login;
-import model.Server.Register;
+import model.Server.*;
 import view.loginpanel.LoginFrame;
 import view.loginpanel.RegisterFrame;
+import view.mainviews.AgentMainFrame;
 import view.mainviews.ClientMainFrame;
 
 import java.awt.event.ActionEvent;
@@ -165,8 +163,11 @@ public class LoginController {
                 else {
                     //TODO add MainAgentController
                     System.out.println("Agent zalogowany ");
+                    new MainAgentController(new AgentMain(), new AgentMainFrame("Panel Agenta"),
+                            view, ukk, con);
                 }
                 view.setVisible(false);
+
             }
             else {
                 //TODO add label with error

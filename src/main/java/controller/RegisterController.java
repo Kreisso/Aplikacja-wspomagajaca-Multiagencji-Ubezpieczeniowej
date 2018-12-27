@@ -262,7 +262,7 @@ public class RegisterController {
  *  4 Name
  *  5 Surname
  *  6 City
- *  7 Streat and number
+ *  7 Street and number
  *  8 PostCode
  *  9 phoneNumber
  *
