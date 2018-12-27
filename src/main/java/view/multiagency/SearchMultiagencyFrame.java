@@ -46,11 +46,8 @@ public class SearchMultiagencyFrame extends view.Frame {
         this.add(inputSearchByCity);
 
         searchButton = new JButton("Szukaj");
-<<<<<<< HEAD
-        searchButton.setSize((int) (frameHeight*0.25), 40);
-=======
+
         searchButton.setSize((int) (frameWidth*0.15), 40);
->>>>>>> origin/Barbara
         searchButton.setLocation((int) (frameWidth*0.8),  (int) (frameHeight*0.05));
         this.getRootPane().setDefaultButton(searchButton);
         this.add(searchButton);
