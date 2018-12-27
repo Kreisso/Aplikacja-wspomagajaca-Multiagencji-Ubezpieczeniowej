@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e0f8ea0b-0965-464a-ade3-7c20a41ffcd4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/user/ChangePasswordFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/user/ChangePasswordFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored mask="workspace.xml" />
@@ -24,26 +26,26 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
-          <entry key="java" value="14" />
+          <entry key="java" value="16" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="14" />
+          <entry key="JAVA" value="16" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="461" />
+          <entry key="java" value="465" />
           <entry key="txt" value="96" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="461" />
+          <entry key="JAVA" value="465" />
           <entry key="PLAIN_TEXT" value="96" />
         </counts>
       </usages-collector>
@@ -56,65 +58,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="20">
               <caret line="145" column="24" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2389">
-              <caret line="264" column="11" selection-start-line="264" selection-start-column="11" selection-end-line="264" selection-end-column="11" />
-              <folding>
-                <element signature="e#1208#1209#0" expanded="true" />
-                <element signature="e#1247#1248#0" expanded="true" />
-                <element signature="e#1286#1287#0" expanded="true" />
-                <element signature="e#1328#1329#0" expanded="true" />
-                <element signature="e#1373#1374#0" expanded="true" />
-                <element signature="e#1421#1422#0" expanded="true" />
-                <element signature="e#1457#1458#0" expanded="true" />
-                <element signature="e#1496#1497#0" expanded="true" />
-                <element signature="e#1531#1532#0" expanded="true" />
-                <element signature="e#1569#1570#0" expanded="true" />
-                <element signature="e#1607#1608#0" expanded="true" />
-                <element signature="e#1648#1649#0" expanded="true" />
-                <element signature="e#1683#1684#0" expanded="true" />
-                <element signature="e#1721#1722#0" expanded="true" />
-                <element signature="e#1767#1768#0" expanded="true" />
-                <element signature="e#1816#1817#0" expanded="true" />
-                <element signature="e#1855#1856#0" expanded="true" />
-                <element signature="e#1897#1898#0" expanded="true" />
-                <element signature="e#1940#1941#0" expanded="true" />
-                <element signature="e#1979#1980#0" expanded="true" />
-                <element signature="e#2022#2023#0" expanded="true" />
-                <element signature="e#2068#2069#0" expanded="true" />
-                <element signature="e#2130#2131#0" expanded="true" />
-                <element signature="e#2181#2182#0" expanded="true" />
-                <element signature="e#2227#2228#0" expanded="true" />
-                <element signature="e#2264#2265#0" expanded="true" />
-                <element signature="e#2316#2317#0" expanded="true" />
-                <element signature="e#2359#2360#0" expanded="true" />
-                <element signature="e#2423#2424#0" expanded="true" />
-                <element signature="e#2478#2479#0" expanded="true" />
-                <element signature="e#2524#2525#0" expanded="true" />
-                <element signature="e#2561#2562#0" expanded="true" />
-                <element signature="e#2605#2606#0" expanded="true" />
-                <element signature="e#2640#2641#0" expanded="true" />
-                <element signature="e#2690#2691#0" expanded="true" />
-                <element signature="e#2731#2732#0" expanded="true" />
-                <element signature="e#2775#2776#0" expanded="true" />
-                <element signature="e#2810#2811#0" expanded="true" />
-                <element signature="e#2876#2877#0" expanded="true" />
-                <element signature="e#2933#2934#0" expanded="true" />
-                <element signature="e#2985#2986#0" expanded="true" />
-                <element signature="e#3028#3029#0" expanded="true" />
-                <element signature="e#3086#3087#0" expanded="true" />
-                <element signature="e#3129#3130#0" expanded="true" />
-                <element signature="e#3206#3398#0" expanded="true" />
-                <element signature="e#3397#3398#0" expanded="true" />
-                <element signature="e#3488#3716#0" expanded="true" />
-                <element signature="e#3715#3716#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -134,15 +77,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/Agent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/ClientMainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="326">
@@ -154,28 +88,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" column="50" lean-forward="true" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
+            <state relative-caret-position="-4">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/target/classes/controller/MainClientController.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/SearchMultiagencyController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#5781#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1965">
+              <caret line="158" selection-start-line="158" selection-end-line="158" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -206,15 +138,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/SearchMultiagencyController.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/loginpanel/RegisterFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Server/AgentMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/MainAgentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java" />
       </list>
     </option>
   </component>
@@ -305,6 +237,15 @@
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="mainviews" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="multiagency" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -316,7 +257,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545927857802" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545928237632" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
@@ -544,13 +485,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12650000" />
+    <option name="totallyTimeSpent" value="13109000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="804" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -565,7 +506,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3286517" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3286517" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3286517" />
@@ -592,7 +533,8 @@
     <MESSAGE value="Add Agent main frame" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Git play and FUN" />
-    <option name="LAST_COMMIT_MESSAGE" value="Git play and FUN" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/Barbara'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/view/multiagency/SearchMultiagencyFrame.java&#10;#&#9;target/classes/model/Contact.class&#10;#&#9;target/classes/model/Multiagency.class&#10;#&#9;target/classes/model/Offer.class&#10;#&#9;target/classes/model/Policy.class&#10;#&#9;target/classes/model/enums/Status.class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/Barbara'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/view/multiagency/SearchMultiagencyFrame.java&#10;#&#9;target/classes/model/Contact.class&#10;#&#9;target/classes/model/Multiagency.class&#10;#&#9;target/classes/model/Offer.class&#10;#&#9;target/classes/model/Policy.class&#10;#&#9;target/classes/model/enums/Status.class" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/MojMain.java">
@@ -606,20 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/SearchMultiagencyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="158" selection-start-line="158" selection-end-line="158" />
         </state>
       </provider>
     </entry>
@@ -736,10 +664,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/model/Server/AgentMain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-286">
+          <folding>
+            <element signature="e#0#1314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/SearchMultiagencyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1965">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+        <state relative-caret-position="-4">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>
@@ -752,19 +703,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/model/Server/AgentMain.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <folding>
-            <element signature="e#0#1314#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="50" lean-forward="true" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
+        <state relative-caret-position="220">
+          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
         </state>
       </provider>
     </entry>
