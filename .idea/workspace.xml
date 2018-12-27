@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0f8ea0b-0965-464a-ade3-7c20a41ffcd4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/MainAgentController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/MainAgentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/MainClientController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/MainClientController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/SearchMultiagencyController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/SearchMultiagencyController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/SearchMultiagencyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Contact.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Multiagency.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Offer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Policy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/AgentMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/ClientMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/Connectivity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/Register.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/SearchMultiagency.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Type.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/loginpanel/LoginFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/loginpanel/LoginFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/loginpanel/RegisterFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/mainviews/AgentMainFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/mainviews/ClientMainFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/multiagency/MultiagenciesPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/multiagency/SearchMultiagencyFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/user/ChangePasswordFrame.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored mask="workspace.xml" />
@@ -23,16 +58,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="2" />
-          <entry key="java" value="16" />
-          <entry key="xml" value="4" />
+          <entry key="class" value="3" />
+          <entry key="java" value="23" />
+          <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="16" />
-          <entry key="XML" value="4" />
+          <entry key="CLASS" value="3" />
+          <entry key="JAVA" value="23" />
+          <entry key="XML" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -54,7 +89,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
+            <state relative-caret-position="1650">
               <caret line="145" column="24" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
             </state>
           </provider>
@@ -77,7 +112,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/ClientMainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
+            <state relative-caret-position="1365">
               <caret line="100" column="5" selection-start-line="75" selection-start-column="4" selection-end-line="100" selection-end-column="5" />
             </state>
           </provider>
@@ -86,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="1140">
+              <caret line="81" selection-start-line="81" selection-end-line="81" />
             </state>
           </provider>
         </entry>
@@ -104,8 +139,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="705">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -113,19 +148,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9214">
-              <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/target/classes/model/Server/AgentMain.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-286">
-              <folding>
-                <element signature="e#0#1314#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="546" column="14" selection-start-line="546" selection-start-column="14" selection-end-line="546" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -140,6 +164,11 @@
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="robert" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -264,7 +293,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545929259078" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545931150816" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
@@ -506,13 +535,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13373000" />
+    <option name="totallyTimeSpent" value="13587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="804" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -521,16 +549,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286517" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.3286517" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3286517" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49928468" visible="true" weight="0.3286517" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" weight="0.3286517" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3286517" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49928468" weight="0.3286517" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -559,13 +587,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/MojMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MojMain.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -662,6 +684,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/controller/MainClientController.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="145" column="24" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/MainAgentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -672,26 +704,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Server/AgentMain.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="145" column="24" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/ClientMainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
+        <state relative-caret-position="1365">
           <caret line="100" column="5" selection-start-line="75" selection-start-column="4" selection-end-line="100" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/model/Server/AgentMain.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <folding>
-            <element signature="e#0#1314#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1140">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>
@@ -702,33 +725,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/controller/MainClientController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#5781#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/multiagency/SearchMultiagencyFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="705">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/model/Server/AgentMain.class">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9214">
-          <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
+        <state relative-caret-position="15">
+          <caret line="546" column="14" selection-start-line="546" selection-start-column="14" selection-end-line="546" selection-end-column="14" />
         </state>
       </provider>
     </entry>
