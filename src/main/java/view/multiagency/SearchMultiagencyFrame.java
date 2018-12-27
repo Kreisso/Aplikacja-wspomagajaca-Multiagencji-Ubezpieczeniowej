@@ -1,17 +1,28 @@
 package view.multiagency;
 
-import view.*;
-
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Created by kreisso on 02.11.2018.
  */
 public class SearchMultiagencyFrame extends view.Frame {
+    private int frameWidth = 1000;
+    private int frameHeight = 600;
+
+    private JScrollPane scrollPane;
+    private JTable multiagencyTable;
+    private JLabel searchByCityLabel;
+    private JTextField inputSearchByCity;
+
+    private JButton searchButton;
+
+    private DefaultTableModel model;
+
     public SearchMultiagencyFrame(String name) throws HeadlessException {
         super(name);
-<<<<<<< Updated upstream
-=======
 
         int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -19,7 +30,7 @@ public class SearchMultiagencyFrame extends view.Frame {
 
         this.setSize(frameWidth, frameHeight);
         this.setLayout(null);
-        
+
         this.createClientMenu();
 
         searchByCityLabel = new JLabel("Wpisz swoje miasto");
@@ -56,6 +67,26 @@ public class SearchMultiagencyFrame extends view.Frame {
 //            multiagenciesPanel.setVisible(true);
 //
 //        this.add(multiagenciesPanel);
->>>>>>> Stashed changes
     }
+
+    public String getInputSearchByCity() {
+        return inputSearchByCity.getText();
+    }
+
+    public void setSearchByCityButton(ActionListener actionListener){
+
+        searchButton.addActionListener(actionListener);
+
+    }
+
+    public void addColumnToMultiagencyTable(Object[] multiagencies) {
+
+        model.addRow(multiagencies);
+    }
+
+    public void restartRowCount()
+    {
+        model.setRowCount(0);
+    }
+
 }
