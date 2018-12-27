@@ -2,7 +2,11 @@ package view.policy;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,11 +24,14 @@ public class SearchPolicyFrame extends view.Frame {
 
     private int currentOffsetTop = 20;
     private int elementHeight = 106;
-    private int offsetTop = 40;
+    private int textHeight = 66;
+    private int offsetTop = 60;
 
     private int howManyCompanyIsAdded = 0;
 
-    private JButton button;
+    private JTextPane newText;
+    private JButton newButton;
+    private JPanel newPanel;
 
     public SearchPolicyFrame(String name) throws HeadlessException {
         super(name);
@@ -40,18 +47,17 @@ public class SearchPolicyFrame extends view.Frame {
         this.createClientMenu();
     }
 
-    public void addCompanyToView(){
-        JPanel newPanel = new JPanel() {
+    public void addCompanyToView(final String companyName, String offerDescription, ActionListener buttonListener){
+        newPanel = new JPanel() {
             private BufferedImage logoImage;
 
             @Override
             public void paintComponent(Graphics g) {
                 //File imageFile = new File("/Users/RobertTrojan/Desktop/model.png");
-                String filename = "assets/img/logo.png";
+                //String filename = "assets/img/logo.png";
                 String workingDirectory = System.getProperty("user.dir");
-
-                File imageFile = new File(workingDirectory, filename);
-                System.out.println("Final filepath : " + imageFile.getAbsolutePath());
+                String path = "assets/img/" + companyName + ".png";
+                File imageFile = new File(workingDirectory, path);
                 try {
                     logoImage = ImageIO.read(imageFile);
                 } catch (IOException e) {
@@ -61,16 +67,36 @@ public class SearchPolicyFrame extends view.Frame {
                 g2d.drawImage(logoImage, 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
+        newPanel.setBackground(Color.white);
         newPanel.setSize(elementWidth, elementHeight);
         newPanel.setLocation(currentOffsetRight, currentOffsetTop);
+        this.add(newPanel);
+
+        newText = new JTextPane();
+        newText.setText(offerDescription);
+        newText.setSize(elementWidth, textHeight);
+        //center text
+        StyledDocument doc = newText.getStyledDocument();
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
+        newText.setLocation(currentOffsetRight,currentOffsetTop+elementHeight+10);
+        newText.setEditable(false);
+        this.add(newText);
+
+        newButton = new JButton("Zobacz");
+        newButton.addActionListener(buttonListener);
+        newButton.setSize(newButton.getPreferredSize());
+        newButton.setLocation(currentOffsetRight+elementWidth/2-(newButton.getWidth()/2), currentOffsetTop+elementHeight+10+textHeight);
+        this.add(newButton);
+
         if(howManyCompanyIsAdded%5 != 4) {
             currentOffsetRight += elementWidth + offsetRight;
         }
         else{
             currentOffsetRight = 20;
-            currentOffsetTop += elementHeight + offsetTop;
+            currentOffsetTop += elementHeight + offsetTop + textHeight;
         }
         howManyCompanyIsAdded++;
-        this.add(newPanel);
     }
 }
