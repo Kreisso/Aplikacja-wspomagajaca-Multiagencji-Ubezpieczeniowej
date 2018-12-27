@@ -1,61 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e0f8ea0b-0965-464a-ade3-7c20a41ffcd4" name="Default Changelist" comment="RegEx improvement">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/MainClientController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/MainClientController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/SearchMultiagencyController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/SearchMultiagencyController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/SearchMultiagencyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Agent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Company.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Contact.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Multiagency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Offer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Policy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/ClientMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/Connectivity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/Register.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Server/SearchMultiagency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/enums/Type.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/Frame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/client/ClientFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/client/SearchClientFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/loginpanel/LoginFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/loginpanel/LoginFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/loginpanel/RegisterFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/mainviews/AgentMainFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/mainviews/ClientMainFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/multiagency/MultiagenciesPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/multiagency/SearchMultiagencyFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/offer/OfferFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/offer/SearchOfferFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/policy/BuyPolicyFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/policy/PolicyFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/policy/SearchPolicyFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/user/AccountFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/user/ChangePasswordFrame.class" beforeDir="false" />
+    <list default="true" id="e0f8ea0b-0965-464a-ade3-7c20a41ffcd4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored mask="workspace.xml" />
@@ -76,41 +23,34 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="class" value="2" />
           <entry key="java" value="14" />
-          <entry key="xml" value="2" />
+          <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="CLASS" value="2" />
           <entry key="JAVA" value="14" />
-          <entry key="XML" value="2" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="461" />
-          <entry key="txt" value="79" />
+          <entry key="txt" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="461" />
-          <entry key="PLAIN_TEXT" value="79" />
+          <entry key="PLAIN_TEXT" value="95" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -211,7 +151,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
@@ -221,13 +161,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/loginpanel/RegisterFrame.java">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="44" column="33" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="33" />
+            <state relative-caret-position="-199">
+              <caret line="190" column="24" lean-forward="true" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/classes/controller/MainClientController.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
               <folding>
-                <element signature="e#1361#1362#0" expanded="true" />
-                <element signature="e#1404#1405#0" expanded="true" />
+                <element signature="e#0#5781#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/target/classes/model/Server/AgentMain.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-286">
+              <folding>
+                <element signature="e#0#1314#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -256,6 +214,7 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/MainAgentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/mainviews/AgentMainFrame.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -289,6 +248,11 @@
             <path>
               <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
               <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
@@ -341,6 +305,39 @@
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="mainviews" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AWMU" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AWMU" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -352,7 +349,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545927355293" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545927647974" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
@@ -562,17 +559,24 @@
       <option name="project" value="LOCAL" />
       <updated>1545927232224</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Git play and FUN">
+      <created>1545927453698</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1545927453698</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12210000" />
+    <option name="totallyTimeSpent" value="12438000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="804" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -587,7 +591,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3286517" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3286517" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3286517" />
@@ -613,7 +617,8 @@
     <MESSAGE value="RegEx improvement" />
     <MESSAGE value="Add Agent main frame" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="Git play and FUN" />
+    <option name="LAST_COMMIT_MESSAGE" value="Git play and FUN" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/MojMain.java">
@@ -652,13 +657,6 @@
             <element signature="e#1361#1362#0" expanded="true" />
             <element signature="e#1404#1405#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="230" column="58" selection-start-line="230" selection-start-column="58" selection-end-line="230" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -768,6 +766,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="190" column="24" lean-forward="true" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/controller/MainClientController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#5781#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/model/Server/AgentMain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-286">
+          <folding>
+            <element signature="e#0#1314#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
