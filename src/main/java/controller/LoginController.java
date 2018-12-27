@@ -82,6 +82,7 @@ public class LoginController {
                 RegisterController registerController = new RegisterController(
                         new Register(), new RegisterFrame("Rejestracja"), view );
                 view.setVisible(false);
+                view.setErrorMessageLabel("");
             }
         });
     }
@@ -106,7 +107,7 @@ public class LoginController {
             if(resultSet.next())
             {
                 setModelStatus(true);
-                System.out.println(ukk);
+                System.out.println("ukk = "+ ukk);
 
             }
             else
@@ -128,7 +129,7 @@ public class LoginController {
                  preparedStatement = null;
                  resultSet = null;
 
-
+                 ukk = -1;
                  sql="select ukk from client where login=? ";
                 try{
                     //con =  new Connectivity();
@@ -157,14 +158,21 @@ public class LoginController {
                     System.out.println(e);
                 }
 
-
-                new MainClientController(new ClientMain(), new ClientMainFrame("Panel klienta"),
-                        view, ukk, con );
+                if(ukk > 0) {
+                    new MainClientController(new ClientMain(), new ClientMainFrame("Panel klienta"),
+                            view, ukk, con);
+                }
+                else {
+                    //TODO add MainAgentController
+                    System.out.println("Agent zalogowany ");
+                }
                 view.setVisible(false);
             }
             else {
                 //TODO add label with error
+                view.setErrorMessageLabel("Błędny login lub hasło");
                 con.close();
+
             }
         }
     }

@@ -3,6 +3,7 @@ package controller;
 import model.Server.Connectivity;
 import model.Server.Register;
 import view.Frame;
+import view.loginpanel.LoginFrame;
 import view.loginpanel.RegisterFrame;
 
 import java.awt.event.ActionEvent;
@@ -141,8 +142,11 @@ public class RegisterController {
         view.setButtonGoToLogIn(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                view.setVisible(false);
+                //view.setVisible(false);
+                view.dispose();
                 previouesView.setVisible(true);
+
+
             }
         });
     }
@@ -240,7 +244,7 @@ public class RegisterController {
 
                 resultSet = preparedStatement.executeQuery();
                 if (isAdded(getLogin(), con)) {
-                    view.setVisible(false);
+                    view.dispose();
                     previouesView.setVisible(true);
 
                 } else {
