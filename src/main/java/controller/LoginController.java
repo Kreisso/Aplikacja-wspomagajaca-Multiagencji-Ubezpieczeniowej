@@ -1,12 +1,11 @@
 package controller;
 
-import model.Connectivity;
-import model.Login;
-import model.Register;
+import model.Server.Connectivity;
+import model.Server.Login;
+import model.Server.Register;
 import view.loginpanel.LoginFrame;
 import view.loginpanel.RegisterFrame;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -78,7 +77,7 @@ public class LoginController {
                 System.out.println("click go sign up button");
                 // TODO
                 RegisterController registerController = new RegisterController(
-                        new Register(), new RegisterFrame("Rejestracja"));
+                        new Register(), new RegisterFrame("Rejestracja"), view);
                 view.setVisible(false);
             }
         });
@@ -90,7 +89,7 @@ public class LoginController {
         ResultSet resultSet = null;
 
 
-        String sql="select * from login where username=? and password=?";
+        String sql="select * from user where login=? and password=?";
         try{
             con =  new Connectivity();
             setModelNick(getViewNick());

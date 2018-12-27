@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
  * Created by kreisso on 02.11.2018.
  */
 public class RegisterFrame extends view.Frame {
-
     private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
     private int frameWidth = 700;
@@ -30,8 +29,8 @@ public class RegisterFrame extends view.Frame {
     private JTextField inputPostCode;
     private JTextField inputPhoneNo;
 
-    public JTextField getInputLogin() {
-        return inputLogin;
+    public String getInputLogin() {
+        return inputLogin.getText();
     }
 
     public char[] getInputPassword() {
@@ -72,11 +71,6 @@ public class RegisterFrame extends view.Frame {
 
     public RegisterFrame(String name) throws HeadlessException {
         super(name);
-
-        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-        int frameWidth = 700;
-        int frameHeight = (int) (0.7*screenHeight);
 
         this.setLocation((screenWidth- frameWidth)/2, (screenHeight- frameHeight)/2);
 
@@ -185,24 +179,12 @@ public class RegisterFrame extends view.Frame {
         this.add(inputPhoneNo);
     }
 
-
     public void setButtonSignUp(ActionListener actionListener){
 
         buttonSignUp = new JButton("Zarejestruj");
         buttonSignUp.setSize(200,50);
         buttonSignUp.setLocation(frameWidth - 250,firstFieldHeight+(6*spaceBetween)+100);
         buttonSignUp.addActionListener(actionListener);
-        // TODO change to JButon ( like in loginFrame ) And will prepare to add ActionListener ( like in login Frame )
-        JLabel labelGoToLogin = new JLabel("Logowanie");
-        labelGoToLogin.setSize(labelGoToLogin.getPreferredSize());
-        labelGoToLogin.setLocation(50, 850);
-        labelGoToLogin.setForeground(Color.blue);
-        this.add(labelGoToLogin);
-
-
-        JButton buttonSignUp = new JButton("Zarejestruj");
-        buttonSignUp.setSize(200,50);
-        buttonSignUp.setLocation(frameWidth - 250,830);
         this.getRootPane().setDefaultButton(buttonSignUp);
         this.add(buttonSignUp);
     }
@@ -220,5 +202,13 @@ public class RegisterFrame extends view.Frame {
         buttonGoToLogin.setForeground(Color.blue);
         buttonGoToLogin.addActionListener(actionListener);
         this.add(buttonGoToLogin);
+    }
+
+    public void setErrorLabel(String errorMessage){
+        JLabel errorLabel = new JLabel(errorMessage);
+        errorLabel.setSize(errorLabel.getPreferredSize());
+        errorLabel.setLocation(50, firstLabelHeight+(6*spaceBetween)+70);
+        errorLabel.setForeground(Color.red);
+        this.add(errorLabel);
     }
 }

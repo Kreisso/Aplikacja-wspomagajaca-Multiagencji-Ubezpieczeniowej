@@ -1,4 +1,4 @@
-package model;
+package model.Server;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class Connectivity
 {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost/demo";
+    private static final String DB_URL = "jdbc:mysql://localhost/multiagencja";
     private static final String USER = "test" ;
     private static final String PASS = "test";
     private Connection conn;
@@ -14,7 +14,7 @@ public class Connectivity
         conn = null;
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Connected database successfully...");
         }
