@@ -28,6 +28,7 @@ public class RegisterFrame extends view.Frame {
     private JTextField inputStreetAndNo;
     private JTextField inputPostCode;
     private JTextField inputPhoneNo;
+    private JTextPane errorLabel;
 
     public String getInputLogin() {
         return inputLogin.getText();
@@ -205,10 +206,9 @@ public class RegisterFrame extends view.Frame {
     }
 
     public void setErrorLabel(String errorMessage){
-        JLabel errorLabel = new JLabel(errorMessage);
-        errorLabel.setSize(errorLabel.getPreferredSize());
-        errorLabel.setLocation(50, firstLabelHeight+(6*spaceBetween)+70);
-        errorLabel.setForeground(Color.red);
-        this.add(errorLabel);
+        JOptionPane.showMessageDialog(this,
+                errorMessage,
+                "Błędne dane",
+                JOptionPane.ERROR_MESSAGE);
     }
 }
