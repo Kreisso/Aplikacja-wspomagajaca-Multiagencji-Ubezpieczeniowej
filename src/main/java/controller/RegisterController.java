@@ -241,7 +241,7 @@ public class RegisterController {
             err += "Nie wpisano ulicy i numeru lub wpisano niepoprawne - miasto może składać się tylko z liter alfabetu, a po spacji musi znaleźć się numer budynku\n";
         }
         //postcode
-        String postCode = String.valueOf(view.getInputStreetAndNo());
+        String postCode = String.valueOf(view.getInputPostCode());
         pattern = Pattern.compile("\\d{2}-\\d{3}");
         matcher = pattern.matcher(postCode);
         if (!matcher.matches()) {
