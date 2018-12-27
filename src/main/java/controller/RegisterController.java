@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterController {
     private Register model;
@@ -182,13 +184,76 @@ public class RegisterController {
         ResultSet resultSet = null;
         setErrorMessage(null);
         String err = "";
+
+        // login
+        String login = String.valueOf(view.getInputLogin());
+        Pattern pattern = Pattern.compile("\\w+");
+        Matcher matcher = pattern.matcher(login);
+        if(!matcher.matches()) {
+            err += "Wpisano niepoprawny login - login może zawierać tylko znaki używane w słowach\n";
+        }
+        //pass
         String pass = String.valueOf(view.getInputPassword());
         String repass = String.valueOf(view.getInputRepeatPassword());
-        if(!pass.equals(repass))
-        {
-            err += "Hasło jest niepoprawne \n";
+        pattern = Pattern.compile("[a-zA-Z0-9_.]");
+        matcher = pattern.matcher(pass);
+        if(!matcher.matches()){
+            err += "Wpisane hasło jest niepoprawne - hasło może zawierać tylko znaki używane w słowach\n";
+        }
+        else if(!pass.equals(repass)){
+            err += "Wpisane hasła nie są takie same\n";
+        }
+        //pesel
+        String pesel = String.valueOf(view.getInputPesel());
+        pattern = Pattern.compile("\\d{11}");
+        matcher = pattern.matcher(pesel);
+        if(!matcher.matches()) {
+            err += "Wpisano niepoprawny pesel - pesel musi składać się z 11 cyfr\n";
+        }
+        //name
+        String name = String.valueOf(view.getInputName());
+        pattern = Pattern.compile("[a-zA-Z]+");
+        matcher = pattern.matcher(name);
+        if(!matcher.matches()) {
+            err += "Nie wpisano imienia lub wpisano niepoprawne - imię może składać się tylko z liter alfabetu\n";
+        }
+        //surname
+        String surname = String.valueOf(view.getInputSurname());
+        pattern = Pattern.compile("[a-zA-Z]+");
+        matcher = pattern.matcher(surname);
+        if(!matcher.matches()) {
+            err += "Nie wpisano nazwiska lub wpisano niepoprawne - nazwisko może składać się tylko z liter alfabetu\n";
+        }
+        //City
+        String city = String.valueOf(view.getInputCity());
+        pattern = Pattern.compile("[a-zA-Z]+");
+        matcher = pattern.matcher(city);
+        if(!matcher.matches()) {
+            err += "Nie wpisano miasta lub wpisano niepoprawne - miasto może składać się tylko z liter alfabetu\n";
+        }
+        //street
+        String street = String.valueOf(view.getInputStreetAndNo());
+        pattern = Pattern.compile("[a-zA-Z]+ [a-zA-Z0-9/]+");
+        matcher = pattern.matcher(street);
+        if(!matcher.matches()) {
+            err += "Nie wpisano ulicy i numeru lub wpisano niepoprawne - miasto może składać się tylko z liter alfabetu, a po spacji musi znaleźć się numer budynku\n";
+        }
+        //postcode
+        String postCode = String.valueOf(view.getInputStreetAndNo());
+        pattern = Pattern.compile("\\d{2}-\\d{3}");
+        matcher = pattern.matcher(postCode);
+        if(!matcher.matches()) {
+            err += "Nie wpisano kodu pocztowego lub wpisano niepoprawny - kod pocztowy musi miec format xx-xxx\n";
+        }
+        //phoneNumber
+        String phoneNumber = String.valueOf(view.getInputPhoneNo());
+        pattern = Pattern.compile("\\d{3}[ -]*\\d{3}[ -]*\\d{3}|\\d{2}[ -]*\\d{3}[ -]*\\d{2}[ -]*\\d{2}"); //komorkowy | stacjonarny
+        matcher = pattern.matcher(phoneNumber);
+        if(!matcher.matches()) {
+            err += "Nie wpisano numeru telefonu lub wpisano niepoprawny - telefon stacjonarny musi zawierać numer kierunkowy\n";
         }
 
+        view.setErrorLabel(err);
 /**
  *  1 Login
  *  2 Pass

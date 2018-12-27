@@ -11,11 +11,11 @@ public class RegisterFrame extends view.Frame {
     private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
     private int frameWidth = 700;
-    private int frameHeight = 850;
+    private int frameHeight = 700;
     private int halfFieldWidth = (frameWidth - 150) / 2;
     private int firstLabelHeight = 50;
     private int firstFieldHeight = 70;
-    private int spaceBetween = 90;
+    private int spaceBetween = 70;
     private JButton buttonSignUp;
     private JButton buttonGoToLogin;
     private JTextField inputLogin;
