@@ -22,7 +22,7 @@ public class EditDataFrame extends view.Frame{
     private JTextField inputStreetAndNo;
     private JTextField inputPostCode;
     private JTextField inputPhoneNo;
-    private JCheckBox isNameToEdit;
+    private JCheckBox isNameEdited;
 
     public String getInputName() {
         return inputName.getText();
@@ -48,6 +48,8 @@ public class EditDataFrame extends view.Frame{
         return inputPhoneNo.getText();
     }
 
+    public JCheckBox getIsNameEdited() {return isNameEdited; }
+
     public EditDataFrame(String name) throws HeadlessException {
         super(name);
 
@@ -65,11 +67,11 @@ public class EditDataFrame extends view.Frame{
         inputName.setEnabled(false);
         this.add(inputName);
 
-        isNameToEdit = new JCheckBox("Imię:");
-        isNameToEdit.setSize(isNameToEdit.getPreferredSize());
-        isNameToEdit.setLocation(30, firstLabelHeight);
+        isNameEdited = new JCheckBox("Imię:");
+        isNameEdited.setSize(isNameEdited.getPreferredSize());
+        isNameEdited.setLocation(30, firstLabelHeight);
 
-        isNameToEdit.addItemListener(new ItemListener(){
+        isNameEdited.addItemListener(new ItemListener(){
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     inputName.setEnabled(true);
@@ -79,12 +81,11 @@ public class EditDataFrame extends view.Frame{
                     inputName.setEnabled(false);
                     inputName.setText("");
                 }
-
                 validate();
                 repaint();
             }
         });
-        this.add(isNameToEdit);
+        this.add(isNameEdited);
 
         JLabel labelSurname = new JLabel("Nazwisko:");
         labelSurname.setSize(labelSurname.getPreferredSize());
@@ -155,5 +156,20 @@ public class EditDataFrame extends view.Frame{
         saveButton.addActionListener(actionListener);
         this.getRootPane().setDefaultButton(saveButton);
         this.add(saveButton);
+    }
+
+    public void setIsNameEditedButton(ItemListener itemListener){
+        isNameEdited = new JCheckBox("Imię:");
+        isNameEdited.setSize(isNameEdited.getPreferredSize());
+        isNameEdited.setLocation(30, firstLabelHeight);
+        isNameEdited.addItemListener(itemListener);
+        this.add(isNameEdited);
+    }
+
+    public void setErrorLabel(String errorMessage) {
+        JOptionPane.showMessageDialog(this,
+                errorMessage,
+                "Błędne dane",
+                JOptionPane.WARNING_MESSAGE);
     }
 }

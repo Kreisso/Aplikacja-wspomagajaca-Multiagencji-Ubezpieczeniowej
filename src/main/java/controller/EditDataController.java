@@ -5,8 +5,11 @@ import model.Server.EditData;
 import view.Frame;
 import view.user.EditDataFrame;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,18 +21,21 @@ public class EditDataController {
     private EditDataFrame view;
     private Connectivity con;
     private Frame previouesView;
+    private int ukk;
 
-    public EditDataController(EditData editData, EditDataFrame editDataFrame, Frame previouesView) {
+    public EditDataController(EditData editData, EditDataFrame editDataFrame, int ukk, Frame previouesView) {
         this.model = editData;
         this.view = editDataFrame;
+        this.ukk = ukk;
         this.previouesView = previouesView;
         setViewButtonSave();
     }
 
-    public EditDataController(EditData editData, EditDataFrame editDataFrame, Frame previouesView, Connectivity con) {
+    public EditDataController(EditData editData, EditDataFrame editDataFrame, int ukk, Frame previouesView, Connectivity con) {
         this.model = editData;
         this.view = editDataFrame;
         this.con = con;
+        this.ukk = ukk;
         this.previouesView = previouesView;
         setViewButtonSave();
     }
@@ -96,14 +102,33 @@ public class EditDataController {
     {
         view.setSaveButton(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("click register button");
+                System.out.println("click save button");
                 saveData();
             }
         });
     }
 
-    private void saveData() {
+//TODO: uniwersalna metoda do sprawdzania checkboxów
+    private void setCheck()
+    {
+        final JCheckBox checkBox = view.getIsNameEdited();
+        view.setIsNameEditedButton(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    checkBox.setEnabled(true);
+                    checkBox.setText("");
+                }
+                else if(e.getStateChange() == ItemEvent.DESELECTED){
+                    checkBox.setEnabled(false);
+                    checkBox.setText("");
+                }
+                checkBox.validate();
+                checkBox.repaint();
+            }
+        });
+    }
 
+    private void saveData() {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         setErrorMessage("");
@@ -159,7 +184,7 @@ public class EditDataController {
  *  4 Name
  *  5 Surname
  *  6 City
- *  7 Streat and number
+ *  7 Street and number
  *  8 PostCode
  *  9 phoneNumber
  *
@@ -168,15 +193,12 @@ public class EditDataController {
         if (err == "") {
             String sql = "{call addClient(?,?,?,?,?,?,?,?,?)}";
             try {
-                con = new Connectivity();
+                con =  new Connectivity();
+                preparedStatement = con.getConn().prepareStatement(sql);
+                preparedStatement.setString(1,String.valueOf(ukk));
+                resultSet = preparedStatement.executeQuery();
 
-                if (isAdded(view.getInputLogin(), con)) {
-                    err += "Podany login już istnieje \n";
-
-
-                    //todo
-
-                } else if (err.length() < 1) {
+                while (resultSet.next()) {
                     setName(view.getInputName());
                     setSurname(view.getInputSurname());
                     setCity(view.getInputCity());
@@ -186,22 +208,23 @@ public class EditDataController {
 
                     preparedStatement = con.getConn().prepareStatement(sql);
 
-                    preparedStatement.setString(4, getName());
-                    preparedStatement.setString(5, getSurname());
-                    preparedStatement.setString(6, getCity());
-                    preparedStatement.setString(7, getStreetAndNumber());
-                    preparedStatement.setString(8, getPostCode());
-                    preparedStatement.setString(9, getPhoneNumber());
+                    preparedStatement.setString(1, getName());
+                    preparedStatement.setString(2, getSurname());
+                    preparedStatement.setString(3, getCity());
+                    preparedStatement.setString(4, getStreetAndNumber());
+                    preparedStatement.setString(5, getPostCode());
+                    preparedStatement.setString(6, getPhoneNumber());
 
                     resultSet = preparedStatement.executeQuery();
-                    if (isAdded(getLogin(), con)) {
-                        view.dispose();
-                        previouesView.setVisible(true);
-
-                    } else {
-
-                        view.setErrorLabel(err);
-                    }
+                    //TODO: sprawdzić
+//                    if (isConnected(ukk, con)) {
+//                        view.dispose();
+//                        previouesView.setVisible(true);
+//
+//                    } else {
+//
+//                        view.setErrorLabel(err);
+//                    }
                 }
 
                 if (err.length() > 1) {
