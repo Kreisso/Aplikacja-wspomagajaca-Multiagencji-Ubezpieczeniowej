@@ -198,10 +198,10 @@ public class RegisterController {
         //pass
         String pass = String.valueOf(view.getInputPassword());
         String repass = String.valueOf(view.getInputRepeatPassword());
-        pattern = Pattern.compile("[a-zA-Z0-9_.]+");
+        pattern = Pattern.compile("[^ ]+");
         matcher = pattern.matcher(pass);
         if (!matcher.matches()) {
-            err += "Wpisane hasło jest niepoprawne - hasło może zawierać tylko znaki używane w słowach\n";
+            err += "Wpisane hasło jest niepoprawne - hasło nie może zawierać białych znakow\n";
         } else if (!pass.equals(repass)) {
             err += "Wpisane hasła nie są takie same\n";
         }
