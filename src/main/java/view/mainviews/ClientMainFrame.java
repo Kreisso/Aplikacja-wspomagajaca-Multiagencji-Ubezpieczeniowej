@@ -35,7 +35,11 @@ public class ClientMainFrame extends view.Frame{
         policyTable = new JTable();
         //String[] columnNames = {"Lp", "Numer polisy", "Rodzaj polisy", "Status"};
         //Object[][] data = {};
-        model = new DefaultTableModel();
+        model = new DefaultTableModel(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         model.addColumn("LP");
         model.addColumn("Numer polisy");
         model.addColumn("Rodzaj polisy");

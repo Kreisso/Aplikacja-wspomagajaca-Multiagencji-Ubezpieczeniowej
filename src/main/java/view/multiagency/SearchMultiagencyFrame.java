@@ -50,7 +50,11 @@ public class SearchMultiagencyFrame extends view.Frame {
         this.add(searchButton);
 
         multiagencyTable = new JTable();
-        model = new DefaultTableModel();
+        model = new DefaultTableModel(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         model.addColumn("LP");
         model.addColumn("Nazwa agencji");
         model.addColumn("Miasto");

@@ -178,16 +178,6 @@ public class RegisterFrame extends view.Frame {
         inputPhoneNo.setSize(halfFieldWidth, 40);
         inputPhoneNo.setLocation(halfFieldWidth + 100, firstFieldHeight+(6*spaceBetween));
         this.add(inputPhoneNo);
-
-        /*errorLabel = new JTextPane();
-        errorLabel.setText("");
-        errorLabel.setSize(errorLabel.getPreferredSize());
-        errorLabel.setLocation(50, firstFieldHeight+(7*spaceBetween));
-        errorLabel.setForeground(Color.red);*/
-
-
-
-        //this.add(errorLabel);
     }
 
     public void setButtonSignUp(ActionListener actionListener){
