@@ -1,10 +1,12 @@
 package controller;
 
+import model.Server.ClientMain;
 import model.Server.Connectivity;
 import model.Server.Login;
 import model.Server.Register;
 import view.loginpanel.LoginFrame;
 import view.loginpanel.RegisterFrame;
+import view.mainviews.ClientMainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +18,7 @@ public class LoginController {
     private Login model;
     private LoginFrame view;
     private Connectivity con;
+    private int ukk;
 
     public LoginController(Login model, LoginFrame view) {
         this.model = model;
@@ -77,7 +80,7 @@ public class LoginController {
                 System.out.println("click go sign up button");
                 // TODO
                 RegisterController registerController = new RegisterController(
-                        new Register(), new RegisterFrame("Rejestracja"), view);
+                        new Register(), new RegisterFrame("Rejestracja"), view );
                 view.setVisible(false);
             }
         });
@@ -103,6 +106,7 @@ public class LoginController {
             if(resultSet.next())
             {
                 setModelStatus(true);
+                System.out.println(ukk);
 
             }
             else
@@ -120,7 +124,43 @@ public class LoginController {
         finally {
             if (model.isStatus()) {
                 System.out.println("login");
-                //TODO
+
+                 preparedStatement = null;
+                 resultSet = null;
+
+
+                 sql="select ukk from client where login=? ";
+                try{
+                    //con =  new Connectivity();
+
+
+                    preparedStatement = con.getConn().prepareStatement(sql);
+                    preparedStatement.setString(1, getModelNick());
+                    resultSet = preparedStatement.executeQuery();
+
+                    if(resultSet.next())
+                    {
+                        ukk = resultSet.getInt("ukk");
+
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                catch(SQLException ex)
+                {
+                    System.out.println(ex);
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
+
+
+                new MainClientController(new ClientMain(), new ClientMainFrame("Panel klienta"),
+                        view, ukk, con );
+                view.setVisible(false);
             }
             else {
                 //TODO add label with error

@@ -31,4 +31,14 @@ public class Multiagency {
     public void setContact(Contact contact) {
         this.contact = contact;
     }
+
+    public String[] infoForTable(int i){
+        String[] multiagencies = new String[4];
+        multiagencies[0] = String.valueOf(i);
+        multiagencies[1] = String.valueOf(this.getName());
+        multiagencies[2] = String.valueOf(this.contact.getCity());
+        multiagencies[3] = String.valueOf(this.contact.getStreetAndNo());
+        return multiagencies;
+    }
+
 }
