@@ -20,8 +20,8 @@ public abstract class Frame extends JFrame{
     private JButton searchOfferMenu;
     private JButton searchMultiagencyMenu;
 
-    private JMenu searchClientMenu;
-    private JMenu searchPoliceMenu;
+    private JButton searchClientMenu;
+    private JButton searchPoliceMenu;
 
     private JMenu myAccountMenu;
     private JMenuItem editPersonalDataMyAccountMenuItem;
@@ -84,28 +84,41 @@ public abstract class Frame extends JFrame{
 
         myPoliciesMenu = new JButton("Polisy klientów");
         myPoliciesMenu.setMnemonic(KeyEvent.VK_N);
+        myPoliciesMenu.setOpaque(true);
+        myPoliciesMenu.setContentAreaFilled(false);
+        myPoliciesMenu.setBorderPainted(false);
+        myPoliciesMenu.setFocusable(false);
         myPoliciesMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku polis");
         menuBar.add(myPoliciesMenu);
 
         searchOfferMenu = new JButton("Wyszukaj ofertę");
         searchOfferMenu.setMnemonic(KeyEvent.VK_N);
+        searchOfferMenu.setOpaque(true);
+        searchOfferMenu.setContentAreaFilled(false);
+        searchOfferMenu.setBorderPainted(false);
+        searchOfferMenu.setFocusable(false);
         searchOfferMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania ofert");
         menuBar.add(searchOfferMenu);
 
-        searchClientMenu = new JMenu("Wyszukaj klienta");
+        searchClientMenu = new JButton("Wyszukaj klienta");
         searchClientMenu.setMnemonic(KeyEvent.VK_N);
+        searchClientMenu.setOpaque(true);
+        searchClientMenu.setContentAreaFilled(false);
+        searchClientMenu.setBorderPainted(false);
+        searchClientMenu.setFocusable(false);
         searchClientMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania klienta");
         menuBar.add(searchClientMenu);
 
-        searchPoliceMenu = new JMenu("Wyszukaj Polise");
+        searchPoliceMenu = new JButton("Wyszukaj Polise");
         searchPoliceMenu.setMnemonic(KeyEvent.VK_N);
+        searchPoliceMenu.setOpaque(true);
+        searchPoliceMenu.setContentAreaFilled(false);
+        searchPoliceMenu.setBorderPainted(false);
+        searchPoliceMenu.setFocusable(false);
         searchPoliceMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania polis");
         menuBar.add(searchPoliceMenu);
 
         myAccountMenu = new JMenu("Moje konto");
-        editPersonalDataMyAccountMenuItem = new JMenuItem("Edytuj dane", KeyEvent.VK_T);
-        editPersonalDataMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku edycji danych");
-        myAccountMenu.add(editPersonalDataMyAccountMenuItem);
         changePasswordMyAccountMenuItem = new JMenuItem("Zmień hasło", KeyEvent.VK_T);
         changePasswordMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku zmiany hasłą");
         myAccountMenu.add(changePasswordMyAccountMenuItem);
@@ -126,11 +139,11 @@ public abstract class Frame extends JFrame{
     public void setSearchMultiagencyMenuItemListener(ActionListener actionListener){
         searchMultiagencyMenu.addActionListener(actionListener);
     }
-    public void setSearchClientMenuListener(MenuListener menuListener){
-        searchClientMenu.addMenuListener(menuListener);
+    public void setSearchClientMenuListener(ActionListener actionListener){
+        searchClientMenu.addActionListener(actionListener);
     }
-    public void setSearchPoliceMenu(MenuListener menuListener){
-        searchPoliceMenu.addMenuListener(menuListener);
+    public void setSearchPoliceMenu(ActionListener actionListener){
+        searchPoliceMenu.addActionListener(actionListener);
     }
 
     public void setEditPersonalDataMyAccountMenuItemListener(ActionListener actionListener){

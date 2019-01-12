@@ -30,7 +30,7 @@ public class SearchOfferFrame extends view.Frame {
     private JButton newButton;
     private JPanel newPanel;
 
-    public SearchOfferFrame(String name) throws HeadlessException {
+    public SearchOfferFrame(String name, int ukk) throws HeadlessException {
         super(name);
 
         int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -41,7 +41,12 @@ public class SearchOfferFrame extends view.Frame {
 
         this.setLayout(null);
 
-        this.createClientMenu();
+        if(ukk>0) {
+            this.createClientMenu();
+        }
+        else{
+            this.createAgentMenu();
+        }
     }
 
     public void addCompanyToView(final String companyName, String offerDescription, ActionListener buttonListener){

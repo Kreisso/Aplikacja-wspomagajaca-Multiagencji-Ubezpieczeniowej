@@ -25,24 +25,35 @@ public class SearchMultiagencyController extends Controller{
     private Connectivity con;
     private Frame previousView;
     private int ukk;
+    private int agentId;
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk) {
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk, int agentId) {
         this.model = model;
         this.view = view;
         this.previousView = previousView;
         this.ukk = ukk;
-        addClientMenuActions(view, ukk);
+        if(ukk>0) {
+            addClientMenuActions(view, ukk, agentId);
+        }
+        else{
+            addAgentMenuActions(view, ukk, agentId);
+        }
         setViewCity();
     }
 
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk, Connectivity con) {
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk, int agentId, Connectivity con) {
         this.con = con;
         this.model = model;
         this.view = view;
         this.previousView = previousView;
         this.ukk = ukk;
-        addClientMenuActions(view, ukk);
+        if(ukk>0) {
+            addClientMenuActions(view, ukk, agentId);
+        }
+        else{
+            addAgentMenuActions(view, ukk, agentId);
+        }
         setViewCity();
     }
 
