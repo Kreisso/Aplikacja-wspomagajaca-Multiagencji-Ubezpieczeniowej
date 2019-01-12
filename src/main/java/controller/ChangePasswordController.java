@@ -132,22 +132,4 @@ public class ChangePasswordController extends Controller{
             e.printStackTrace();
         }
     }
-
-//    private void setEditPersonalDataMyAccount(){
-//        view.setEditPersonalDataMyAccountMenuItemListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                new EditDataController(new EditData(), new EditDataFrame("Edycja danych"), agentId, ukk, view, con);
-//            }
-//        });
-//    }
-//
-//    private void setLogoutMyAccount(){
-//        view.setLogutMyAccountMenuItemListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                new LoginController(new Login(), new LoginFrame("Logowanie"));
-//                view.dispose();
-//            }
-//        });
-//    }
 }
