@@ -44,6 +44,7 @@ public class Controller {
             activeView.setEditPersonalDataMyAccountMenuItemListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    activeView.dispose();
                     new EditDataController(new EditData(), new EditDataFrame("Edycja danych"), -1, ukk, activeView);
                 }
             });
