@@ -3,8 +3,10 @@ package controller;
 import model.Contact;
 import model.Multiagency;
 import model.Server.Connectivity;
+import model.Server.Login;
 import model.Server.SearchMultiagency;
 import view.Frame;
+import view.loginpanel.LoginFrame;
 import view.multiagency.SearchMultiagencyFrame;
 
 import javax.swing.event.MenuEvent;
@@ -30,6 +32,7 @@ public class SearchMultiagencyController {
         this.previousView = previousView;
         setMyPoliciesMenuListener();
         setViewCity();
+        setLogoutMyAccount();
     }
 
     public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView) {
@@ -38,6 +41,7 @@ public class SearchMultiagencyController {
         this.previousView = previousView;
         setMyPoliciesMenuListener();
         setViewCity();
+        setLogoutMyAccount();
     }
 
     private String getModelCity(){
@@ -165,6 +169,15 @@ public class SearchMultiagencyController {
 
             public void menuCanceled(MenuEvent e) {
 
+            }
+        });
+    }
+
+    private void setLogoutMyAccount(){
+        view.setLogutMyAccountMenuItemListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new LoginController(new Login(), new LoginFrame("Logowanie"));
+                view.dispose();
             }
         });
     }

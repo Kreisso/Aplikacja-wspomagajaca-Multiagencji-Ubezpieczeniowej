@@ -2,7 +2,9 @@ package controller;
 
 import model.Server.ChangePassword;
 import model.Server.Connectivity;
+import model.Server.Login;
 import view.Frame;
+import view.loginpanel.LoginFrame;
 import view.user.ChangePasswordFrame;
 
 import java.awt.event.ActionEvent;
@@ -27,6 +29,7 @@ public class ChangePasswordConroller {
         this.ukk = ukk;
         this.agentId=agentId;
         setChangeButton();
+        setLogoutMyAccount();
     }
 
     public ChangePasswordConroller(ChangePassword model, ChangePasswordFrame view, Frame previousView, int agentId, int ukk) {
@@ -36,6 +39,7 @@ public class ChangePasswordConroller {
         this.agentId = agentId;
         this.ukk = ukk;
         setChangeButton();
+        setLogoutMyAccount();
     }
 
     public String getOldPassword() {
@@ -129,5 +133,14 @@ public class ChangePasswordConroller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setLogoutMyAccount(){
+        view.setLogutMyAccountMenuItemListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new LoginController(new Login(), new LoginFrame("Logowanie"));
+                view.dispose();
+            }
+        });
     }
 }
