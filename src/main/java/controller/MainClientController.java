@@ -2,13 +2,19 @@ package controller;
 
 import model.Offer;
 import model.Policy;
-import model.Server.ClientMain;
-import model.Server.Connectivity;
+import model.Server.*;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
+import view.loginpanel.LoginFrame;
 import view.mainviews.ClientMainFrame;
+import view.multiagency.SearchMultiagencyFrame;
+import view.user.ChangePasswordFrame;
 
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,12 +35,18 @@ public class MainClientController extends Controller{
         this.ukk = ukk;
         addClientMenuActions(view, ukk);
         getPolices();
+
+        setBiggerTextCheckBox();
     }
 
     public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
         this(model, view, previousView, ukk);
         this.con = con;
+
+
     }
+
+
 
     private void setMessageSender(String messageSender) {
         model.setMessageSender(messageSender);
@@ -154,4 +166,20 @@ public class MainClientController extends Controller{
             view.addColumnToPolicyTable(policy.infoForTable(i));
         }
     }
+
+
+    private void setBiggerTextCheckBox(){
+        view.setBiggerTextCheckBoxListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                boolean isClicked = view.getBiggerTextCheckBoxStatus();
+                if (isClicked) {
+                    view.setBiggerTextSize();
+                } else {
+                    view.setNormalTextSize();
+                }
+            }
+        });
+    }
+
+
 }
