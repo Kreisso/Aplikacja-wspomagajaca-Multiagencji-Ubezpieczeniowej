@@ -2,16 +2,14 @@ package controller;
 
 import model.Offer;
 import model.Policy;
-import model.Server.AgentMain;
-import model.Server.ChangePassword;
-import model.Server.Connectivity;
-import model.Server.Login;
+import model.Server.*;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
 import view.loginpanel.LoginFrame;
 import view.mainviews.AgentMainFrame;
 import view.user.ChangePasswordFrame;
+import view.user.EditDataFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,35 +19,34 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainAgentController {
+public class MainAgentController extends Controller{
     private AgentMainFrame view;
     private AgentMain model;
     private Connectivity con;
     private Frame previousView;
-    private int agent_id;
+    private int agentId;
     private int ukk;
 
-    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agent_id, int ukk, Connectivity con) {
+    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agentId, int ukk, Connectivity con) {
         this.view = view;
         this.model = model;
         this.con = con;
         this.previousView = previousView;
-        this.agent_id = agent_id;
+        this.agentId = agentId;
         this.ukk = ukk;
+        addClientMenuActions(view, ukk);
         getPolices();
-        setChangePasswordMyAccount();
-        setLogoutMyAccount();
     }
 
-    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agent_id, int ukk) {
+    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agentId, int ukk) {
         this.view = view;
         this.model = model;
         this.previousView = previousView;
-        this.agent_id = agent_id;
+        this.agentId = agentId;
         this.ukk = ukk;
+        addClientMenuActions(view, ukk);
         getPolices();
-        setChangePasswordMyAccount();
-        setLogoutMyAccount();
+
     }
 
     private void setMessageSender(String messageSender) {
@@ -93,13 +90,13 @@ public class MainAgentController {
         try{
             con =  new Connectivity();
             preparedStatement = con.getConn().prepareStatement(sql);
-            preparedStatement.setString(1,String.valueOf(agent_id));
+            preparedStatement.setString(1,String.valueOf(agentId));
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next())
             {
                 Policy policy = new Policy();
-                policy.setAgentId(resultSet.getInt("agent_id"));
+                policy.setAgentId(resultSet.getInt("agentId"));
                 policy.setBeginning(resultSet.getDate("beginning"));
                 policy.setEnding(resultSet.getDate("ending"));
                 policy.setId(resultSet.getInt("id"));
@@ -168,10 +165,19 @@ public class MainAgentController {
         }
     }
 
+    private void setEditPersonalDataMyAccount(){
+        view.setEditPersonalDataMyAccountMenuItemListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new EditDataController(new EditData(), new EditDataFrame("Edycja danych"), agentId, ukk, view, con);
+            }
+        });
+    }
+
     private void setChangePasswordMyAccount(){
         view.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new ChangePasswordConroller(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, agent_id, ukk, con);
+                new ChangePasswordController(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, agentId, ukk, con);
                 view.setVisible(false);
             }
         });

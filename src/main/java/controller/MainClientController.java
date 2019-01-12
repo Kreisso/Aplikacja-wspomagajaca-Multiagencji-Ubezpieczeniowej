@@ -2,19 +2,13 @@ package controller;
 
 import model.Offer;
 import model.Policy;
-import model.Server.*;
+import model.Server.ClientMain;
+import model.Server.Connectivity;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
-import view.loginpanel.LoginFrame;
 import view.mainviews.ClientMainFrame;
-import view.multiagency.SearchMultiagencyFrame;
-import view.user.ChangePasswordFrame;
 
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,29 +29,11 @@ public class MainClientController extends Controller{
         this.ukk = ukk;
         addClientMenuActions(view, ukk);
         getPolices();
-
-        setBiggerTextCheckBox();
     }
 
     public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
         this(model, view, previousView, ukk);
         this.con = con;
-
-        setSearchMultiagencyMenuListener();
-        setChangePasswordMyAccount();
-        setLogoutMyAccount();
-    }
-
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
-        this.view = view;
-        this.model = model;
-        this.previousView = previousView;
-        this.ukk = ukk;
-        getPolices();
-        setSearchMultiagencyMenuListener();
-        setChangePasswordMyAccount();
-        setLogoutMyAccount();
-
     }
 
     private void setMessageSender(String messageSender) {
@@ -177,56 +153,5 @@ public class MainClientController extends Controller{
             Policy policy = (Policy) it.next();
             view.addColumnToPolicyTable(policy.infoForTable(i));
         }
-    }
-
-
-    private void setBiggerTextCheckBox(){
-        view.setBiggerTextCheckBoxListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                boolean isClicked = view.getBiggerTextCheckBoxStatus();
-                if(isClicked){
-                    view.setBiggerTextSize();
-                }
-                else{
-                    view.setNormalTextSize();
-                }
-
-    private void setSearchMultiagencyMenuListener()
-    {
-        view.setSearchMultiagencyMenuListener(new MenuListener() {
-            public void menuSelected(MenuEvent e) {
-                System.out.println("1");
-                new SearchMultiagencyController(new SearchMultiagency(),
-                        new SearchMultiagencyFrame("Wyszukaj multiagencje"),view, con);
-                view.setVisible(false);
-            }
-
-            public void menuDeselected(MenuEvent e) {
-                System.out.println("2");
-            }
-
-            public void menuCanceled(MenuEvent e) {
-                System.out.println("3");
-            }
-        });
-    }
-
-    private void setChangePasswordMyAccount(){
-        view.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new ChangePasswordConroller(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, -1, ukk, con);
-                view.setVisible(false);
-            }
-        });
-    }
-
-    private void setLogoutMyAccount(){
-        view.setLogutMyAccountMenuItemListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new LoginController(new Login(), new LoginFrame("Logowanie"));
-                view.dispose();
-
-            }
-        });
     }
 }

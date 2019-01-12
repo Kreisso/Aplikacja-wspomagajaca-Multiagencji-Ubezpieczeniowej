@@ -16,27 +16,32 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EditDataController {
+public class EditDataController extends Controller{
     private EditData model;
     private EditDataFrame view;
     private Connectivity con;
     private Frame previouesView;
+    private int agentId;
     private int ukk;
 
-    public EditDataController(EditData editData, EditDataFrame editDataFrame, int ukk, Frame previouesView) {
+    public EditDataController(EditData editData, EditDataFrame editDataFrame, int agentId, int ukk, Frame previouesView) {
         this.model = editData;
         this.view = editDataFrame;
+        this.agentId = agentId;
         this.ukk = ukk;
         this.previouesView = previouesView;
+        addClientMenuActions(view, ukk);
         setViewButtonSave();
     }
 
-    public EditDataController(EditData editData, EditDataFrame editDataFrame, int ukk, Frame previouesView, Connectivity con) {
+    public EditDataController(EditData editData, EditDataFrame editDataFrame, int agentId, int ukk, Frame previouesView, Connectivity con) {
         this.model = editData;
         this.view = editDataFrame;
         this.con = con;
+        this.agentId = agentId;
         this.ukk = ukk;
         this.previouesView = previouesView;
+        addClientMenuActions(view, ukk);
         setViewButtonSave();
     }
 

@@ -3,14 +3,14 @@ package controller;
 import model.Contact;
 import model.Multiagency;
 import model.Server.Connectivity;
+import model.Server.EditData;
 import model.Server.Login;
 import model.Server.SearchMultiagency;
 import view.Frame;
 import view.loginpanel.LoginFrame;
 import view.multiagency.SearchMultiagencyFrame;
+import view.user.EditDataFrame;
 
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -24,13 +24,16 @@ public class SearchMultiagencyController extends Controller{
     private SearchMultiagencyFrame view;
     private Connectivity con;
     private Frame previousView;
+    private int ukk;
 
     public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk) {
         this.model = model;
         this.view = view;
         this.previousView = previousView;
+        this.ukk = ukk;
         addClientMenuActions(view, ukk);
         setViewCity();
+        setEditPersonalDataMyAccount();
         setLogoutMyAccount();
     }
 
@@ -40,10 +43,11 @@ public class SearchMultiagencyController extends Controller{
         this.model = model;
         this.view = view;
         this.previousView = previousView;
-        setMyPoliciesMenuListener();
+        this.ukk = ukk;
+        addClientMenuActions(view, ukk);
         setViewCity();
+        setEditPersonalDataMyAccount();
         setLogoutMyAccount();
-
     }
 
     private String getModelCity(){
@@ -157,21 +161,11 @@ public class SearchMultiagencyController extends Controller{
         }
     }
 
-
-    private void setMyPoliciesMenuListener()
-    {
-        view.setMyPoliciesMenuListener(new MenuListener() {
-            public void menuSelected(MenuEvent e) {
-                previousView.setVisible(true);
-                view.dispose();
-            }
-
-            public void menuDeselected(MenuEvent e) {
-
-            }
-
-            public void menuCanceled(MenuEvent e) {
-
+    private void setEditPersonalDataMyAccount(){
+        view.setEditPersonalDataMyAccountMenuItemListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new EditDataController(new EditData(), new EditDataFrame("Edycja danych"), -1, ukk, view, con);
             }
         });
     }
@@ -184,5 +178,4 @@ public class SearchMultiagencyController extends Controller{
             }
         });
     }
-
 }
