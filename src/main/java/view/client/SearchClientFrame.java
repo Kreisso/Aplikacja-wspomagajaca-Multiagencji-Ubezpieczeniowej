@@ -16,6 +16,7 @@ public class SearchClientFrame extends view.Frame {
     private JLabel searchByUkkLabel;
     private JTextField inputSearchByUkk;
     private JLabel foundClientLabel;
+    private JLabel errorMessageLabel;
 
     private JButton searchButton;
     private JButton moreInfoButton;
@@ -31,7 +32,7 @@ public class SearchClientFrame extends view.Frame {
         this.setSize(frameWidth, frameHeight);
         this.setLayout(null);
 
-        this.createClientMenu();
+        this.createAgentMenu();
 
         searchByUkkLabel = new JLabel("Wpisz ukk klienta");
         searchByUkkLabel.setSize(searchByUkkLabel.getPreferredSize());
@@ -65,6 +66,12 @@ public class SearchClientFrame extends view.Frame {
         sendMessageButton.setLocation((int) (frameWidth*0.6),  (int) (frameHeight*0.2));
         sendMessageButton.setVisible(false);
         this.add(sendMessageButton);
+
+        errorMessageLabel = new JLabel("");
+        errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
+        errorMessageLabel.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.15));
+        errorMessageLabel.setForeground(Color.red);
+        this.add(errorMessageLabel);
     }
 
     public String getInputSearchByUkk() {
@@ -76,12 +83,12 @@ public class SearchClientFrame extends view.Frame {
         foundClientLabel.setSize(foundClientLabel.getPreferredSize());
     }
 
-    public void setMoreInfoButtonVisible(){
-        moreInfoButton.setVisible(true);
+    public void setMoreInfoButtonVisibility(boolean isVisible){
+        moreInfoButton.setVisible(isVisible);
     }
 
-    public void setSendMessageButtonVisible(){
-        sendMessageButton.setVisible(true);
+    public void setSendMessageButtonVisible(boolean isVisible){
+        sendMessageButton.setVisible(isVisible);
     }
 
     public void setSearchByUkkButton(ActionListener actionListener){
@@ -92,5 +99,9 @@ public class SearchClientFrame extends view.Frame {
     }
     public void setSendMessageButton(ActionListener actionListener){
         sendMessageButton.addActionListener(actionListener);
+    }
+    public void setErrorMessageLabel(String errorMessage) {
+        errorMessageLabel.setText(errorMessage);
+        errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
     }
 }
