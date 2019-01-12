@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 
 public abstract class Frame extends JFrame{
@@ -52,7 +51,9 @@ public abstract class Frame extends JFrame{
         editPersonalDataMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku edycji danych");
         myAccountMenu.add(editPersonalDataMyAccountMenuItem);
         changePasswordMyAccountMenuItem = new JMenuItem("Zmień hasło", KeyEvent.VK_T);
+        changePasswordMyAccountMenuItem.setMnemonic(KeyEvent.VK_T);
         changePasswordMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku zmiany hasłą");
+//        changePasswordMyAccountMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
         myAccountMenu.add(changePasswordMyAccountMenuItem);
         logutMyAccountMenuItem = new JMenuItem("Wyloguj", KeyEvent.VK_T);
         logutMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Wyloguj się ze swojego konta");

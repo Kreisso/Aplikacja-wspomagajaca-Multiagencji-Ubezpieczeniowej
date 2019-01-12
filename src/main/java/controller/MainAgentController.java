@@ -3,18 +3,16 @@ package controller;
 import model.Offer;
 import model.Policy;
 import model.Server.AgentMain;
-import model.Server.ClientMain;
+import model.Server.ChangePassword;
 import model.Server.Connectivity;
-import model.Server.SearchMultiagency;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
 import view.mainviews.AgentMainFrame;
-import view.mainviews.ClientMainFrame;
-import view.multiagency.SearchMultiagencyFrame;
+import view.user.ChangePasswordFrame;
 
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,22 +25,27 @@ public class MainAgentController {
     private Connectivity con;
     private Frame previousView;
     private int agent_id;
+    private int ukk;
 
-    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int ukk, Connectivity con) {
+    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agent_id, int ukk, Connectivity con) {
         this.view = view;
         this.model = model;
         this.con = con;
         this.previousView = previousView;
-        this.agent_id = ukk;
+        this.agent_id = agent_id;
+        this.ukk = ukk;
         getPolices();
+        setChangePasswordMyAccount();
     }
 
-    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int ukk) {
+    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agent_id, int ukk) {
         this.view = view;
         this.model = model;
         this.previousView = previousView;
-        this.agent_id = ukk;
+        this.agent_id = agent_id;
+        this.ukk = ukk;
         getPolices();
+        setChangePasswordMyAccount();
     }
 
     private void setMessageSender(String messageSender) {
@@ -159,6 +162,15 @@ public class MainAgentController {
             Policy policy = (Policy) it.next();
             view.addColumnToPolicyTable(policy.infoForTableAgent(i));
         }
+    }
+
+    private void setChangePasswordMyAccount(){
+        view.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new ChangePasswordConroller(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, agent_id, ukk, con);
+                view.setVisible(false);
+            }
+        });
     }
 
     private void setSearchClientMenuListener()
