@@ -156,22 +156,4 @@ public class SearchMultiagencyController extends Controller{
             view.addColumnToMultiagencyTable(multiagency.infoForTable(i));
         }
     }
-
-//    private void setEditPersonalDataMyAccount(){
-//        view.setEditPersonalDataMyAccountMenuItemListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                new EditDataController(new EditData(), new EditDataFrame("Edycja danych"), -1, ukk, view, con);
-//            }
-//        });
-//    }
-//
-//    private void setLogoutMyAccount(){
-//        view.setLogutMyAccountMenuItemListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                new LoginController(new Login(), new LoginFrame("Logowanie"));
-//                view.dispose();
-//            }
-//        });
-//    }
 }
