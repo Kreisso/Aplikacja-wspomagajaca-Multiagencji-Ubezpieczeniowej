@@ -89,8 +89,8 @@ public class Controller {
             activeView.setSearchClientMenuListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //TODO
-                    System.out.println("Szukaj klienta");
+                    activeView.dispose();
+                    new SearchClientController(new SearchClient(), new SearchClientFrame("Wyszukaj klienta"), activeView, agentId, ukk);
                 }
             });
         }

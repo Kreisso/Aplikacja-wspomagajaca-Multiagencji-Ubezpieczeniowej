@@ -1,14 +1,9 @@
 package controller;
 
-import com.sun.xml.internal.xsom.impl.parser.DelayedRef;
-import model.Multiagency;
 import model.Offer;
-import model.Policy;
 import model.Server.Connectivity;
 import model.enums.Type;
-import view.offer.OfferFrame;
 import view.offer.SearchOfferFrame;
-import view.policy.SearchPolicyFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
