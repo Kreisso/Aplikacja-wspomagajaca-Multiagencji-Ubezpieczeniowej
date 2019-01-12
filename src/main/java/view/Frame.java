@@ -1,19 +1,20 @@
 package view;
 
+import view.user.AccountFrame;
+
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public abstract class Frame extends JFrame{
 
     private String name;
     private JMenuBar menuBar;
-    private JMenu myPoliciesMenu;
-    private JMenu searchOfferMenu;
-    private JMenu searchMultiagencyMenu;
+    private JButton myPoliciesMenu;
+    private JButton searchOfferMenu;
+    private JButton searchMultiagencyMenu;
     private JMenu myAccountMenu;
     private JMenuItem editPersonalDataMyAccountMenuItem;
     private JMenuItem changePasswordMyAccountMenuItem;
@@ -30,45 +31,51 @@ public abstract class Frame extends JFrame{
         menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
 
-        myPoliciesMenu = new JMenu("Moje polisy");
+        myPoliciesMenu = new JButton("Moje polisy");
         myPoliciesMenu.setMnemonic(KeyEvent.VK_N);
-        myPoliciesMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku polis");
+        myPoliciesMenu.setOpaque(true);
+        myPoliciesMenu.setContentAreaFilled(false);
+        myPoliciesMenu.setBorderPainted(false);
+        myPoliciesMenu.setFocusable(false);
         menuBar.add(myPoliciesMenu);
 
-        searchOfferMenu = new JMenu("Wyszukaj ofertę");
+        searchOfferMenu = new JButton("Wyszukaj ofertę");
         searchOfferMenu.setMnemonic(KeyEvent.VK_N);
-        searchOfferMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania ofert");
+        searchOfferMenu.setOpaque(true);
+        searchOfferMenu.setContentAreaFilled(false);
+        searchOfferMenu.setBorderPainted(false);
+        searchOfferMenu.setFocusable(false);
         menuBar.add(searchOfferMenu);
 
-        searchMultiagencyMenu = new JMenu("Wyszukaj multiagencję");
+        searchMultiagencyMenu = new JButton("Wyszukaj multiagencję");
         searchMultiagencyMenu.setMnemonic(KeyEvent.VK_N);
-        searchMultiagencyMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania multiagencji");
+        searchMultiagencyMenu.setOpaque(true);
+        searchMultiagencyMenu.setContentAreaFilled(false);
+        searchMultiagencyMenu.setBorderPainted(false);
+        searchMultiagencyMenu.setFocusable(false);
         menuBar.add(searchMultiagencyMenu);
 
         myAccountMenu = new JMenu("Moje konto");
         editPersonalDataMyAccountMenuItem = new JMenuItem("Edytuj dane", KeyEvent.VK_T);
-        editPersonalDataMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku edycji danych");
         myAccountMenu.add(editPersonalDataMyAccountMenuItem);
         changePasswordMyAccountMenuItem = new JMenuItem("Zmień hasło", KeyEvent.VK_T);
-        changePasswordMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku zmiany hasłą");
         myAccountMenu.add(changePasswordMyAccountMenuItem);
         logutMyAccountMenuItem = new JMenuItem("Wyloguj", KeyEvent.VK_T);
-        logutMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Wyloguj się ze swojego konta");
         myAccountMenu.add(logutMyAccountMenuItem);
         menuBar.add(Box.createHorizontalGlue());
         menuBar.add(myAccountMenu);
     }
 
-    public void setMyPoliciesMenuListener(MenuListener menuListener){
-        myPoliciesMenu.addMenuListener(menuListener);
+    public void setMyPoliciesMenuItemListener(ActionListener actionListener){
+        myPoliciesMenu.addActionListener(actionListener);
     }
 
-    public void setSearchOfferMenuListener(MenuListener menuListener){
-        searchOfferMenu.addMenuListener(menuListener);
+    public void setSearchOfferMenuItemListener(ActionListener actionListener){
+        searchOfferMenu.addActionListener(actionListener);
     }
 
-    public void setSearchMultiagencyMenuListener(MenuListener menuListener){
-        searchMultiagencyMenu.addMenuListener(menuListener);
+    public void setSearchMultiagencyMenuItemListener(ActionListener actionListener){
+        searchMultiagencyMenu.addActionListener(actionListener);
     }
 
     public void setEditPersonalDataMyAccountMenuItemListener(ActionListener actionListener){
@@ -81,6 +88,27 @@ public abstract class Frame extends JFrame{
 
     public void setLogutMyAccountMenuItemListener(ActionListener actionListener){
         logutMyAccountMenuItem.addActionListener(actionListener);
+    }
+
+    public void setBiggerMenuSize(){
+        myPoliciesMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        searchOfferMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        searchMultiagencyMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        myAccountMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        editPersonalDataMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        changePasswordMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        logutMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+    }
+
+    public void setNormalMenuSize(){
+        System.out.println(myPoliciesMenu.getFont().getFamily());
+        myPoliciesMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+        searchOfferMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+        searchMultiagencyMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+        myAccountMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+        editPersonalDataMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+        changePasswordMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+        logutMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
     }
 }
 

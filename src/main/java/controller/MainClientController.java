@@ -13,6 +13,8 @@ import view.multiagency.SearchMultiagencyFrame;
 
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,30 +22,26 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MainClientController {
+public class MainClientController extends Controller{
     private ClientMainFrame view;
     private ClientMain model;
     private Connectivity con;
     private Frame previousView;
     private int ukk;
 
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
-        this.view = view;
-        this.model = model;
-        this.con = con;
-        this.previousView = previousView;
-        this.ukk = ukk;
-        getPolices();
-        setSearchMultiagencyMenuListener();
-    }
-
     public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
         this.view = view;
         this.model = model;
         this.previousView = previousView;
         this.ukk = ukk;
+        addClientMenuActions(view, ukk);
         getPolices();
-        setSearchMultiagencyMenuListener();
+        setBiggerTextCheckBox();
+    }
+
+    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
+        this(model, view, previousView, ukk);
+        this.con = con;
     }
 
     private void setMessageSender(String messageSender) {
@@ -165,24 +163,16 @@ public class MainClientController {
         }
     }
 
-    private void setSearchMultiagencyMenuListener()
-    {
-        view.setSearchMultiagencyMenuListener(new MenuListener() {
-            public void menuSelected(MenuEvent e) {
-                System.out.println("1");
-                new SearchMultiagencyController(new SearchMultiagency(),
-                        new SearchMultiagencyFrame("Wyszukaj multiagencje"),view, con);
-                view.setVisible(false);
-            }
-
-            public void menuDeselected(MenuEvent e) {
-                System.out.println("2");
-
-            }
-
-            public void menuCanceled(MenuEvent e) {
-                System.out.println("3");
-
+    private void setBiggerTextCheckBox(){
+        view.setBiggerTextCheckBoxListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                boolean isClicked = view.getBiggerTextCheckBoxStatus();
+                if(isClicked){
+                    view.setBiggerTextSize();
+                }
+                else{
+                    view.setNormalTextSize();
+                }
             }
         });
     }

@@ -103,4 +103,40 @@ public class ClientMainFrame extends view.Frame{
     public void setMessageTextPane(String message){
         messageTextPane.setText(message);
     }
+
+    public void setBiggerTextSize(){
+        setBiggerMenuSize();
+        policyTable.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+
+        messageSenderLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
+        messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
+
+        messageTextPane.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+
+        clearButton.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        clearButton.setSize(clearButton.getPreferredSize());
+        clearButton.setLocation((messagePanel.getWidth()/2)-(clearButton.getWidth()/2), messagePanel.getHeight()-clearButton.getHeight());
+
+        biggerTextCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        biggerTextCheckBox.setSize(biggerTextCheckBox.getPreferredSize());
+    }
+
+    public void setNormalTextSize(){
+        setNormalMenuSize();
+        policyTable.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+
+        messageSenderLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+        messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
+        messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
+
+        messageTextPane.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+
+        clearButton.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+        clearButton.setSize(clearButton.getPreferredSize());
+        clearButton.setLocation((messagePanel.getWidth()/2)-(clearButton.getWidth()/2), messagePanel.getHeight()-clearButton.getHeight());
+
+        biggerTextCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+        biggerTextCheckBox.setSize(biggerTextCheckBox.getPreferredSize());
+    }
 }

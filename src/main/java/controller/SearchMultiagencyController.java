@@ -17,27 +17,23 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-public class SearchMultiagencyController {
+public class SearchMultiagencyController extends Controller{
     private SearchMultiagency model;
     private SearchMultiagencyFrame view;
     private Connectivity con;
     private Frame previousView;
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, Connectivity con) {
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk) {
         this.model = model;
         this.view = view;
-        this.con = con;
         this.previousView = previousView;
-        setMyPoliciesMenuListener();
+        addClientMenuActions(view, ukk);
         setViewCity();
     }
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView) {
-        this.model = model;
-        this.view = view;
-        this.previousView = previousView;
-        setMyPoliciesMenuListener();
-        setViewCity();
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk, Connectivity con) {
+        this(model, view, previousView, ukk);
+        this.con = con;
     }
 
     private String getModelCity(){
@@ -149,23 +145,5 @@ public class SearchMultiagencyController {
             Multiagency multiagency = (Multiagency) it.next();
             view.addColumnToMultiagencyTable(multiagency.infoForTable(i));
         }
-    }
-
-    private void setMyPoliciesMenuListener()
-    {
-        view.setMyPoliciesMenuListener(new MenuListener() {
-            public void menuSelected(MenuEvent e) {
-                previousView.setVisible(true);
-                view.dispose();
-            }
-
-            public void menuDeselected(MenuEvent e) {
-
-            }
-
-            public void menuCanceled(MenuEvent e) {
-
-            }
-        });
     }
 }

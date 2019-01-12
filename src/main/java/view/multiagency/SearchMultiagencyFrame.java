@@ -5,9 +5,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-/**
- * Created by kreisso on 02.11.2018.
- */
 public class SearchMultiagencyFrame extends view.Frame {
     private int frameWidth = 1000;
     private int frameHeight = 600;
