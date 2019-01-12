@@ -27,8 +27,6 @@ public class SearchMultiagencyFrame extends view.Frame {
 
         this.setSize(frameWidth, frameHeight);
         this.setLayout(null);
-        
-        this.createClientMenu();
 
         this.createClientMenu();
 
@@ -43,7 +41,6 @@ public class SearchMultiagencyFrame extends view.Frame {
         this.add(inputSearchByCity);
 
         searchButton = new JButton("Szukaj");
-
         searchButton.setSize((int) (frameWidth*0.15), 40);
         searchButton.setLocation((int) (frameWidth*0.8),  (int) (frameHeight*0.05));
         this.getRootPane().setDefaultButton(searchButton);

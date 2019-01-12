@@ -7,14 +7,22 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
 
 public abstract class Frame extends JFrame{
 
     private String name;
     private JMenuBar menuBar;
+
     private JButton myPoliciesMenu;
     private JButton searchOfferMenu;
     private JButton searchMultiagencyMenu;
+
+    private JMenu searchClientMenu;
+    private JMenu searchPoliceMenu;
+
     private JMenu myAccountMenu;
     private JMenuItem editPersonalDataMyAccountMenuItem;
     private JMenuItem changePasswordMyAccountMenuItem;
@@ -59,6 +67,47 @@ public abstract class Frame extends JFrame{
         editPersonalDataMyAccountMenuItem = new JMenuItem("Edytuj dane", KeyEvent.VK_T);
         myAccountMenu.add(editPersonalDataMyAccountMenuItem);
         changePasswordMyAccountMenuItem = new JMenuItem("Zmień hasło", KeyEvent.VK_T);
+
+        changePasswordMyAccountMenuItem.setMnemonic(KeyEvent.VK_T);
+        changePasswordMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku zmiany hasłą");
+//        changePasswordMyAccountMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        myAccountMenu.add(changePasswordMyAccountMenuItem);
+        logutMyAccountMenuItem = new JMenuItem("Wyloguj", KeyEvent.VK_T);
+        logutMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Wyloguj się ze swojego konta");
+        myAccountMenu.add(logutMyAccountMenuItem);
+        menuBar.add(Box.createHorizontalGlue());
+        menuBar.add(myAccountMenu);
+    }
+    public void createAgentMenu(){
+        menuBar = new JMenuBar();
+        this.setJMenuBar(menuBar);
+
+        myPoliciesMenu = new JMenu("Polisy klientów");
+        myPoliciesMenu.setMnemonic(KeyEvent.VK_N);
+        myPoliciesMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku polis");
+        menuBar.add(myPoliciesMenu);
+
+        searchOfferMenu = new JMenu("Wyszukaj ofertę");
+        searchOfferMenu.setMnemonic(KeyEvent.VK_N);
+        searchOfferMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania ofert");
+        menuBar.add(searchOfferMenu);
+
+        searchClientMenu = new JMenu("Wyszukaj klienta");
+        searchClientMenu.setMnemonic(KeyEvent.VK_N);
+        searchClientMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania klienta");
+        menuBar.add(searchClientMenu);
+
+        searchPoliceMenu = new JMenu("Wyszukaj Polise");
+        searchPoliceMenu.setMnemonic(KeyEvent.VK_N);
+        searchPoliceMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania polis");
+        menuBar.add(searchPoliceMenu);
+
+        myAccountMenu = new JMenu("Moje konto");
+        editPersonalDataMyAccountMenuItem = new JMenuItem("Edytuj dane", KeyEvent.VK_T);
+        editPersonalDataMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku edycji danych");
+        myAccountMenu.add(editPersonalDataMyAccountMenuItem);
+        changePasswordMyAccountMenuItem = new JMenuItem("Zmień hasło", KeyEvent.VK_T);
+        changePasswordMyAccountMenuItem.getAccessibleContext().setAccessibleDescription("Przejdź do widoku zmiany hasłą");
         myAccountMenu.add(changePasswordMyAccountMenuItem);
         logutMyAccountMenuItem = new JMenuItem("Wyloguj", KeyEvent.VK_T);
         myAccountMenu.add(logutMyAccountMenuItem);
@@ -76,6 +125,12 @@ public abstract class Frame extends JFrame{
 
     public void setSearchMultiagencyMenuItemListener(ActionListener actionListener){
         searchMultiagencyMenu.addActionListener(actionListener);
+    }
+    public void setSearchClientMenuListener(MenuListener menuListener){
+        searchClientMenu.addMenuListener(menuListener);
+    }
+    public void setSearchPoliceMenu(MenuListener menuListener){
+        searchPoliceMenu.addMenuListener(menuListener);
     }
 
     public void setEditPersonalDataMyAccountMenuItemListener(ActionListener actionListener){

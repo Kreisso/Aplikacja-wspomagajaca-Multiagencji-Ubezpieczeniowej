@@ -3,8 +3,10 @@ package controller;
 import model.Contact;
 import model.Multiagency;
 import model.Server.Connectivity;
+import model.Server.Login;
 import model.Server.SearchMultiagency;
 import view.Frame;
+import view.loginpanel.LoginFrame;
 import view.multiagency.SearchMultiagencyFrame;
 
 import javax.swing.event.MenuEvent;
@@ -29,11 +31,19 @@ public class SearchMultiagencyController extends Controller{
         this.previousView = previousView;
         addClientMenuActions(view, ukk);
         setViewCity();
+        setLogoutMyAccount();
     }
 
+
     public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk, Connectivity con) {
-        this(model, view, previousView, ukk);
         this.con = con;
+        this.model = model;
+        this.view = view;
+        this.previousView = previousView;
+        setMyPoliciesMenuListener();
+        setViewCity();
+        setLogoutMyAccount();
+
     }
 
     private String getModelCity(){
@@ -146,4 +156,33 @@ public class SearchMultiagencyController extends Controller{
             view.addColumnToMultiagencyTable(multiagency.infoForTable(i));
         }
     }
+
+
+    private void setMyPoliciesMenuListener()
+    {
+        view.setMyPoliciesMenuListener(new MenuListener() {
+            public void menuSelected(MenuEvent e) {
+                previousView.setVisible(true);
+                view.dispose();
+            }
+
+            public void menuDeselected(MenuEvent e) {
+
+            }
+
+            public void menuCanceled(MenuEvent e) {
+
+            }
+        });
+    }
+
+    private void setLogoutMyAccount(){
+        view.setLogutMyAccountMenuItemListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new LoginController(new Login(), new LoginFrame("Logowanie"));
+                view.dispose();
+            }
+        });
+    }
+
 }

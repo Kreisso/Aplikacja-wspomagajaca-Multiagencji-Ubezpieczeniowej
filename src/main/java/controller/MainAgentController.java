@@ -2,17 +2,17 @@ package controller;
 
 import model.Offer;
 import model.Policy;
-import model.Server.*;
+import model.Server.AgentMain;
+import model.Server.ChangePassword;
+import model.Server.Connectivity;
+import model.Server.Login;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
 import view.loginpanel.LoginFrame;
-import view.mainviews.ClientMainFrame;
-import view.multiagency.SearchMultiagencyFrame;
+import view.mainviews.AgentMainFrame;
 import view.user.ChangePasswordFrame;
 
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -21,43 +21,35 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainClientController extends Controller{
-    private ClientMainFrame view;
-    private ClientMain model;
+public class MainAgentController {
+    private AgentMainFrame view;
+    private AgentMain model;
     private Connectivity con;
     private Frame previousView;
+    private int agent_id;
     private int ukk;
 
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
+    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agent_id, int ukk, Connectivity con) {
         this.view = view;
         this.model = model;
-        this.previousView = previousView;
-        this.ukk = ukk;
-        addClientMenuActions(view, ukk);
-        getPolices();
-
-        setBiggerTextCheckBox();
-    }
-
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
-        this(model, view, previousView, ukk);
         this.con = con;
-
-        setSearchMultiagencyMenuListener();
+        this.previousView = previousView;
+        this.agent_id = agent_id;
+        this.ukk = ukk;
+        getPolices();
         setChangePasswordMyAccount();
         setLogoutMyAccount();
     }
 
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
+    public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agent_id, int ukk) {
         this.view = view;
         this.model = model;
         this.previousView = previousView;
+        this.agent_id = agent_id;
         this.ukk = ukk;
         getPolices();
-        setSearchMultiagencyMenuListener();
         setChangePasswordMyAccount();
         setLogoutMyAccount();
-
     }
 
     private void setMessageSender(String messageSender) {
@@ -97,11 +89,11 @@ public class MainClientController extends Controller{
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String sql="select * from policy where ukk=?";
+        String sql="select * from policy where agent_id=? order by ending";
         try{
             con =  new Connectivity();
             preparedStatement = con.getConn().prepareStatement(sql);
-            preparedStatement.setString(1,String.valueOf(ukk));
+            preparedStatement.setString(1,String.valueOf(agent_id));
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next())
@@ -146,9 +138,6 @@ public class MainClientController extends Controller{
 
             while (resultSet.next())
             {
-                System.out.println("OFFFERRRRR");
-                System.out.println(resultSet.getString("type"));
-                System.out.println(Type.valueOf(resultSet.getString("type")));
                 offer.setType(Type.valueOf(resultSet.getString("type")));
                 offer.setDescription(resultSet.getString("description"));
                 offer.setName(resultSet.getString("name"));
@@ -175,46 +164,14 @@ public class MainClientController extends Controller{
         while(it.hasNext()){
             i++;
             Policy policy = (Policy) it.next();
-            view.addColumnToPolicyTable(policy.infoForTable(i));
+            view.addColumnToPolicyTable(policy.infoForTableAgent(i));
         }
-    }
-
-
-    private void setBiggerTextCheckBox(){
-        view.setBiggerTextCheckBoxListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                boolean isClicked = view.getBiggerTextCheckBoxStatus();
-                if(isClicked){
-                    view.setBiggerTextSize();
-                }
-                else{
-                    view.setNormalTextSize();
-                }
-
-    private void setSearchMultiagencyMenuListener()
-    {
-        view.setSearchMultiagencyMenuListener(new MenuListener() {
-            public void menuSelected(MenuEvent e) {
-                System.out.println("1");
-                new SearchMultiagencyController(new SearchMultiagency(),
-                        new SearchMultiagencyFrame("Wyszukaj multiagencje"),view, con);
-                view.setVisible(false);
-            }
-
-            public void menuDeselected(MenuEvent e) {
-                System.out.println("2");
-            }
-
-            public void menuCanceled(MenuEvent e) {
-                System.out.println("3");
-            }
-        });
     }
 
     private void setChangePasswordMyAccount(){
         view.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new ChangePasswordConroller(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, -1, ukk, con);
+                new ChangePasswordConroller(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, agent_id, ukk, con);
                 view.setVisible(false);
             }
         });
@@ -225,8 +182,12 @@ public class MainClientController extends Controller{
             public void actionPerformed(ActionEvent e) {
                 new LoginController(new Login(), new LoginFrame("Logowanie"));
                 view.dispose();
-
             }
         });
+    }
+
+    private void setSearchClientMenuListener()
+    {
+
     }
 }
