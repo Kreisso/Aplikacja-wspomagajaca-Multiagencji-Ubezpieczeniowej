@@ -2,6 +2,7 @@ package controller;
 
 import model.Offer;
 import model.Policy;
+import model.Server.ChangePassword;
 import model.Server.ClientMain;
 import model.Server.Connectivity;
 import model.Server.SearchMultiagency;
@@ -10,14 +11,16 @@ import model.enums.Type;
 import view.Frame;
 import view.mainviews.ClientMainFrame;
 import view.multiagency.SearchMultiagencyFrame;
+import view.user.ChangePasswordFrame;
 
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public class MainClientController {
@@ -35,6 +38,7 @@ public class MainClientController {
         this.ukk = ukk;
         getPolices();
         setSearchMultiagencyMenuListener();
+        setChangePasswordMyAccount();
     }
 
     public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
@@ -44,6 +48,7 @@ public class MainClientController {
         this.ukk = ukk;
         getPolices();
         setSearchMultiagencyMenuListener();
+        setChangePasswordMyAccount();
     }
 
     private void setMessageSender(String messageSender) {
@@ -177,12 +182,19 @@ public class MainClientController {
 
             public void menuDeselected(MenuEvent e) {
                 System.out.println("2");
-
             }
 
             public void menuCanceled(MenuEvent e) {
                 System.out.println("3");
+            }
+        });
+    }
 
+    private void setChangePasswordMyAccount(){
+        view.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new ChangePasswordConroller(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, -1, ukk, con);
+                view.setVisible(false);
             }
         });
     }

@@ -1,7 +1,5 @@
 package view.user;
 
-import view.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -18,6 +16,7 @@ public class ChangePasswordFrame extends view.Frame {
     JLabel labelNewPassword;
     JPasswordField inputNewPassword;
     JButton changePasswordButton;
+    private JLabel errorMessageLabel;
 
     public ChangePasswordFrame(String name) throws HeadlessException {
         super(name);
@@ -51,6 +50,12 @@ public class ChangePasswordFrame extends view.Frame {
         inputNewPassword.setSize(400, 40);
         inputNewPassword.setLocation(300, 240);
         this.add(inputNewPassword);
+
+        errorMessageLabel = new JLabel("");
+        errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
+        errorMessageLabel.setLocation(370, 300);
+        errorMessageLabel.setForeground(Color.red);
+        this.add(errorMessageLabel);
     }
 
     public void setChangeButton(ActionListener actionListener){
@@ -60,5 +65,18 @@ public class ChangePasswordFrame extends view.Frame {
         changePasswordButton.addActionListener(actionListener);
         this.getRootPane().setDefaultButton(changePasswordButton);
         this.add(changePasswordButton);
+    }
+
+    public char[] getInputOldPassword() {
+        return inputOldPassword.getPassword();
+    }
+
+    public char[] getInputNewPassword() {
+        return inputNewPassword.getPassword();
+    }
+
+    public void setErrorMessageLabel(String message){
+        errorMessageLabel.setText(message);
+        errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
     }
 }

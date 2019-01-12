@@ -148,7 +148,7 @@ public class LoginController {
 
                     System.out.println("Agent zalogowany o id: "+ id);
                     new MainAgentController(new AgentMain(), new AgentMainFrame("Panel Agenta"),
-                            view, id, con);
+                            view, id, ukk, con);
                 }
                 view.setVisible(false);
 
