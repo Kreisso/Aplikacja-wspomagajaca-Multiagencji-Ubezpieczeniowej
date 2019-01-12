@@ -16,17 +16,17 @@ public class SearchOfferFrame extends view.Frame {
     private int frameHeight = 600;
 
     private int currentOffsetRight = 20;
-    private int elementWidth = 88;
+    private int elementWidth = 117;
     private int offsetRight = 20;
 
     private int currentOffsetTop = 20;
-    private int elementHeight = 53;
-    private int textHeight = 66;
+    private int elementHeight = 70;
+    private int textHeight = 26;
     private int offsetTop = 60;
 
     private int howManyCompanyIsAdded = 0;
 
-    private JTextPane newText;
+    private JLabel newText;
     private JButton newButton;
     private JPanel newPanel;
 
@@ -49,7 +49,7 @@ public class SearchOfferFrame extends view.Frame {
         }
     }
 
-    public void addCompanyToView(final String companyName, String offerDescription, ActionListener buttonListener){
+    public void addCompanyToView(final String companyName, String name, String offerDescription, ActionListener buttonListener){
         newPanel = new JPanel() {
             private BufferedImage logoImage;
 
@@ -74,17 +74,12 @@ public class SearchOfferFrame extends view.Frame {
         newPanel.setLocation(currentOffsetRight, currentOffsetTop);
         this.add(newPanel);
 
-        newText = new JTextPane();
+        newText = new JLabel();
 //        newText.setBackground(this.getBackground());
-        newText.setText(offerDescription);
+        newText.setText(name);
         newText.setSize(elementWidth, textHeight);
-        //center text
-        StyledDocument doc = newText.getStyledDocument();
-        SimpleAttributeSet center = new SimpleAttributeSet();
-        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-        doc.setParagraphAttributes(0, doc.getLength(), center, false);
         newText.setLocation(currentOffsetRight,currentOffsetTop+elementHeight+10);
-        newText.setEditable(false);
+        newText.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(newText);
 
         newButton = new JButton("Zobacz");
@@ -93,7 +88,7 @@ public class SearchOfferFrame extends view.Frame {
         newButton.setLocation(currentOffsetRight+elementWidth/2-(newButton.getWidth()/2), currentOffsetTop+elementHeight+10+textHeight);
         this.add(newButton);
 
-        if(howManyCompanyIsAdded%9 != 8) {
+        if(howManyCompanyIsAdded%7 != 6) {
             currentOffsetRight += elementWidth + offsetRight;
         }
         else{

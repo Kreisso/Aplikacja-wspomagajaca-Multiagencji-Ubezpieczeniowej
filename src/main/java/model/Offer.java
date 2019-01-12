@@ -68,4 +68,12 @@ public class Offer {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    public String[] getOfferToDisplay(){
+        String[] toReturn = new String[3];
+        toReturn[0] = this.companyName;
+        toReturn[1] = this.name;
+        toReturn[2] = this.description;
+        return toReturn;
+    }
 }
