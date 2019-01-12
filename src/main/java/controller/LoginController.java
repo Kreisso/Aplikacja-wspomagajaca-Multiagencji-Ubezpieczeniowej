@@ -136,9 +136,9 @@ public class LoginController {
                   ukk = getIdFromDatabase(sql, "ukk");
                   System.out.println("Klient zalogowany o UKK: "+ukk);
                 if(ukk > 0) {
-
+                    view.dispose();
                     new MainClientController(new ClientMain(), new ClientMainFrame("Panel klienta"),
-                            view, ukk, con);
+                            view, ukk, -1, con);
                 }
                 else {
 
@@ -147,8 +147,9 @@ public class LoginController {
 
 
                     System.out.println("Agent zalogowany o id: "+ id);
-                    new MainAgentController(new AgentMain(), new AgentMainFrame("Panel Agenta"),
-                            view, id, ukk, con);
+                    view.dispose();
+                    new MainAgentController(new AgentMain(), new AgentMainFrame("Polisy klientów"),
+                            view, id, -1, con);
                 }
                 view.setVisible(false);
 

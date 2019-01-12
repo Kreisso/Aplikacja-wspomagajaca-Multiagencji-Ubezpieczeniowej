@@ -30,7 +30,12 @@ public class EditDataController extends Controller{
         this.agentId = agentId;
         this.ukk = ukk;
         this.previouesView = previouesView;
-        addClientMenuActions(view, ukk);
+        if(ukk>0) {
+            addClientMenuActions(view, ukk, agentId);
+        }
+        else{
+            addAgentMenuActions(view, ukk, agentId);
+        }
         setViewButtonSave();
     }
 
@@ -41,7 +46,12 @@ public class EditDataController extends Controller{
         this.agentId = agentId;
         this.ukk = ukk;
         this.previouesView = previouesView;
-        addClientMenuActions(view, ukk);
+        if(ukk>0) {
+            addClientMenuActions(view, ukk, agentId);
+        }
+        else{
+            addAgentMenuActions(view, ukk, agentId);
+        }
         setViewButtonSave();
     }
 

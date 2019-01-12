@@ -27,23 +27,23 @@ public class MainClientController extends Controller{
     private Connectivity con;
     private Frame previousView;
     private int ukk;
+    private int agentId;
 
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
+    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, int agentId) {
         this.view = view;
         this.model = model;
         this.previousView = previousView;
         this.ukk = ukk;
-        addClientMenuActions(view, ukk);
+        this.agentId = agentId;
+        addClientMenuActions(view, ukk, agentId);
         getPolices();
 
         setBiggerTextCheckBox();
     }
 
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
-        this(model, view, previousView, ukk);
+    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, int agentId, Connectivity con) {
+        this(model, view, previousView, ukk, agentId);
         this.con = con;
-
-
     }
 
 

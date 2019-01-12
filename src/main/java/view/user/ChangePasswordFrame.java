@@ -18,7 +18,7 @@ public class ChangePasswordFrame extends view.Frame {
     JButton changePasswordButton;
     private JLabel errorMessageLabel;
 
-    public ChangePasswordFrame(String name) throws HeadlessException {
+    public ChangePasswordFrame(String name, int ukk) throws HeadlessException {
         super(name);
 
         int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -29,7 +29,12 @@ public class ChangePasswordFrame extends view.Frame {
 
         this.setLayout(null);
 
-        createClientMenu();
+        if(ukk>0) {
+            createClientMenu();
+        }
+        else {
+            createAgentMenu();
+        }
 
         labelOldPassword = new JLabel("Obecne hasło:");
         labelOldPassword.setSize(labelOldPassword.getPreferredSize());

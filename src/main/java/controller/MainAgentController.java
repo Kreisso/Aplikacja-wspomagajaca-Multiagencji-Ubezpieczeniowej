@@ -34,7 +34,10 @@ public class MainAgentController extends Controller{
         this.previousView = previousView;
         this.agentId = agentId;
         this.ukk = ukk;
-        addClientMenuActions(view, ukk);
+        /*System.out.println(view);
+        System.out.println(ukk);
+        System.out.println(agentId);*/
+        addAgentMenuActions(view, ukk, agentId);
         getPolices();
     }
 
@@ -44,7 +47,7 @@ public class MainAgentController extends Controller{
         this.previousView = previousView;
         this.agentId = agentId;
         this.ukk = ukk;
-        addClientMenuActions(view, ukk);
+        addAgentMenuActions(view, ukk, agentId);
         getPolices();
 
     }

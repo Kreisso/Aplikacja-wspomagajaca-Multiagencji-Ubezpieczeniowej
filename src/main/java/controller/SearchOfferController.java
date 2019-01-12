@@ -3,6 +3,7 @@ package controller;
 import model.Multiagency;
 import model.Offer;
 import model.Server.Connectivity;
+import view.offer.SearchOfferFrame;
 import view.policy.SearchPolicyFrame;
 
 import java.sql.PreparedStatement;
@@ -14,20 +15,27 @@ import java.util.List;
 public class SearchOfferController extends Controller{
     Connectivity con;
     int ukk;
-    SearchPolicyFrame view;
+    int agentId;
+    SearchOfferFrame view;
 
     private List offerts;
 
-    public SearchOfferController(int ukk){
+    public SearchOfferController(int ukk, int agentId){
         this.ukk = ukk;
-        view = new SearchPolicyFrame("Wyszukaj ofertę");
-        offerts = new LinkedList<Offer>();
-        addClientMenuActions(view, ukk);
+        this.agentId = agentId;
+        view = new SearchOfferFrame("Wyszukaj ofertę", ukk);
+        //this.offerts = new LinkedList<Offer>();
+        if(ukk>0) {
+            addClientMenuActions(view, ukk, agentId);
+        }
+        else{
+            addAgentMenuActions(view, ukk, agentId);
+        }
         //getOfferts();
     }
 
-    public SearchOfferController(int ukk, Connectivity con){
-        this(ukk);
+    public SearchOfferController(int ukk, int agentId, Connectivity con){
+        this(ukk, agentId);
         this.con = con;
     }
 

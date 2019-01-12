@@ -26,7 +26,12 @@ public class ChangePasswordController extends Controller{
         this.previousView = previousView;
         this.ukk = ukk;
         this.agentId=agentId;
-        addClientMenuActions(view, ukk);
+        if(ukk>0) {
+            addClientMenuActions(view, ukk, agentId);
+        }
+        else{
+            addAgentMenuActions(view, ukk, agentId);
+        }
         setChangeButton();
     }
 
@@ -36,7 +41,12 @@ public class ChangePasswordController extends Controller{
         this.previousView = previousView;
         this.agentId = agentId;
         this.ukk = ukk;
-        addClientMenuActions(view, ukk);
+        if(ukk>0) {
+            addClientMenuActions(view, ukk, agentId);
+        }
+        else{
+            addAgentMenuActions(view, ukk, agentId);
+        }
         setChangeButton();
     }
 
