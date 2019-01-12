@@ -34,21 +34,9 @@ public class SearchClientController extends Controller {
         setSearchClientByUkkButton();
     }
 
-
     public SearchClientController(SearchClient model, SearchClientFrame view, Frame previousView, int agentId, int ukk, Connectivity con) {
+        this(model, view, previousView, ukk, agentId);
         this.con = con;
-        this.model = model;
-        this.view = view;
-        this.previousView = previousView;
-        this.agentId = agentId;
-        this.ukk = ukk;
-        if(ukk>0) {
-            addClientMenuActions(view, ukk, agentId);
-        }
-        else{
-            addAgentMenuActions(view, ukk, agentId);
-        }
-        setSearchClientByUkkButton();
     }
 
     String getViewInputSearchByUkk(){
@@ -79,11 +67,17 @@ public class SearchClientController extends Controller {
             preparedStatement = con.getConn().prepareStatement(sql);
             preparedStatement.setString(1, getInputSearchByUkk());
             resultSet = preparedStatement.executeQuery();
+            view.setErrorMessageLabel("Brak klienta o podanym ukk");
+            view.setFoundClientLabel("");
+            view.setMoreInfoButtonVisibility(false);
+            view.setSendMessageButtonVisible(false);
+
             while (resultSet.next())
             {
+                view.setErrorMessageLabel("");
                 view.setFoundClientLabel(resultSet.getString("first_name") + " " + resultSet.getString("last_name"));
-                view.setMoreInfoButtonVisible();
-                view.setSendMessageButtonVisible();
+                view.setMoreInfoButtonVisibility(true);
+                view.setSendMessageButtonVisible(true);
             }
         }
         catch(SQLException ex)
@@ -93,6 +87,5 @@ public class SearchClientController extends Controller {
         catch (Exception e){
             System.out.println(e);
         }
-
     }
 }
