@@ -5,9 +5,11 @@ import model.Policy;
 import model.Server.AgentMain;
 import model.Server.ChangePassword;
 import model.Server.Connectivity;
+import model.Server.Login;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
+import view.loginpanel.LoginFrame;
 import view.mainviews.AgentMainFrame;
 import view.user.ChangePasswordFrame;
 
@@ -36,6 +38,7 @@ public class MainAgentController {
         this.ukk = ukk;
         getPolices();
         setChangePasswordMyAccount();
+        setLogoutMyAccount();
     }
 
     public MainAgentController(AgentMain model, AgentMainFrame view, Frame previousView, int agent_id, int ukk) {
@@ -46,6 +49,7 @@ public class MainAgentController {
         this.ukk = ukk;
         getPolices();
         setChangePasswordMyAccount();
+        setLogoutMyAccount();
     }
 
     private void setMessageSender(String messageSender) {
@@ -169,6 +173,15 @@ public class MainAgentController {
             public void actionPerformed(ActionEvent e) {
                 new ChangePasswordConroller(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, agent_id, ukk, con);
                 view.setVisible(false);
+            }
+        });
+    }
+
+    private void setLogoutMyAccount(){
+        view.setLogutMyAccountMenuItemListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new LoginController(new Login(), new LoginFrame("Logowanie"));
+                view.dispose();
             }
         });
     }
