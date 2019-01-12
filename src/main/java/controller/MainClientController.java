@@ -21,20 +21,28 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainClientController {
+public class MainClientController extends Controller{
     private ClientMainFrame view;
     private ClientMain model;
     private Connectivity con;
     private Frame previousView;
     private int ukk;
 
-    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
+    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk) {
         this.view = view;
         this.model = model;
-        this.con = con;
         this.previousView = previousView;
         this.ukk = ukk;
+        addClientMenuActions(view, ukk);
         getPolices();
+
+        setBiggerTextCheckBox();
+    }
+
+    public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, Connectivity con) {
+        this(model, view, previousView, ukk);
+        this.con = con;
+
         setSearchMultiagencyMenuListener();
         setChangePasswordMyAccount();
         setLogoutMyAccount();
@@ -49,6 +57,7 @@ public class MainClientController {
         setSearchMultiagencyMenuListener();
         setChangePasswordMyAccount();
         setLogoutMyAccount();
+
     }
 
     private void setMessageSender(String messageSender) {
@@ -170,6 +179,18 @@ public class MainClientController {
         }
     }
 
+
+    private void setBiggerTextCheckBox(){
+        view.setBiggerTextCheckBoxListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                boolean isClicked = view.getBiggerTextCheckBoxStatus();
+                if(isClicked){
+                    view.setBiggerTextSize();
+                }
+                else{
+                    view.setNormalTextSize();
+                }
+
     private void setSearchMultiagencyMenuListener()
     {
         view.setSearchMultiagencyMenuListener(new MenuListener() {
@@ -204,6 +225,7 @@ public class MainClientController {
             public void actionPerformed(ActionEvent e) {
                 new LoginController(new Login(), new LoginFrame("Logowanie"));
                 view.dispose();
+
             }
         });
     }

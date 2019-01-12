@@ -19,29 +19,31 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-public class SearchMultiagencyController {
+public class SearchMultiagencyController extends Controller{
     private SearchMultiagency model;
     private SearchMultiagencyFrame view;
     private Connectivity con;
     private Frame previousView;
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, Connectivity con) {
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk) {
         this.model = model;
         this.view = view;
-        this.con = con;
         this.previousView = previousView;
-        setMyPoliciesMenuListener();
+        addClientMenuActions(view, ukk);
         setViewCity();
         setLogoutMyAccount();
     }
 
-    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView) {
+
+    public SearchMultiagencyController(SearchMultiagency model, SearchMultiagencyFrame view, Frame previousView, int ukk, Connectivity con) {
+        this.con = con;
         this.model = model;
         this.view = view;
         this.previousView = previousView;
         setMyPoliciesMenuListener();
         setViewCity();
         setLogoutMyAccount();
+
     }
 
     private String getModelCity(){
@@ -155,6 +157,7 @@ public class SearchMultiagencyController {
         }
     }
 
+
     private void setMyPoliciesMenuListener()
     {
         view.setMyPoliciesMenuListener(new MenuListener() {
@@ -181,4 +184,5 @@ public class SearchMultiagencyController {
             }
         });
     }
+
 }

@@ -10,6 +10,7 @@ public class Offer {
     private Type type;
     private double price;
     private String description;
+    private String companyName;
 
     public Offer() {
     }
@@ -58,5 +59,13 @@ public class Offer {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }
