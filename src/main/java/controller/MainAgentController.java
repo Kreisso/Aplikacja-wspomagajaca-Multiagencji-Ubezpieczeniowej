@@ -96,7 +96,7 @@ public class MainAgentController extends Controller{
             while (resultSet.next())
             {
                 Policy policy = new Policy();
-                policy.setAgentId(resultSet.getInt("agentId"));
+                policy.setAgentId(resultSet.getInt("agent_id"));
                 policy.setBeginning(resultSet.getDate("beginning"));
                 policy.setEnding(resultSet.getDate("ending"));
                 policy.setId(resultSet.getInt("id"));
@@ -163,37 +163,5 @@ public class MainAgentController extends Controller{
             Policy policy = (Policy) it.next();
             view.addColumnToPolicyTable(policy.infoForTableAgent(i));
         }
-    }
-
-    private void setEditPersonalDataMyAccount(){
-        view.setEditPersonalDataMyAccountMenuItemListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new EditDataController(new EditData(), new EditDataFrame("Edycja danych"), agentId, ukk, view, con);
-            }
-        });
-    }
-
-    private void setChangePasswordMyAccount(){
-        view.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new ChangePasswordController(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), view, agentId, ukk, con);
-                view.setVisible(false);
-            }
-        });
-    }
-
-    private void setLogoutMyAccount(){
-        view.setLogutMyAccountMenuItemListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new LoginController(new Login(), new LoginFrame("Logowanie"));
-                view.dispose();
-            }
-        });
-    }
-
-    private void setSearchClientMenuListener()
-    {
-
     }
 }
