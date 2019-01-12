@@ -82,12 +82,12 @@ public abstract class Frame extends JFrame{
         menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
 
-        myPoliciesMenu = new JMenu("Polisy klientów");
+        myPoliciesMenu = new JButton("Polisy klientów");
         myPoliciesMenu.setMnemonic(KeyEvent.VK_N);
         myPoliciesMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku polis");
         menuBar.add(myPoliciesMenu);
 
-        searchOfferMenu = new JMenu("Wyszukaj ofertę");
+        searchOfferMenu = new JButton("Wyszukaj ofertę");
         searchOfferMenu.setMnemonic(KeyEvent.VK_N);
         searchOfferMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania ofert");
         menuBar.add(searchOfferMenu);

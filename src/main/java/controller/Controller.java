@@ -1,8 +1,6 @@
 package controller;
 
-import model.Server.ClientMain;
-import model.Server.Login;
-import model.Server.SearchMultiagency;
+import model.Server.*;
 import view.Frame;
 import view.loginpanel.LoginFrame;
 import view.mainviews.ClientMainFrame;
@@ -10,6 +8,7 @@ import view.multiagency.SearchMultiagencyFrame;
 import view.offer.SearchOfferFrame;
 import view.user.AccountFrame;
 import view.user.ChangePasswordFrame;
+import view.user.EditDataFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,21 +35,24 @@ public class Controller {
             activeView.setSearchMultiagencyMenuItemListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     activeView.dispose();
-                    new SearchMultiagencyController(new SearchMultiagency(), new SearchMultiagencyFrame("Wyszukaj Multiagencję"), activeView, ukk);
+                    new SearchMultiagencyController(new SearchMultiagency(),
+                            new SearchMultiagencyFrame("Wyszukaj multiagencje"),activeView, ukk);
                 }
             });
         }
         if(!(activeView instanceof AccountFrame)) {
             activeView.setEditPersonalDataMyAccountMenuItemListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
-                    //TODO
+                    new EditDataController(new EditData(), new EditDataFrame("Edycja danych"), -1, ukk, activeView);
                 }
             });
         }
         if(!(activeView instanceof ChangePasswordFrame)) {
             activeView.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    //TODO
+                    activeView.dispose();
+                    new ChangePasswordController(new ChangePassword(), new ChangePasswordFrame("Zmiana hasła"), activeView, -1, ukk);
                 }
             });
         }
