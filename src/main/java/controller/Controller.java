@@ -9,6 +9,7 @@ import view.mainviews.ClientMainFrame;
 import view.multiagency.SearchMultiagencyFrame;
 import view.offer.SearchOfferFrame;
 import view.policy.SearchPolicyFrame;
+import view.user.AccountFrame;
 import view.user.ChangePasswordFrame;
 import view.user.EditDataFrame;
 
@@ -84,17 +85,6 @@ public class Controller {
                 }
             });
         }
-
-
-        if(!(activeView instanceof SearchPolicyFrame)){
-            activeView.setSearchPoliceMenu(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("test");
-                }
-            });
-        }
-
         if(!(activeView instanceof SearchClientFrame)){
             activeView.setSearchClientMenuListener(new ActionListener() {
                 @Override
@@ -104,7 +94,15 @@ public class Controller {
                 }
             });
         }
-
+        if(!(activeView instanceof SearchPolicyFrame)){
+            activeView.setSearchPoliceMenu(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    activeView.dispose();
+                    new SearchPolicyController(new SearchPolicy(), new SearchPolicyFrame("Wyszukaj polisę"), activeView, agentId, ukk);
+                }
+            });
+        }
         if(!(activeView instanceof ChangePasswordFrame)) {
             activeView.setChangePasswordMyAccountMenuItemListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -113,7 +111,6 @@ public class Controller {
                 }
             });
         }
-
         activeView.setLogutMyAccountMenuItemListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 activeView.dispose();
