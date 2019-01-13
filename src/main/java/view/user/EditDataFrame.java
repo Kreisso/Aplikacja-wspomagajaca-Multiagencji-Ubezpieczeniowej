@@ -302,4 +302,10 @@ public class EditDataFrame extends view.Frame{
                 "Błędne dane",
                 JOptionPane.ERROR_MESSAGE);
     }
+    public void setInfoLabel(String errorMessage){
+        JOptionPane.showMessageDialog(this,
+                errorMessage,
+                "AWMU",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
 }

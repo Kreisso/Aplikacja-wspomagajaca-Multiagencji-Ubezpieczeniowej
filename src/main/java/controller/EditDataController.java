@@ -311,6 +311,7 @@ public class EditDataController extends Controller{
                     e.printStackTrace();
                 }
             }
+            view.setInfoLabel("Pomyślnie zedytowano dane");
         }
         else{
             view.setErrorLabel(err);
