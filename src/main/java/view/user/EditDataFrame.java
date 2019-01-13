@@ -5,8 +5,65 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.LinkedList;
+import java.util.List;
 
 public class EditDataFrame extends view.Frame{
+    private JCheckBox checkBoxNazwisko;
+    private JCheckBox checkBoxMiasto;
+    private JCheckBox checkBoxStreet;
+
+    public JCheckBox getCheckBoxNazwisko() {
+        return checkBoxNazwisko;
+    }
+
+    public void setCheckBoxNazwisko(JCheckBox checkBoxNazwisko) {
+        this.checkBoxNazwisko = checkBoxNazwisko;
+    }
+
+    public JCheckBox getCheckBoxMiasto() {
+        return checkBoxMiasto;
+    }
+
+    public void setCheckBoxMiasto(JCheckBox checkBoxMiasto) {
+        this.checkBoxMiasto = checkBoxMiasto;
+    }
+
+    public JCheckBox getCheckBoxStreet() {
+        return checkBoxStreet;
+    }
+
+    public void setCheckBoxStreet(JCheckBox checkBoxStreet) {
+        this.checkBoxStreet = checkBoxStreet;
+    }
+
+    public JCheckBox getCheckBoxPostCode() {
+        return checkBoxPostCode;
+    }
+
+    public void setCheckBoxPostCode(JCheckBox checkBoxPostCode) {
+        this.checkBoxPostCode = checkBoxPostCode;
+    }
+
+    public JCheckBox getCheckBoxImie() {
+        return checkBoxImie;
+    }
+
+    public void setCheckBoxImie(JCheckBox checkBoxImie) {
+        this.checkBoxImie = checkBoxImie;
+    }
+
+    public JCheckBox getCheckBoxPhone() {
+        return checkBoxPhone;
+    }
+
+    public void setCheckBoxPhone(JCheckBox checkBoxPhone) {
+        this.checkBoxPhone = checkBoxPhone;
+    }
+
+    private JCheckBox checkBoxPostCode;
+    private JCheckBox checkBoxImie;
+    private JCheckBox checkBoxPhone;
     private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
     private int frameWidth = 1000;
@@ -22,7 +79,8 @@ public class EditDataFrame extends view.Frame{
     private JTextField inputStreetAndNo;
     private JTextField inputPostCode;
     private JTextField inputPhoneNo;
-    private JCheckBox isNameEdited;
+
+    List<JCheckBox> checkboxes;
 
     public String getInputName() {
         return inputName.getText();
@@ -48,7 +106,6 @@ public class EditDataFrame extends view.Frame{
         return inputPhoneNo.getText();
     }
 
-    public JCheckBox getIsNameEdited() {return isNameEdited; }
 
     public EditDataFrame(String name) throws HeadlessException {
         super(name);
@@ -67,11 +124,11 @@ public class EditDataFrame extends view.Frame{
         inputName.setEnabled(false);
         this.add(inputName);
 
-        isNameEdited = new JCheckBox("Imię:");
-        isNameEdited.setSize(isNameEdited.getPreferredSize());
-        isNameEdited.setLocation(30, firstLabelHeight);
 
-        isNameEdited.addItemListener(new ItemListener(){
+        checkBoxImie = new JCheckBox("Imię:");
+        checkBoxImie.setSize(checkBoxImie.getPreferredSize());
+        checkBoxImie.setLocation(30, firstLabelHeight);
+        checkBoxImie.addItemListener(new ItemListener(){
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     inputName.setEnabled(true);
@@ -85,12 +142,114 @@ public class EditDataFrame extends view.Frame{
                 repaint();
             }
         });
-        this.add(isNameEdited);
+        this.add(checkBoxImie);
 
-        JLabel labelSurname = new JLabel("Nazwisko:");
-        labelSurname.setSize(labelSurname.getPreferredSize());
-        labelSurname.setLocation(halfFieldWidth + 100, firstLabelHeight);
-        this.add(labelSurname);
+        checkBoxNazwisko = new JCheckBox("Nazwisko:");
+        checkBoxNazwisko.setSize(checkBoxNazwisko.getPreferredSize());
+        checkBoxNazwisko.setLocation(halfFieldWidth + 100, firstLabelHeight);
+        checkBoxNazwisko.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    inputSurname.setEnabled(true);
+                    inputSurname.setText("");
+                }
+                else if(e.getStateChange() == ItemEvent.DESELECTED){
+                    inputSurname.setEnabled(false);
+                    inputSurname.setText("");
+                }
+                validate();
+                repaint();
+            }
+        });
+        this.add(checkBoxNazwisko);
+
+        checkBoxMiasto = new JCheckBox("Miasto:");
+        checkBoxMiasto.setSize(checkBoxMiasto.getPreferredSize());
+        checkBoxMiasto.setLocation(30, firstLabelHeight+ spaceBetween);
+        checkBoxMiasto.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    inputCity.setEnabled(true);
+                    inputCity.setText("");
+                }
+                else if(e.getStateChange() == ItemEvent.DESELECTED){
+                    inputCity.setEnabled(false);
+                    inputCity.setText("");
+                }
+                validate();
+                repaint();
+            }
+        });
+        this.add(checkBoxMiasto);
+
+
+        checkBoxStreet = new JCheckBox("Ulica i numer budynku:");
+        checkBoxStreet.setSize(checkBoxStreet.getPreferredSize());
+        checkBoxStreet.setLocation(halfFieldWidth + 100, firstLabelHeight+spaceBetween);
+        checkBoxStreet.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    inputStreetAndNo.setEnabled(true);
+                    inputStreetAndNo.setText("");
+                }
+                else if(e.getStateChange() == ItemEvent.DESELECTED){
+                    inputStreetAndNo.setEnabled(false);
+                    inputStreetAndNo.setText("");
+                }
+                validate();
+                repaint();
+            }
+        });
+        this.add(checkBoxStreet);
+
+        checkBoxPostCode = new JCheckBox("Kod pocztowy:");
+        checkBoxPostCode.setSize(checkBoxPostCode.getPreferredSize());
+        checkBoxPostCode.setLocation(30, firstLabelHeight+(2*spaceBetween));
+        checkBoxPostCode.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    inputPostCode.setEnabled(true);
+                    inputPostCode.setText("");
+                }
+                else if(e.getStateChange() == ItemEvent.DESELECTED){
+                    inputPostCode.setEnabled(false);
+                    inputPostCode.setText("");
+                }
+                validate();
+                repaint();
+            }
+        });
+        this.add(checkBoxPostCode);
+
+        checkBoxPhone = new JCheckBox("Numer telefonu:");
+        checkBoxPhone.setSize(checkBoxPhone.getPreferredSize());
+        checkBoxPhone.setLocation(halfFieldWidth + 100, firstLabelHeight+(2*spaceBetween));
+        checkBoxPhone.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    inputPhoneNo.setEnabled(true);
+                    inputPhoneNo.setText("");
+                }
+                else if(e.getStateChange() == ItemEvent.DESELECTED){
+                    inputPhoneNo.setEnabled(false);
+                    inputPhoneNo.setText("");
+                }
+                validate();
+                repaint();
+            }
+        });
+        this.add(checkBoxPhone);
+
+
+
+
+        checkboxes = new LinkedList();
+        checkboxes.add(checkBoxImie);
+        checkboxes.add(checkBoxNazwisko);
+        checkboxes.add(checkBoxMiasto);
+        checkboxes.add(checkBoxStreet);
+        checkboxes.add(checkBoxPostCode);
+        checkboxes.add(checkBoxPhone);
 
         inputSurname = new JTextField();
         inputSurname.setSize(halfFieldWidth, 40);
@@ -98,10 +257,6 @@ public class EditDataFrame extends view.Frame{
         inputSurname.setEnabled(false);
         this.add(inputSurname);
 
-        JLabel labelCity = new JLabel("Miasto:");
-        labelCity.setSize(labelCity.getPreferredSize());
-        labelCity.setLocation(50, firstLabelHeight+spaceBetween);
-        this.add(labelCity);
 
         inputCity = new JTextField();
         inputCity.setSize(halfFieldWidth, 40);
@@ -109,10 +264,6 @@ public class EditDataFrame extends view.Frame{
         inputCity.setEnabled(false);
         this.add(inputCity);
 
-        JLabel labelStreetAndNo = new JLabel("Ulica i numer budynku:");
-        labelStreetAndNo.setSize(labelStreetAndNo.getPreferredSize());
-        labelStreetAndNo.setLocation(halfFieldWidth + 100, firstLabelHeight+spaceBetween);
-        this.add(labelStreetAndNo);
 
         inputStreetAndNo = new JTextField();
         inputStreetAndNo.setSize(halfFieldWidth, 40);
@@ -120,10 +271,6 @@ public class EditDataFrame extends view.Frame{
         inputStreetAndNo.setEnabled(false);
         this.add(inputStreetAndNo);
 
-        JLabel labelPostCode = new JLabel("Kod pocztowy:");
-        labelPostCode.setSize(labelPostCode.getPreferredSize());
-        labelPostCode.setLocation(50, firstLabelHeight+(2*spaceBetween));
-        this.add(labelPostCode);
 
         inputPostCode = new JTextField();
         inputPostCode.setSize(halfFieldWidth, 40);
@@ -131,10 +278,6 @@ public class EditDataFrame extends view.Frame{
         inputPostCode.setEnabled(false);
         this.add(inputPostCode);
 
-        JLabel labelPhoneNo = new JLabel("Numer telefonu:");
-        labelPhoneNo.setSize(labelPhoneNo.getPreferredSize());
-        labelPhoneNo.setLocation(halfFieldWidth + 100, firstLabelHeight+(2*spaceBetween));
-        this.add(labelPhoneNo);
 
         inputPhoneNo = new JTextField();
         inputPhoneNo.setSize(halfFieldWidth, 40);
@@ -142,11 +285,6 @@ public class EditDataFrame extends view.Frame{
         inputPhoneNo.setEnabled(false);
         this.add(inputPhoneNo);
 
-        saveButton = new JButton("Zapisz");
-        saveButton.setSize(200,50);
-        saveButton.setLocation(frameWidth - 250,firstFieldHeight+(3*spaceBetween));
-        this.getRootPane().setDefaultButton(saveButton);
-        this.add(saveButton);
     }
 
     public void setSaveButton(ActionListener actionListener){
@@ -158,18 +296,10 @@ public class EditDataFrame extends view.Frame{
         this.add(saveButton);
     }
 
-    public void setIsNameEditedButton(ItemListener itemListener){
-        isNameEdited = new JCheckBox("Imię:");
-        isNameEdited.setSize(isNameEdited.getPreferredSize());
-        isNameEdited.setLocation(30, firstLabelHeight);
-        isNameEdited.addItemListener(itemListener);
-        this.add(isNameEdited);
-    }
-
-    public void setErrorLabel(String errorMessage) {
+    public void setErrorLabel(String errorMessage){
         JOptionPane.showMessageDialog(this,
                 errorMessage,
                 "Błędne dane",
-                JOptionPane.WARNING_MESSAGE);
+                JOptionPane.ERROR_MESSAGE);
     }
 }
