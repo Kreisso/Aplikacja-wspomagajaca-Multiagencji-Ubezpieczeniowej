@@ -54,6 +54,7 @@ public class SearchOfferController extends Controller{
             while (resultSet.next())
             {
                 Offer offer = new Offer();
+                offer.setId(resultSet.getInt("id"));
                 offer.setName(resultSet.getString("name"));
                 String stringType = resultSet.getString("type");
                 Type type;
