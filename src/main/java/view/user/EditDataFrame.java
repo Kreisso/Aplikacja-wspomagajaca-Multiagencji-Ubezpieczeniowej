@@ -1,5 +1,7 @@
 package view.user;
 
+import view.mainviews.ClientMainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -285,10 +287,34 @@ public class EditDataFrame extends view.Frame{
         inputPhoneNo.setEnabled(false);
         this.add(inputPhoneNo);
 
+        saveButton = new JButton("Zapisz");
+
+        if(ClientMainFrame.bigText){
+            setBiggerMenuSize();
+            inputName.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            inputSurname.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            inputCity.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            inputStreetAndNo.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            inputPostCode.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            inputPhoneNo.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            checkBoxNazwisko.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            checkBoxNazwisko.setSize(checkBoxNazwisko.getPreferredSize());
+            checkBoxMiasto.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            checkBoxMiasto.setSize(checkBoxMiasto.getPreferredSize());
+            checkBoxStreet.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            checkBoxStreet.setSize(checkBoxStreet.getPreferredSize());
+            checkBoxPostCode.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            checkBoxPostCode.setSize(checkBoxPostCode.getPreferredSize());
+            checkBoxImie.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            checkBoxImie.setSize(checkBoxImie.getPreferredSize());
+            checkBoxPhone.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            checkBoxPhone.setSize(checkBoxPhone.getPreferredSize());
+            saveButton.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        }
+
     }
 
     public void setSaveButton(ActionListener actionListener){
-        saveButton = new JButton("Zapisz");
         saveButton.setSize(200,50);
         saveButton.setLocation(frameWidth - 250,firstFieldHeight+(3*spaceBetween));
         saveButton.addActionListener(actionListener);
