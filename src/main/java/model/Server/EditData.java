@@ -4,7 +4,7 @@ public class EditData {
     private String name;
     private String surname;
     private String city;
-    private String streatAndNumber;
+    private String streetAndNumber;
     private String postCode;
     private String phone;
     private String errorMessage;
@@ -34,11 +34,11 @@ public class EditData {
     }
 
     public String getStreetAndNumber() {
-        return streatAndNumber;
+        return streetAndNumber;
     }
 
-    public void setStreetAndNumber(String streatAndNumber) {
-        this.streatAndNumber = streatAndNumber;
+    public void setStreetAndNumber(String streetAndNumber) {
+        this.streetAndNumber = streetAndNumber;
     }
 
     public String getPostCode() {
