@@ -94,7 +94,7 @@ public class LoginFrame extends view.Frame{
         buttonGoToTutorial.setBorder(null);
         buttonGoToTutorial.setSize(buttonGoToTutorial.getPreferredSize());
         buttonGoToTutorial.setLocation((frameWidth-100)/2,400);
-        buttonGoToSignUp.setForeground(Color.blue);
+        buttonGoToTutorial.setForeground(Color.blue);
         this.add(buttonGoToTutorial);
 
         errorMessageLabel = new JLabel("");

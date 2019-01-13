@@ -6,8 +6,11 @@ import view.loginpanel.RegisterFrame;
 import view.mainviews.AgentMainFrame;
 import view.mainviews.ClientMainFrame;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -91,8 +94,9 @@ public class LoginController {
         view.setButtonGoToTutorial(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                view.setVisible(false);
-                view.setErrorMessageLabel("");
+
+                playVideo();
+
             }
         });
     }
@@ -200,6 +204,33 @@ public class LoginController {
         finally {
             return result;
         }
+    }
+
+    private void playVideo()
+    {
+
+        System.out.println("video");
+        String filename = "/assets/video/Szkolenie_dla_Klienta.mov";
+        String workingDirectory = System.getProperty("user.dir");
+        //text file, should be opening in default text editor
+        File file = new File(workingDirectory+filename);
+
+        //first check if Desktop is supported by Platform or not
+        if(!Desktop.isDesktopSupported()){
+            System.out.println("Desktop is not supported");
+            return;
+        }
+
+        Desktop desktop = Desktop.getDesktop();
+        if(file.exists()) {
+            try {
+                desktop.open(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
 
