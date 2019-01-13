@@ -6,6 +6,7 @@ import model.enums.Type;
  * Created by kreisso on 02.11.2018.
  */
 public class Offer {
+    private int id;
     private String name;
     private Type type;
     private double price;
@@ -27,6 +28,14 @@ public class Offer {
         this.type = type;
         this.price = price;
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

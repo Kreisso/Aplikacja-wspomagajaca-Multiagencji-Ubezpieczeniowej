@@ -109,7 +109,7 @@ public abstract class Frame extends JFrame{
         searchClientMenu.getAccessibleContext().setAccessibleDescription("Przejdź do widoku wyszukiwania klienta");
         menuBar.add(searchClientMenu);
 
-        searchPoliceMenu = new JButton("Wyszukaj Polise");
+        searchPoliceMenu = new JButton("Wyszukaj polisę");
         searchPoliceMenu.setMnemonic(KeyEvent.VK_N);
         searchPoliceMenu.setOpaque(true);
         searchPoliceMenu.setContentAreaFilled(false);
