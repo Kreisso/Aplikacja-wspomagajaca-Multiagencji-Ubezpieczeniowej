@@ -208,8 +208,10 @@ public class MainClientController extends Controller{
                 boolean isClicked = view.getBiggerTextCheckBoxStatus();
                 if (isClicked) {
                     view.setBiggerTextSize();
+                    ClientMainFrame.bigText = true;
                 } else {
                     view.setNormalTextSize();
+                    ClientMainFrame.bigText = false;
                 }
             }
         });

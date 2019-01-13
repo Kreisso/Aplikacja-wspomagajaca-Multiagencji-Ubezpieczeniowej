@@ -54,6 +54,7 @@ public class SearchOfferController extends Controller{
             while (resultSet.next())
             {
                 Offer offer = new Offer();
+                offer.setId(resultSet.getInt("id"));
                 offer.setName(resultSet.getString("name"));
                 String stringType = resultSet.getString("type");
                 Type type;
@@ -74,12 +75,15 @@ public class SearchOfferController extends Controller{
         catch(SQLException ex)
         {
             System.out.println(ex);
+            con.close();
         }
         catch (Exception e){
             System.out.println(e);
+            con.close();
         }
         finally {
             this.addCompanyToView();
+            con.close();
         }
     }
 

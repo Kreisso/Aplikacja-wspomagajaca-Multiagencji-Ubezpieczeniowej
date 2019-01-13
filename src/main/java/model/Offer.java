@@ -2,9 +2,6 @@ package model;
 
 import model.enums.Type;
 
-/**
- * Created by kreisso on 02.11.2018.
- */
 public class Offer {
     private int id;
     private String name;
@@ -28,14 +25,6 @@ public class Offer {
         this.type = type;
         this.price = price;
         this.description = description;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -76,6 +65,14 @@ public class Offer {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String[] getOfferToDisplay(){
