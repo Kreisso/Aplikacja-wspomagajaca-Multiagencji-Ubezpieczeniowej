@@ -50,20 +50,20 @@ public class ChangePasswordController extends Controller{
         setChangeButton();
     }
 
-    public String getOldPassword() {
-        return model.getOldPassword();
-    }
-
-    public void setOldPassword(String oldPassword) {
-        model.setOldPassword(oldPassword);
-    }
-
     public String getNewPassword() {
         return model.getNewPassword();
     }
 
     public void setNewPassword(String newPassword) {
         model.setNewPassword(newPassword);
+    }
+
+    public String getRepeatNewPassword() {
+        return model.getRepeatNewPassword();
+    }
+
+    public void setRepeatNewPassword(String repeatNewPassword) {
+        model.setRepeatNewPassword(repeatNewPassword);
     }
 
     void setChangeButton(){
@@ -76,8 +76,8 @@ public class ChangePasswordController extends Controller{
     private void changePassword(int ukk){
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        setOldPassword(String.valueOf(view.getInputOldPassword()));
         setNewPassword(String.valueOf(view.getInputNewPassword()));
+        setRepeatNewPassword(String.valueOf(view.getInputRepeatNewPassword()));
         String userType=null;
         String userId=null;
         if(ukk > 0) {
@@ -88,58 +88,32 @@ public class ChangePasswordController extends Controller{
             userType = "agent";
             userId = "id";
         }
-        String sql="select * from user join " + userType + " on " + userType + ".login=user.login where " + userType + "." + userId + "=?";
-        try{
-            con =  new Connectivity();
-            preparedStatement = con.getConn().prepareStatement(sql);
-            if(ukk>0){
-                preparedStatement.setString(1,String.valueOf(ukk));
-            }
-            else{
-                preparedStatement.setString(1,String.valueOf(agentId));
-            }
-            resultSet = preparedStatement.executeQuery();
-        }
-        catch(SQLException ex)
-        {
-            System.out.println(ex);
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
-        try {
-            while (resultSet.next()) {
 
-                if (getOldPassword().equals(resultSet.getString("password")) && !getNewPassword().isEmpty()) {
-                    sql = "UPDATE user join " + userType + " on " + userType + ".login=user.login set user.password=? where " + userType + "." + userId + "=?";
-
-                    try {
-                        con = new Connectivity();
-                        preparedStatement = con.getConn().prepareStatement(sql);
-                        preparedStatement.setString(1, getNewPassword());
-                        if(ukk>0){
-                            preparedStatement.setString(2,String.valueOf(ukk));
-                        }
-                        else{
-                            preparedStatement.setString(2,String.valueOf(agentId));
-                        }
-                        preparedStatement.executeUpdate();
-
-                    } catch (SQLException ex) {
-                        System.out.println(ex);
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    }
-
-                    view.dispose();
-                    previousView.setVisible(true);
+        if (getNewPassword().equals(getRepeatNewPassword()) && !getNewPassword().isEmpty()) {
+            String sql = "UPDATE user join " + userType + " on " + userType + ".login=user.login set user.password=? where " + userType + "." + userId + "=?";
+            try {
+                con = new Connectivity();
+                preparedStatement = con.getConn().prepareStatement(sql);
+                preparedStatement.setString(1, getRepeatNewPassword());
+                if(ukk>0){
+                    preparedStatement.setString(2,String.valueOf(ukk));
                 }
                 else{
-                    view.setErrorMessageLabel("Błędne obecne hasło lub brak nowego hasła");
+                    preparedStatement.setString(2,String.valueOf(agentId));
                 }
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            } catch (Exception e) {
+                System.out.println(e);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+            view.dispose();
+            previousView.setVisible(true);
+        }
+        else{
+            view.setErrorMessageLabel("Niepoprawne hasła");
         }
     }
 }
