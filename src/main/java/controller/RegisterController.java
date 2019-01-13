@@ -228,14 +228,14 @@ public class RegisterController {
         }
         //City
         String city = String.valueOf(view.getInputCity());
-        pattern = Pattern.compile("[a-zA-Z]+");
+        pattern = Pattern.compile("^[a-pr-uwy-zA-PR-UWY-qZąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+(?:[\\s-][a-zA-Z]+)*$");
         matcher = pattern.matcher(city);
         if (!matcher.matches()) {
             err += "Nie wpisano miasta lub wpisano niepoprawne - miasto może składać się tylko z liter alfabetu\n";
         }
         //street
         String street = String.valueOf(view.getInputStreetAndNo());
-        pattern = Pattern.compile("[a-zA-Z]+ [a-zA-Z0-9/]+");
+        pattern = Pattern.compile("^[a-pr-uwy-zA-PR-UWY-qZąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+ [a-zA-Z0-9/]+");
         matcher = pattern.matcher(street);
         if (!matcher.matches()) {
             err += "Nie wpisano ulicy i numeru lub wpisano niepoprawne - miasto może składać się tylko z liter alfabetu, a po spacji musi znaleźć się numer budynku\n";
