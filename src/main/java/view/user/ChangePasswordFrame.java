@@ -11,10 +11,10 @@ public class ChangePasswordFrame extends view.Frame {
     private int frameWidth = 1000;
     private int frameHeight = 600;
     double changePasswordButtonWidth = frameWidth * 0.25;
-    JLabel labelOldPassword;
-    JPasswordField inputOldPassword;
     JLabel labelNewPassword;
     JPasswordField inputNewPassword;
+    JLabel labelRepeatNewPassword;
+    JPasswordField inputRepeatNewPassword;
     JButton changePasswordButton;
     private JLabel errorMessageLabel;
 
@@ -36,29 +36,29 @@ public class ChangePasswordFrame extends view.Frame {
             createAgentMenu();
         }
 
-        labelOldPassword = new JLabel("Obecne hasło:");
-        labelOldPassword.setSize(labelOldPassword.getPreferredSize());
-        labelOldPassword.setLocation(300, 130);
-        this.add(labelOldPassword);
-
-        inputOldPassword = new JPasswordField();
-        inputOldPassword.setSize(400, 40);
-        inputOldPassword.setLocation(300, 150);
-        this.add(inputOldPassword);
-
         labelNewPassword = new JLabel("Nowe hasło:");
         labelNewPassword.setSize(labelNewPassword.getPreferredSize());
-        labelNewPassword.setLocation(300, 220);
+        labelNewPassword.setLocation(300, 130);
         this.add(labelNewPassword);
 
         inputNewPassword = new JPasswordField();
         inputNewPassword.setSize(400, 40);
-        inputNewPassword.setLocation(300, 240);
+        inputNewPassword.setLocation(300, 150);
         this.add(inputNewPassword);
+
+        labelRepeatNewPassword = new JLabel("Powtórz nowe hasło:");
+        labelRepeatNewPassword.setSize(labelRepeatNewPassword.getPreferredSize());
+        labelRepeatNewPassword.setLocation(300, 220);
+        this.add(labelRepeatNewPassword);
+
+        inputRepeatNewPassword = new JPasswordField();
+        inputRepeatNewPassword.setSize(400, 40);
+        inputRepeatNewPassword.setLocation(300, 240);
+        this.add(inputRepeatNewPassword);
 
         errorMessageLabel = new JLabel("");
         errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
-        errorMessageLabel.setLocation(370, 300);
+        errorMessageLabel.setLocation(450, 300);
         errorMessageLabel.setForeground(Color.red);
         this.add(errorMessageLabel);
     }
@@ -72,12 +72,12 @@ public class ChangePasswordFrame extends view.Frame {
         this.add(changePasswordButton);
     }
 
-    public char[] getInputOldPassword() {
-        return inputOldPassword.getPassword();
-    }
-
     public char[] getInputNewPassword() {
         return inputNewPassword.getPassword();
+    }
+
+    public char[] getInputRepeatNewPassword() {
+        return inputRepeatNewPassword.getPassword();
     }
 
     public void setErrorMessageLabel(String message){

@@ -1,16 +1,8 @@
 package model.Server;
 
 public class ChangePassword {
-    String oldPassword;
     String newPassword;
-
-    public String getOldPassword() {
-        return oldPassword;
-    }
-
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
-    }
+    String repeatNewPassword;
 
     public String getNewPassword() {
         return newPassword;
@@ -18,5 +10,13 @@ public class ChangePassword {
 
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
+    }
+
+    public String getRepeatNewPassword() {
+        return repeatNewPassword;
+    }
+
+    public void setRepeatNewPassword(String repeatNewPassword) {
+        this.repeatNewPassword = repeatNewPassword;
     }
 }
