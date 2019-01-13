@@ -7,19 +7,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-/**
- * Created by kreisso on 02.11.2018.
- */
 public class AgentMainFrame extends view.Frame {
     private int frameWidth = 1000;
     private int frameHeight = 600;
 
     private JTable policyTable;
     private JScrollPane scrollPane;
-    private JLabel messageSenderLabel;
-    private JTextPane messageTextPane;
-    private JButton clearButton;
-    private JCheckBox biggerTextCheckBox;
 
     private DefaultTableModel model;
 
@@ -52,36 +45,11 @@ public class AgentMainFrame extends view.Frame {
         scrollPane.setLocation(10, 10);
         scrollPane.setSize(frameWidth-20, frameHeight-100);
         this.add(scrollPane);
-
-
-        biggerTextCheckBox = new JCheckBox("Powiększony tekst");
-        biggerTextCheckBox.setSize(biggerTextCheckBox.getPreferredSize());
-        biggerTextCheckBox.setLocation(10,scrollPane.getHeight()+20);
-        this.add(biggerTextCheckBox);
-    }
-
-
-    public void setClearButtonListener(ActionListener actionListener){
-        clearButton.addActionListener(actionListener);
-    }
-
-    public void setBiggerTextCheckBoxListener(ActionListener actionListener){
-        biggerTextCheckBox.addActionListener(actionListener);
-    }
-
-    public boolean getBiggerTextCheckBoxStatus(){
-        return biggerTextCheckBox.isSelected();
     }
 
     public void addColumnToPolicyTable(Object[] policyInfo) {
 
         model.addRow(policyInfo);
-    }
-
-
-
-    public void setMessageTextPane(String message){
-        messageTextPane.setText(message);
     }
 
 }

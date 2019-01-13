@@ -159,13 +159,13 @@ public abstract class Frame extends JFrame{
     }
 
     public void setBiggerMenuSize(){
-        myPoliciesMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-        searchOfferMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-        searchMultiagencyMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-        myAccountMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-        editPersonalDataMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-        changePasswordMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-        logutMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        myPoliciesMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        searchOfferMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        searchMultiagencyMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        myAccountMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        editPersonalDataMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        changePasswordMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        logutMyAccountMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
     }
 
     public void setNormalMenuSize(){

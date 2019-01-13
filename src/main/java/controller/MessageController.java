@@ -28,7 +28,6 @@ public class MessageController extends Thread {
         while (true)
         {
             try {
-                System.out.println("sprawdzam nową wiadomość");
                 view.setMessageTextPane(getMessage());
                 TimeUnit.SECONDS.sleep(3);
 

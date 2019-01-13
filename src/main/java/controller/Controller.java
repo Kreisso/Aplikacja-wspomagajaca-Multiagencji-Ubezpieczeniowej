@@ -63,6 +63,7 @@ public class Controller {
         activeView.setLogutMyAccountMenuItemListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 activeView.dispose();
+                ClientMainFrame.bigText = false;
                 new LoginController(new Login(), new LoginFrame("Logowanie"));
             }
         });
