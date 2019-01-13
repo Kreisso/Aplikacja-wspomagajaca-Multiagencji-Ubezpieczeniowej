@@ -1,5 +1,7 @@
 package view.offer;
 
+import view.mainviews.ClientMainFrame;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -30,8 +32,12 @@ public class SearchOfferFrame extends view.Frame {
     private JButton newButton;
     private JPanel newPanel;
 
+    private int ukk;
+
     public SearchOfferFrame(String name, int ukk) throws HeadlessException {
         super(name);
+
+        this.ukk = ukk;
 
         int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -87,6 +93,16 @@ public class SearchOfferFrame extends view.Frame {
         newButton.setSize(newButton.getPreferredSize());
         newButton.setLocation(currentOffsetRight+elementWidth/2-(newButton.getWidth()/2), currentOffsetTop+elementHeight+10+textHeight);
         this.add(newButton);
+
+        if(ClientMainFrame.bigText && ukk>0){
+            setBiggerMenuSize();
+            newText.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            newText.setLocation(currentOffsetRight,currentOffsetTop+elementHeight+10);
+
+            newButton.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            newButton.setSize(newButton.getPreferredSize());
+            newButton.setLocation(currentOffsetRight+elementWidth/2-(newButton.getWidth()/2), currentOffsetTop+elementHeight+10+textHeight);
+        }
 
         if(howManyCompanyIsAdded%7 != 6) {
             currentOffsetRight += elementWidth + offsetRight;

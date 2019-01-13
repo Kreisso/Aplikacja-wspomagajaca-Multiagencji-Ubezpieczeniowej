@@ -1,5 +1,7 @@
 package view.multiagency;
 
+import view.mainviews.ClientMainFrame;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -61,6 +63,18 @@ public class SearchMultiagencyFrame extends view.Frame {
         scrollPane.setSize((int) (frameWidth * 0.7), (int) (frameHeight * 0.7));
         scrollPane.setLocation((int) (frameWidth * 0.05), (int) (frameHeight * 0.15));
         this.add(scrollPane);
+
+        if(ClientMainFrame.bigText){
+            setBiggerMenuSize();
+
+            searchByCityLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            searchByCityLabel.setSize(searchByCityLabel.getPreferredSize());
+
+            inputSearchByCity.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            searchButton.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+
+            multiagencyTable.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        }
 
 
 //        MultiagenciesPanel multiagenciesPanel = new MultiagenciesPanel();

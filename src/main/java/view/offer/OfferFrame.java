@@ -2,6 +2,7 @@ package view.offer;
 
 import model.Offer;
 import view.*;
+import view.mainviews.ClientMainFrame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -111,6 +112,11 @@ public class OfferFrame extends view.Frame {
 
             buttonAccept = new JButton("ok");
             this.add(buttonAccept);
+        }
+
+        if(ClientMainFrame.bigText){
+            setBiggerMenuSize();
+            textPaneDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
         }
     }
 

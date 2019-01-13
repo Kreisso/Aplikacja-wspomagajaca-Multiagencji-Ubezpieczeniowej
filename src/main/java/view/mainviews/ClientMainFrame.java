@@ -19,6 +19,8 @@ public class ClientMainFrame extends view.Frame{
 
     private DefaultTableModel model;
 
+    static public boolean bigText = false;
+
     public ClientMainFrame(String name) throws HeadlessException {
         super(name);
 
@@ -75,6 +77,11 @@ public class ClientMainFrame extends view.Frame{
         biggerTextCheckBox.setSize(biggerTextCheckBox.getPreferredSize());
         biggerTextCheckBox.setLocation(10,scrollPane.getHeight()+20);
         this.add(biggerTextCheckBox);
+
+        if(bigText){
+            setBiggerTextSize();
+            biggerTextCheckBox.setSelected(true);
+        }
     }
 
     public void setClearButtonListener(ActionListener actionListener){
@@ -106,19 +113,19 @@ public class ClientMainFrame extends view.Frame{
 
     public void setBiggerTextSize(){
         setBiggerMenuSize();
-        policyTable.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        policyTable.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 
-        messageSenderLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        messageSenderLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
         messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
         messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
 
-        messageTextPane.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        messageTextPane.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 
-        clearButton.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        clearButton.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
         clearButton.setSize(clearButton.getPreferredSize());
         clearButton.setLocation((messagePanel.getWidth()/2)-(clearButton.getWidth()/2), messagePanel.getHeight()-clearButton.getHeight());
 
-        biggerTextCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+        biggerTextCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
         biggerTextCheckBox.setSize(biggerTextCheckBox.getPreferredSize());
     }
 

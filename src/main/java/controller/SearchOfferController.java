@@ -75,12 +75,15 @@ public class SearchOfferController extends Controller{
         catch(SQLException ex)
         {
             System.out.println(ex);
+            con.close();
         }
         catch (Exception e){
             System.out.println(e);
+            con.close();
         }
         finally {
             this.addCompanyToView();
+            con.close();
         }
     }
 

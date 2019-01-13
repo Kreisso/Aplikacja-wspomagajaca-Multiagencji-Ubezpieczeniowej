@@ -1,5 +1,7 @@
 package view.user;
 
+import view.mainviews.ClientMainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -61,10 +63,22 @@ public class ChangePasswordFrame extends view.Frame {
         errorMessageLabel.setLocation(450, 300);
         errorMessageLabel.setForeground(Color.red);
         this.add(errorMessageLabel);
+
+        changePasswordButton = new JButton("Zmień");
+
+        if(ClientMainFrame.bigText && ukk>0){
+            setBiggerMenuSize();
+            labelNewPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            labelNewPassword.setSize(labelNewPassword.getPreferredSize());
+
+            labelRepeatNewPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+            labelRepeatNewPassword.setSize(labelRepeatNewPassword.getPreferredSize());
+
+            changePasswordButton.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        }
     }
 
     public void setChangeButton(ActionListener actionListener){
-        changePasswordButton = new JButton("Zmień");
         changePasswordButton.setSize((int) changePasswordButtonWidth, 40);
         changePasswordButton.setLocation((int) ((frameWidth - changePasswordButtonWidth)/2),  (int) (frameHeight*0.6));
         changePasswordButton.addActionListener(actionListener);
