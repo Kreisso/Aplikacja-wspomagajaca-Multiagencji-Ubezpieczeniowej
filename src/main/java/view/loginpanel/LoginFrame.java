@@ -39,7 +39,7 @@ public class LoginFrame extends view.Frame{
             @Override
             public void paintComponent(Graphics g) {
                 //File imageFile = new File("/Users/RobertTrojan/Desktop/model.png");
-                String filename = "assets/img/logo.png";
+                String filename = "src/main/assets/img/logo.png";
                 String workingDirectory = System.getProperty("user.dir");
 
                 File imageFile = new File(workingDirectory, filename);

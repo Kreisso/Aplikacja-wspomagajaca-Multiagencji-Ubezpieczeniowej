@@ -27,7 +27,7 @@ public class PDFWriter {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("polisa-" + name + ".pdf"));
             document.open();
 
-            Image companyImage = Image.getInstance("assets/img/"+policies.get(0).getOffer().getCompanyName() + ".png");
+            Image companyImage = Image.getInstance("src/main/assets/img/"+policies.get(0).getOffer().getCompanyName() + ".png");
             companyImage.setAbsolutePosition(430f, 720f);
             companyImage.scaleAbsolute(150, 100);
             document.add(companyImage);

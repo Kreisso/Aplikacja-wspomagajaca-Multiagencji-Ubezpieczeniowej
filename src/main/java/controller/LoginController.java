@@ -210,7 +210,7 @@ public class LoginController {
     {
 
         System.out.println("video");
-        String filename = "/assets/video/Szkolenie_dla_Klienta.mov";
+        String filename = "/src/main/assets/video/Szkolenie_dla_Klienta.mov";
         String workingDirectory = System.getProperty("user.dir");
         //text file, should be opening in default text editor
         File file = new File(workingDirectory+filename);

@@ -62,9 +62,9 @@ public class SearchOfferFrame extends view.Frame {
             @Override
             public void paintComponent(Graphics g) {
                 //File imageFile = new File("/Users/RobertTrojan/Desktop/model.png");
-                //String filename = "assets/img/logo.png";
+                //String filename = "src/main/assets/img/logo.png";
                 String workingDirectory = System.getProperty("user.dir");
-                String path = "assets/img/" + companyName + ".png";
+                String path = "src/main/assets/img/" + companyName + ".png";
                 File imageFile = new File(workingDirectory, path);
                 try {
                     logoImage = ImageIO.read(imageFile);
