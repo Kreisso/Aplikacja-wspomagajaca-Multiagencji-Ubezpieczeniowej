@@ -55,7 +55,7 @@ public class ClientMainFrame extends view.Frame{
         messagePanel.setLocation(scrollPane.getWidth()+20, 10);
         messagePanel.setSize(frameWidth-(scrollPane.getWidth()+30),frameHeight-100);
         messagePanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        messageSenderLabel = new JLabel("Brak wiadomości");
+        messageSenderLabel = new JLabel("Wiadomości");
         messageSenderLabel.setSize(messageSenderLabel.getPreferredSize());
         messageSenderLabel.setLocation((messagePanel.getWidth()/2)-(messageSenderLabel.getWidth()/2), 5);
         messagePanel.add(messageSenderLabel);

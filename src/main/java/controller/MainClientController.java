@@ -6,13 +6,8 @@ import model.Server.*;
 import model.enums.Status;
 import model.enums.Type;
 import view.Frame;
-import view.loginpanel.LoginFrame;
 import view.mainviews.ClientMainFrame;
-import view.multiagency.SearchMultiagencyFrame;
-import view.user.ChangePasswordFrame;
 
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -28,6 +23,7 @@ public class MainClientController extends Controller{
     private Frame previousView;
     private int ukk;
     private int agentId;
+    MessageController bigD;
 
     public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, int agentId) {
         this.view = view;
@@ -38,7 +34,45 @@ public class MainClientController extends Controller{
         addClientMenuActions(view, ukk, agentId);
         getPolices();
 
+
+        bigD = new MessageController(view,ukk);
+        bigD.start();
         setBiggerTextCheckBox();
+
+        view.setClearButtonListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clearMessage();
+
+            }
+        });
+    }
+
+    private void clearMessage() {
+
+        PreparedStatement preparedStatement = null;
+        String emptyMessage = "Brak wiadomości";
+
+        String sql="UPDATE client SET message =? WHERE ukk = ?";
+        try{
+            con =  new Connectivity();
+            preparedStatement = con.getConn().prepareStatement(sql);
+            preparedStatement.setString(1,emptyMessage);
+            preparedStatement.setInt(2, ukk);
+            preparedStatement.executeUpdate();
+            view.setMessageTextPane(emptyMessage);
+
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        finally {
+
+        }
     }
 
     public MainClientController(ClientMain model, ClientMainFrame view, Frame previousView, int ukk, int agentId, Connectivity con) {
@@ -180,6 +214,5 @@ public class MainClientController extends Controller{
             }
         });
     }
-
 
 }
