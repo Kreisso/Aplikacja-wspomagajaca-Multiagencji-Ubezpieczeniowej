@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SearchClientController extends Controller {
     private SearchClient model;
@@ -27,6 +29,8 @@ public class SearchClientController extends Controller {
     private int agentId;
     private int ukk;
     private String searchUKK;
+    private Pattern pattern;
+    private Matcher matcher;
 
     public SearchClientController(SearchClient model, final SearchClientFrame view, Frame previousView, int agentId, int ukk) {
         this.model = model;
@@ -144,6 +148,7 @@ public class SearchClientController extends Controller {
             System.out.println(e);
         }
         finally {
+
             view.addColumnToInfoTable(addClinetInfoToTable());
         }
 
@@ -201,36 +206,47 @@ public class SearchClientController extends Controller {
     private void setViewAfterSearching(){
         view.setAddressTableVisibility(false);
         view.setInputMessageVisibility(false);
+        view.setButtonMessageFinishfVisibility(false);
+        view.setMoreInfoButtonVisibility(false);
+        view.setSendMessageButtonVisibility(false);
+        view.setFoundClientLabel("");
 
         setInputSearchByUkk(getViewInputSearchByUkk());
         PreparedStatement preparedStatement=null;
         ResultSet resultSet=null;
         String sql="select * from client where ukk=?";
-        try{
-            con =  new Connectivity();
-            preparedStatement = con.getConn().prepareStatement(sql);
-            searchUKK = getInputSearchByUkk();
-            preparedStatement.setString(1, searchUKK);
-            resultSet = preparedStatement.executeQuery();
-            view.setErrorMessageLabel("Brak klienta o podanym ukk");
-            view.setFoundClientLabel("");
-            view.setMoreInfoButtonVisibility(false);
-            view.setSendMessageButtonVisibility(false);
+        searchUKK = getInputSearchByUkk();
+        pattern = Pattern.compile("^[0-9]*$");
+        matcher = pattern.matcher(searchUKK);
+        if (!matcher.matches()) {
+            view.setErrorMessagePopUp("Wprowadzono niepoprawny numer UKK! \nUKK składa się z samych liczb.");
 
-            while (resultSet.next())
-            {
-                view.setErrorMessageLabel("");
-                view.setFoundClientLabel(resultSet.getString("first_name") + " " + resultSet.getString("last_name"));
-                view.setMoreInfoButtonVisibility(true);
-                view.setSendMessageButtonVisibility(true);
+        }else {
+
+
+            try {
+                con = new Connectivity();
+                preparedStatement = con.getConn().prepareStatement(sql);
+
+                preparedStatement.setString(1, searchUKK);
+                resultSet = preparedStatement.executeQuery();
+                view.setErrorMessageLabel("Brak klienta o podanym ukk");
+                view.setFoundClientLabel("");
+                view.setButtonMessageFinishfVisibility(false);
+                view.setMoreInfoButtonVisibility(false);
+                view.setSendMessageButtonVisibility(false);
+
+                while (resultSet.next()) {
+                    view.setErrorMessageLabel("");
+                    view.setFoundClientLabel(resultSet.getString("first_name") + " " + resultSet.getString("last_name"));
+                    view.setMoreInfoButtonVisibility(true);
+                    view.setSendMessageButtonVisibility(true);
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            } catch (Exception e) {
+                System.out.println(e);
             }
-        }
-        catch(SQLException ex)
-        {
-            System.out.println(ex);
-        }
-        catch (Exception e){
-            System.out.println(e);
         }
     }
 }

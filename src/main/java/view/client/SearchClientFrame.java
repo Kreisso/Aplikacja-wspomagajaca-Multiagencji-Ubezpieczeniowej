@@ -184,4 +184,10 @@ public class SearchClientFrame extends view.Frame {
                 "AWMU",
                 JOptionPane.INFORMATION_MESSAGE);
     }
+    public void setErrorMessagePopUp(String errorMessage){
+        JOptionPane.showMessageDialog(this,
+                errorMessage,
+                "AWMU",
+                JOptionPane.ERROR_MESSAGE);
+    }
 }
