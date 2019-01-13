@@ -17,6 +17,7 @@ public class LoginFrame extends view.Frame{
     private JLabel labelPassword;
     private JButton buttonGoToSignUp;
     private JButton buttonLogIn;
+    private JButton buttonGoToTutorial;
     private JTextField inputLogin;
     private JPasswordField inputPassword;
     private JLabel errorMessageLabel;
@@ -89,6 +90,13 @@ public class LoginFrame extends view.Frame{
         buttonGoToSignUp.setForeground(Color.blue);
         this.add(buttonGoToSignUp);
 
+        buttonGoToTutorial = new JButton("Instruktaż");
+        buttonGoToTutorial.setBorder(null);
+        buttonGoToTutorial.setSize(buttonGoToTutorial.getPreferredSize());
+        buttonGoToTutorial.setLocation((frameWidth-100)/2,400);
+        buttonGoToSignUp.setForeground(Color.blue);
+        this.add(buttonGoToTutorial);
+
         errorMessageLabel = new JLabel("");
         errorMessageLabel.setSize(errorMessageLabel.getPreferredSize());
         errorMessageLabel.setLocation(50, 360);
@@ -102,6 +110,10 @@ public class LoginFrame extends view.Frame{
 
     public void setButtonGoToSignUp(ActionListener actionListener){
         buttonGoToSignUp.addActionListener(actionListener);
+    }
+
+    public void setButtonGoToTutorial(ActionListener actionListener){
+        buttonGoToTutorial.addActionListener(actionListener);
     }
 
     public char[] getPassword() {

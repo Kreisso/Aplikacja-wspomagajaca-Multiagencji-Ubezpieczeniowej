@@ -23,6 +23,7 @@ public class LoginController {
         this.view = view;
         setViewLoginButtonEvent();
         setViewGoSignUpButtonEvent();
+        setViewGoToTutorialButtonEvent();
     }
 
     private void setModelNick(String nick)
@@ -79,6 +80,17 @@ public class LoginController {
                 // TODO
                 RegisterController registerController = new RegisterController(
                         new Register(), new RegisterFrame("Rejestracja"), view );
+                view.setVisible(false);
+                view.setErrorMessageLabel("");
+            }
+        });
+    }
+
+    private void setViewGoToTutorialButtonEvent()
+    {
+        view.setButtonGoToTutorial(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
                 view.setVisible(false);
                 view.setErrorMessageLabel("");
             }
