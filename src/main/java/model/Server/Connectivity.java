@@ -6,9 +6,9 @@ import java.sql.SQLException;
 public class Connectivity
 {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost/multiagencja?useUnicode=true&characterEncoding=utf-8";
-    private static final String USER = "test" ;
-    private static final String PASS = "test";
+    private static final String DB_URL = "jdbc:mysql://localhost/multiagencja";
+    private static final String USER = "root" ;
+    private static final String PASS = "";
     private Connection conn;
     public Connectivity() {
         conn = null;

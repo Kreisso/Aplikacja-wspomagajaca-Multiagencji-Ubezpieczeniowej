@@ -1,9 +1,6 @@
 package model;
 
-/**
- * Created by kreisso on 02.11.2018.
- */
-public abstract class User {
+public class User {
     public String login;
     public String password;
 
