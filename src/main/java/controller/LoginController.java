@@ -70,7 +70,8 @@ public class LoginController {
         view.setButtonLogIn(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("click login button");
-                login();
+                //login();
+
             }
         });
     }
@@ -80,7 +81,6 @@ public class LoginController {
         view.setButtonGoToSignUp(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("click go sign up button");
-                // TODO
                 RegisterController registerController = new RegisterController(
                         new Register(), new RegisterFrame("Rejestracja"), view );
                 view.setVisible(false);
@@ -171,7 +171,6 @@ public class LoginController {
 
             }
             else {
-                //TODO add label with error
                 view.setErrorMessageLabel("Błędny login lub hasło");
                 con.close();
 

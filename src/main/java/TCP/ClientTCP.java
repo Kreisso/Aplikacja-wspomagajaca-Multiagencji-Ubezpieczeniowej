@@ -1,11 +1,13 @@
 package TCP;
 
+import controller.LoginController;
 import model.Server.Connectivity;
+import model.Server.Login;
+import model.User;
+import view.loginpanel.LoginFrame;
 
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.awt.*;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.sql.PreparedStatement;
@@ -16,10 +18,19 @@ import java.util.Scanner;
 public class ClientTCP {
 //    private Multimap<String,String> multimap;
 
+    public static void main(String[] args){
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                LoginController loginController = new LoginController(new Login(), new LoginFrame("Logowanie"));
+                loginTCP(loginController);
+            }
+        });
+
+    }
+
 
    // public ClientTCP(String sample, Multimap<String, String> m)
-    public ClientTCP(String sample)
-    {
+    public static void loginTCP(LoginController loginController) {
        // multimap = m;
         String args[] = new String[2];
         args[0]= getServerIp();
@@ -30,15 +41,27 @@ public class ClientTCP {
             int port = 0;
             try {
                 port = Integer.parseInt(args[1]);
-            } catch (NumberFormatException e) {
+            }
+            catch (NumberFormatException e) {
                 System.err.println("Wprowadź poprawny numer portu: " + e);
                 return;
             }
             try {
                 Socket socket = new Socket(InetAddress.getByName(args[0]), port);
+                socket.setTcpNoDelay(true);
+
+                OutputStream os = socket.getOutputStream();
+                ObjectOutputStream oos = new ObjectOutputStream(os);
+                oos.writeObject(loginController);
+
+                InputStream is = socket.getInputStream();
+                ObjectInputStream ois = new ObjectInputStream(is);
+                LoginController response = (LoginController) ois.readObject();
+
+                /*Socket socket = new Socket(InetAddress.getByName(args[0]), port);
 
                 PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-//                Scanner sc = new Scanner(System.in);
+                Scanner sc = new Scanner(System.in);
                 String str;
                 socket.setTcpNoDelay(true);
 
@@ -51,21 +74,23 @@ public class ClientTCP {
                     System.out.println("test");
                     InputStream is = socket.getInputStream();
                     ObjectInputStream ois = new ObjectInputStream(is);
-                   // multimap = (ArrayListMultimap)ois.readObject();
-                   // System.out.println(multimap);
-//                    System.out.println((String)ois.readObject());
+
+                    multimap = (ArrayListMultimap)ois.readObject();
+                    System.out.println(multimap);
+                    System.out.println((String)ois.readObject());
                     is.close();
-                   // if (multimap!=null){
-                    //    System.out.println(multimap.size());
+                    if (multimap!=null){
+                        System.out.println(multimap.size());
                         is.close();
                         break;
-                   // }
-//                    if(str.equals("exit")) break;
+                    }
+                    if(str.equals("exit")) break;
                 }
-//                sc.close();
+                sc.close();
                 System.out.println("zamykamy socket" );
-                socket.close();
-            } catch (Exception e) {
+                socket.close();*/
+            }
+            catch (Exception e) {
                 System.err.println(e);
             }
         }
@@ -77,7 +102,7 @@ public class ClientTCP {
 //        return multimap;
 //    }
 
-    public String getServerIp()
+    public static String getServerIp()
     {
         String ip = null;
         PreparedStatement preparedStatement = null;
