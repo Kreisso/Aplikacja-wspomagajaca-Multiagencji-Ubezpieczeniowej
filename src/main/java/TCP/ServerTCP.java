@@ -3,7 +3,6 @@ package TCP;
 import model.Server.Connectivity;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -32,7 +31,7 @@ public class ServerTCP {
 
             if(resultSet.next())
             {
-                System.out.println("2");
+                System.out.println(ip);
                 sql = "UPDATE server_ip SET ip = ? WHERE id = 1 ";
                 preparedStatement = con.getConn().prepareStatement(sql);
                 preparedStatement.setString(1,ip);
@@ -63,13 +62,10 @@ public class ServerTCP {
         }
 
 
-        if (args.length == 0)
-            System.out.println("Wprowadź numer portu, na którym serwer będzie oczekiwał na klientów");
-        else {
             int port = 0;
             try {
 
-                port = Integer.parseInt(args[0]);
+                port = 12367;
 
             } catch (NumberFormatException e) {
                 System.err.println("Wprowadź poprawny numer portu: " + e);
@@ -94,7 +90,7 @@ public class ServerTCP {
                         e.printStackTrace();
                     }
             }
-        }
+
 
 
 
