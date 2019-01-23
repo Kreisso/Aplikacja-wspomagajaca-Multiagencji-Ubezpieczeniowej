@@ -7,8 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
-public class LoginFrame extends view.Frame{
+public class LoginFrame extends view.Frame implements Serializable {
     private int frameWidth = 500;
     private int frameHeight = 500;
 

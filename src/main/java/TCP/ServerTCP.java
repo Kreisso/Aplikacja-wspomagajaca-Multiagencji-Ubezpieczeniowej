@@ -79,6 +79,7 @@ public class ServerTCP {
 
                     Socket socket = serverSocket.accept();
                     (new ServerTCPThread(socket)).start();
+                    System.out.println("1");
                 }
             } catch (Exception e) {
                 System.err.println(e);

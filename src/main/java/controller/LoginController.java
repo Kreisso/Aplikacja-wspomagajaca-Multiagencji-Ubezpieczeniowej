@@ -11,11 +11,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginController {
+import static TCP.ClientTCP.loginTCP;
+
+public class LoginController implements Serializable {
     private Login model;
     private LoginFrame view;
     private Connectivity con;
@@ -72,6 +75,7 @@ public class LoginController {
                 System.out.println("click login button");
                 //login();
 
+                login();
             }
         });
     }
@@ -106,7 +110,7 @@ public class LoginController {
 
     }
 
-    private void login()
+    public void login()
     {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -118,25 +122,26 @@ public class LoginController {
             setModelNick(getViewNick());
             setModelPassword(getViewPassword());
 
-            preparedStatement = con.getConn().prepareStatement(sql);
-            preparedStatement.setString(1, getModelNick());
-            preparedStatement.setString(2, getModelPassword());
-            resultSet = preparedStatement.executeQuery();
+            model = loginTCP(model);
+//            preparedStatement = con.getConn().prepareStatement(sql);
+//            preparedStatement.setString(1, getModelNick());
+//            preparedStatement.setString(2, getModelPassword());
+//            resultSet = preparedStatement.executeQuery();
 
-            if(resultSet.next())
-            {
-                setModelStatus(true);
-
-            }
-            else
-            {
-                setModelStatus(false);
-            }
+//            if(resultSet.next())
+//            {
+//                setModelStatus(true);
+//
+//            }
+//            else
+//            {
+//                setModelStatus(false);
+//            }
         }
-        catch(SQLException ex)
-        {
-            System.out.println(ex);
-        }
+//        catch(SQLException ex)
+//        {
+//            System.out.println(ex);
+//        }
         catch (Exception e){
             System.out.println(e);
         }

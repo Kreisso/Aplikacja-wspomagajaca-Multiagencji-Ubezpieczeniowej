@@ -3,7 +3,6 @@ package TCP;
 import controller.LoginController;
 import model.Server.Connectivity;
 import model.Server.Login;
-import model.User;
 import view.loginpanel.LoginFrame;
 
 import java.awt.*;
@@ -13,16 +12,17 @@ import java.net.Socket;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class ClientTCP {
-//    private Multimap<String,String> multimap;
+    static Login login;
 
     public static void main(String[] args){
+
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LoginController loginController = new LoginController(new Login(), new LoginFrame("Logowanie"));
-                loginTCP(loginController);
+                login = new Login();
+                LoginController loginController = new LoginController(login, new LoginFrame("Logowanie"));
+
             }
         });
 
@@ -30,8 +30,9 @@ public class ClientTCP {
 
 
    // public ClientTCP(String sample, Multimap<String, String> m)
-    public static void loginTCP(LoginController loginController) {
+    public static Login loginTCP(Login loginSample) {
        // multimap = m;
+        Login response = null;
         String args[] = new String[2];
         args[0]= getServerIp();
         args[1]= "12367";
@@ -44,7 +45,7 @@ public class ClientTCP {
             }
             catch (NumberFormatException e) {
                 System.err.println("Wprowadź poprawny numer portu: " + e);
-                return;
+//                return;
             }
             try {
                 Socket socket = new Socket(InetAddress.getByName(args[0]), port);
@@ -52,49 +53,36 @@ public class ClientTCP {
 
                 OutputStream os = socket.getOutputStream();
                 ObjectOutputStream oos = new ObjectOutputStream(os);
-                oos.writeObject(loginController);
+                oos.writeObject(loginSample);
 
-                InputStream is = socket.getInputStream();
-                ObjectInputStream ois = new ObjectInputStream(is);
-                LoginController response = (LoginController) ois.readObject();
-
-                /*Socket socket = new Socket(InetAddress.getByName(args[0]), port);
-
-                PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-                Scanner sc = new Scanner(System.in);
-                String str;
-                socket.setTcpNoDelay(true);
-
-                str = sample ;//sc.nextLine();
-                out.println(str);
-                out.flush();
+                //TimeUnit.SECONDS.sleep(2);
 
                 while(true){
 
-                    System.out.println("test");
                     InputStream is = socket.getInputStream();
                     ObjectInputStream ois = new ObjectInputStream(is);
-
-                    multimap = (ArrayListMultimap)ois.readObject();
-                    System.out.println(multimap);
-                    System.out.println((String)ois.readObject());
-                    is.close();
-                    if (multimap!=null){
-                        System.out.println(multimap.size());
+                    response = (Login) ois.readObject();
+                    System.out.println("test ;"+response.isStatus());
+                    if (response!=null){
                         is.close();
                         break;
                     }
-                    if(str.equals("exit")) break;
                 }
-                sc.close();
+
+
                 System.out.println("zamykamy socket" );
-                socket.close();*/
+                socket.close();
+                return response;
             }
             catch (Exception e) {
-                System.err.println(e);
+                //System.err.println(e);
+            }finally {
+                System.out.println(login.isStatus());
+
             }
         }
 
+        return response;
     }
 //
 //    public Multimap<String, String> getMultimap() {
@@ -129,10 +117,10 @@ public class ClientTCP {
         }
         catch(SQLException ex)
         {
-            System.out.println(ex);
+           // System.out.println(ex);
         }
         catch (Exception e){
-            System.out.println(e);
+           // System.out.println(e);
         }
         finally {
 

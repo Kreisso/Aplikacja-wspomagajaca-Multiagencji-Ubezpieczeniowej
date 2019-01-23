@@ -1,6 +1,8 @@
 package model.Server;
 
-public class Login {
+import java.io.Serializable;
+
+public class Login implements Serializable {
     private String nick;
     private String password;
     private boolean status = false;
