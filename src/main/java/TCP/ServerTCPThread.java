@@ -1,14 +1,9 @@
 package TCP;
 
-import controller.LoginController;
-import controller.MainAgentController;
-import controller.MainClientController;
-import model.Server.AgentMain;
-import model.Server.ClientMain;
+
 import model.Server.Connectivity;
 import model.Server.Login;
-import view.mainviews.AgentMainFrame;
-import view.mainviews.ClientMainFrame;
+
 
 import java.io.*;
 import java.net.Socket;
@@ -16,12 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static TCP.ClientTCP.loginTCP;
 
 
 public class ServerTCPThread extends Thread {
     private File file;
-    //private Multimap<String,String> multimap;
     Login login;
     Socket mySocket;
 
@@ -80,21 +73,15 @@ public class ServerTCPThread extends Thread {
                 InputStream is = mySocket.getInputStream();
                 ObjectInputStream ois = new ObjectInputStream(is);
                 login = (Login) ois.readObject();
-
-                //is.close();
                 if (login!=null){
-                //is.close();
                 break;
                 }
 
             }
-//                sc.close();
-//            System.out.println("zamykamy socket" );
-//            mySocket.close();
+
         } catch (Exception e) {
             System.err.println(e);
         }
-//                sc.close();
 
         login(login);
         System.out.println(login.getNick());

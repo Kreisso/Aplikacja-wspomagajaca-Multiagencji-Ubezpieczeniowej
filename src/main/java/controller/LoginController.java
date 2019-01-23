@@ -73,8 +73,6 @@ public class LoginController implements Serializable {
         view.setButtonLogIn(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("click login button");
-                //login();
-
                 login();
             }
         });
@@ -105,43 +103,19 @@ public class LoginController implements Serializable {
         });
     }
 
-    private void getIdOrUkk()
-    {
-
-    }
 
     public void login()
     {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-
-
-        String sql="select * from user where login=? and password=?";
         try{
             con =  new Connectivity();
             setModelNick(getViewNick());
             setModelPassword(getViewPassword());
 
             model = loginTCP(model);
-//            preparedStatement = con.getConn().prepareStatement(sql);
-//            preparedStatement.setString(1, getModelNick());
-//            preparedStatement.setString(2, getModelPassword());
-//            resultSet = preparedStatement.executeQuery();
-
-//            if(resultSet.next())
-//            {
-//                setModelStatus(true);
-//
-//            }
-//            else
-//            {
-//                setModelStatus(false);
-//            }
         }
-//        catch(SQLException ex)
-//        {
-//            System.out.println(ex);
-//        }
+
         catch (Exception e){
             System.out.println(e);
         }
@@ -153,7 +127,7 @@ public class LoginController implements Serializable {
                  resultSet = null;
 
 
-                 sql="select ukk from client where login=? ";
+                String sql="select ukk from client where login=? ";
                   ukk = getIdFromDatabase(sql, "ukk");
                   System.out.println("Klient zalogowany o UKK: "+ukk);
                 if(ukk > 0) {
@@ -216,10 +190,8 @@ public class LoginController implements Serializable {
         System.out.println("video");
         String filename = "/src/main/assets/video/Szkolenie_dla_Klienta.mov";
         String workingDirectory = System.getProperty("user.dir");
-        //text file, should be opening in default text editor
         File file = new File(workingDirectory+filename);
 
-        //first check if Desktop is supported by Platform or not
         if(!Desktop.isDesktopSupported()){
             System.out.println("Desktop is not supported");
             return;

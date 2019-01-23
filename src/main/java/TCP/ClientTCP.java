@@ -21,17 +21,14 @@ public class ClientTCP {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 login = new Login();
-                LoginController loginController = new LoginController(login, new LoginFrame("Logowanie"));
+                 new LoginController(login, new LoginFrame("Logowanie"));
 
             }
         });
 
     }
 
-
-   // public ClientTCP(String sample, Multimap<String, String> m)
     public static Login loginTCP(Login loginSample) {
-       // multimap = m;
         Login response = null;
         String args[] = new String[2];
         args[0]= getServerIp();
@@ -45,7 +42,6 @@ public class ClientTCP {
             }
             catch (NumberFormatException e) {
                 System.err.println("Wprowadź poprawny numer portu: " + e);
-//                return;
             }
             try {
                 Socket socket = new Socket(InetAddress.getByName(args[0]), port);
@@ -54,9 +50,6 @@ public class ClientTCP {
                 OutputStream os = socket.getOutputStream();
                 ObjectOutputStream oos = new ObjectOutputStream(os);
                 oos.writeObject(loginSample);
-
-                //TimeUnit.SECONDS.sleep(2);
-
                 while(true){
 
                     InputStream is = socket.getInputStream();
@@ -84,11 +77,7 @@ public class ClientTCP {
 
         return response;
     }
-//
-//    public Multimap<String, String> getMultimap() {
-//        System.out.println(multimap.size());
-//        return multimap;
-//    }
+
 
     public static String getServerIp()
     {
@@ -117,10 +106,10 @@ public class ClientTCP {
         }
         catch(SQLException ex)
         {
-           // System.out.println(ex);
+            System.out.println(ex);
         }
         catch (Exception e){
-           // System.out.println(e);
+            System.out.println(e);
         }
         finally {
 
